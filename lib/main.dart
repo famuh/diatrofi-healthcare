@@ -1,3 +1,4 @@
+import 'package:diatfori/common/constant.dart';
 import 'package:diatfori/testing_ui.dart';
 import 'package:flutter/material.dart';
 
@@ -15,8 +16,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+      theme: ThemeData.light().copyWith(
+        colorScheme: kColorScheme,
+        primaryColor: kMatteBlack,
+        scaffoldBackgroundColor: Colors.white,
       ),
       home: TestingUI(),
       navigatorObservers: [routeObserver],

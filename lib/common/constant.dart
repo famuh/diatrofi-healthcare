@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 // COLOR
-const Color kPink = Color(0xEF6D6D);
-const Color kGreenBright = Color(0x6EE625);
+const Color kPink = Color(0xFFEF6D6D);
+const Color kStrongRed = Color(0xFFEF1D1D);
 
+const Color kMatteBlack = Color(0xFF252525);
+const Color kSoftGrey = Color(0xFFEFEFEF);
+
+const Color kSoftGreen = Color(0xFFB6E2A1);
+const Color kBrightGreen = Color(0xFF449C1B);
+const Color kStrongGreen = Color(0xFF348756);
 
 // text style
 final TextStyle kAuthScreen = GoogleFonts.poppins(
@@ -31,14 +37,25 @@ GoogleFonts.poppins(
   // fontWeight: FontWeight.w400 // regular
 );
 
-
 final TextStyle kItemTittleCard = 
 GoogleFonts.poppins(
   fontSize: 14,
   fontWeight: FontWeight.w500 //semibold
 );
 
-
-
 // color scheme
-
+const kColorScheme = ColorScheme(
+  primary: kStrongGreen,
+  primaryContainer: kStrongGreen,
+  secondary: kSoftGreen,
+  secondaryContainer: kSoftGreen,
+  surface: kMatteBlack,
+  background: kMatteBlack,
+  error: Colors.red,
+  onPrimary: kMatteBlack,
+  onSecondary: Colors.white,
+  onSurface: Colors.white,
+  onBackground: Colors.white,
+  onError: Colors.white,
+  brightness: Brightness.light,
+);
