@@ -1,3 +1,4 @@
+import 'package:diatfori/testing_ui.dart';
 import 'package:flutter/material.dart';
 
 import 'common/utils.dart';
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomeScreen(),
+      home: TestingUI(),
       navigatorObservers: [routeObserver],
       onGenerateRoute: (RouteSettings settings){
         switch (settings.name){
