@@ -3,8 +3,13 @@ import 'package:google_fonts/google_fonts.dart';
 
 // COLOR
 const Color kPink = Color(0xEF6D6D);
-const Color kGreenBright = Color(0x6EE625);
+const Color kStrongRed = Color(0xEF1D1D);
 
+const Color kMatteBlack = Color(0x252525);
+
+const Color kSoftGreen = Color(0xD5EEBB);
+const Color kBrightGreen = Color(0x449C1B);
+const Color kStrongGreen = Color(0x348756);
 
 // text style
 final TextStyle kAuthScreen = GoogleFonts.poppins(
@@ -39,6 +44,4 @@ GoogleFonts.poppins(
 );
 
 
-
-// color scheme
 
