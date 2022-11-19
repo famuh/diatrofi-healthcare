@@ -43,6 +43,14 @@ GoogleFonts.poppins(
   fontWeight: FontWeight.w500 //semibold
 );
 
+// logo
+final TextStyle kDiatrofi = 
+GoogleFonts.notoSerif(
+  color: Colors.black,
+  fontSize: 20,
+  fontWeight: FontWeight.bold
+);
+
 // color scheme
 const kColorScheme = ColorScheme(
   primary: kStrongGreen,
