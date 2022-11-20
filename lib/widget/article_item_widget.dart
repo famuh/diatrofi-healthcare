@@ -33,6 +33,7 @@ class ArticleItemWidget extends StatelessWidget {
                 borderRadius: const BorderRadius.all(Radius.circular(20)),
                 child: CachedNetworkImage(
                   imageUrl: articleImageUrl,
+                  fit: BoxFit.cover,
                   placeholder: (context, url) => const Center(
                     child: CircularProgressIndicator(),
                   ),
