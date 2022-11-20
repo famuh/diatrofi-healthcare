@@ -39,8 +39,8 @@ GoogleFonts.poppins(
 
 final TextStyle kItemTittleCard = 
 GoogleFonts.poppins(
-  fontSize: 14,
-  fontWeight: FontWeight.w500 //semibold
+  fontSize: 16,
+  fontWeight: FontWeight.w600 //semibold
 );
 
 // logo
