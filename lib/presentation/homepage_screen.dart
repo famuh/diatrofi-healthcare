@@ -1,6 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:diatfori/common/constant.dart';
+import 'package:diatfori/widget/article_item_widget.dart';
+import 'package:diatfori/widget/food_item_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomeScreen extends StatefulWidget {
   static const ROUTE_NAME = '/home';
@@ -103,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Container(
             width: MediaQuery.of(context).size.width,
             height: 180,
-            margin: EdgeInsets.symmetric(vertical: 15),
+            margin: const EdgeInsets.symmetric(vertical: 15),
             decoration: BoxDecoration(
               color: kPink,
               borderRadius: BorderRadius.circular(20),
@@ -120,145 +123,53 @@ class _HomeScreenState extends State<HomeScreen> {
 
           // article items
           Container(
-            height: 200,
+            height: 230,
             // color: Colors.grey,
-            padding: EdgeInsets.only(right: 10),
+            padding: const EdgeInsets.only(right: 10),
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20)
-                  ),
-                  color: kSoftGrey,
-                  child: Container(
-                    width: 210,
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          // height: 100,
-                          width: 200,
-                          height: 200 / 1.5,
-                          margin: EdgeInsets.only(bottom: 5),
-                          // padding: EdgeInsets.all(5),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            child: CachedNetworkImage(
-                              imageUrl:
-                                  'https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
-                              placeholder: (context, url) => Center(
-                                child: CircularProgressIndicator(),
-                              ),
-                              errorWidget: (context, url, error) =>
-                                  Icon(Icons.error),
-                            ),
-                          ),
-                        ),
-                        Text(
-                          'lorem ipsum',
-                          style: kItemTittleCard,
-                        ),
-                        Text(
-                          'asasasasasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-                          overflow: TextOverflow.ellipsis,)
-                      ],
-                    ),
-                  ),
-                ),
-               
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20)
-                  ),
-                  color: kSoftGrey,
-                  child: Container(
-                    width: 210,
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          // height: 100,
-                          width: 200,
-                          height: 200 / 1.5,
-                          margin: EdgeInsets.only(bottom: 5),
-                          // padding: EdgeInsets.all(5),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            child: CachedNetworkImage(
-                              imageUrl:
-                                  'https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
-                              placeholder: (context, url) => Center(
-                                child: CircularProgressIndicator(),
-                              ),
-                              errorWidget: (context, url, error) =>
-                                  Icon(Icons.error),
-                            ),
-                          ),
-                        ),
-                        Text(
-                          'lorem ipsum',
-                          style: kItemTittleCard,
-                        ),
-                        Text(
-                          'asasasasasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-                          overflow: TextOverflow.ellipsis,)
-                      ],
-                    ),
-                  ),
-                ),
-               
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20)
-                  ),
-                  color: kSoftGrey,
-                  child: Container(
-                    width: 210,
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          // height: 100,
-                          width: 200,
-                          height: 200 / 1.5,
-                          margin: EdgeInsets.only(bottom: 5),
-                          // padding: EdgeInsets.all(5),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            child: CachedNetworkImage(
-                              imageUrl:
-                                  'https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
-                              placeholder: (context, url) => Center(
-                                child: CircularProgressIndicator(),
-                              ),
-                              errorWidget: (context, url, error) =>
-                                  Icon(Icons.error),
-                            ),
-                          ),
-                        ),
-                        Text(
-                          'lorem ipsum',
-                          style: kItemTittleCard,
-                        ),
-                        Text(
-                          'asasasasasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-                          overflow: TextOverflow.ellipsis,)
-                      ],
-                    ),
-                  ),
-                ),
+                ArticleItemWidget(
+                    articleTitle: 'Lorem Ipsum dolor sit amet',
+                    articleSubtitle:
+                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                    articleImageUrl:
+                        'https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'),
+                ArticleItemWidget(
+                    articleTitle: 'Lorem Ipsum dolor sit amet',
+                    articleSubtitle:
+                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                    articleImageUrl:
+                        'https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'),
+                ArticleItemWidget(
+                    articleTitle: 'Lorem Ipsum dolor sit amet',
+                    articleSubtitle:
+                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                    articleImageUrl:
+                        'https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'),
               ],
             ),
           ),
 
           // check this out
-          _buildSubHeading(title: 'check this out', onTap: () => print('ke halaman rekomendasi')),
+          _buildSubHeading(
+              title: 'check this out',
+              onTap: () => print('ke halaman rekomendasi')),
 
           // check this out item
+          SizedBox(
+            height: 500,
+            child: ListView(
+              physics: const NeverScrollableScrollPhysics(),
+              children: [
+                FoodItemWidget(foodImageUrl: 'https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80', kcal: 123, foodName: 'Spaghetti ayam bawank', foodDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
+                FoodItemWidget(foodImageUrl: 'https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80', kcal: 123, foodName: 'Spaghetti ayam bawank', foodDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
+                FoodItemWidget(foodImageUrl: 'https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80', kcal: 123, foodName: 'Spaghetti ayam bawank', foodDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
+                FoodItemWidget(foodImageUrl: 'https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80', kcal: 123, foodName: 'Spaghetti ayam bawank', foodDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
+                FoodItemWidget(foodImageUrl: 'https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80', kcal: 123, foodName: 'Spaghetti ayam bawank', foodDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
+              ],
+            ),
+          )
         ],
       ),
     ));

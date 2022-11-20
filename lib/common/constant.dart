@@ -8,7 +8,7 @@ const Color kStrongRed = Color(0xFFEF1D1D);
 const Color kMatteBlack = Color(0xFF252525);
 const Color kSoftGrey = Color(0xFFEFEFEF);
 
-const Color kSoftGreen = Color(0xFFB6E2A1);
+const Color kSoftGreen = Color.fromARGB(255, 192, 236, 171);
 const Color kBrightGreen = Color(0xFF449C1B);
 const Color kStrongGreen = Color(0xFF348756);
 
@@ -34,6 +34,7 @@ GoogleFonts.poppins(
 final TextStyle kBodyText = 
 GoogleFonts.poppins(
   fontSize: 12,
+  color: Colors.black54
   // fontWeight: FontWeight.w400 // regular
 );
 

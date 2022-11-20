@@ -28,7 +28,6 @@ class MyApp extends StatelessWidget {
         switch (settings.name){
           case '/home':
           return MaterialPageRoute(builder: (_) => HomeScreen());
-
           default:
              return MaterialPageRoute(builder: (_) {
                 return const Scaffold(
