@@ -1,4 +1,5 @@
 import 'package:diatfori/common/constant.dart';
+import 'package:diatfori/presentation/calculate_screen.dart';
 import 'package:diatfori/presentation/mainpage.dart';
 import 'package:diatfori/testing_ui.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,9 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: (RouteSettings settings){
         switch (settings.name){
           case '/home':
-          return MaterialPageRoute(builder: (_) => HomeScreen());
+            return MaterialPageRoute(builder: (_) => HomeScreen());
+          case '/cal':
+            return MaterialPageRoute(builder: (_) => CalculateScreen());
           default:
              return MaterialPageRoute(builder: (_) {
                 return const Scaffold(
