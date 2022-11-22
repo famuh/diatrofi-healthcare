@@ -11,15 +11,43 @@ class CalculateScreen extends StatefulWidget {
 class _CalculateScreenState extends State<CalculateScreen> {
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context).size;
+
     return Scaffold(
-      appBar: AppBar(title: Text('calculate your abwaba'),),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(
-          vertical: 5,
-          horizontal: 15
-        ),
-        child: Center(child: Text('calculate'),)
+      appBar: AppBar(
+        title: Text('calculate your intake'),
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.arrow_back_ios_rounded)),
       ),
+      body: 
+      Container(
+        width: mediaQuery.width,
+        height: mediaQuery.height,
+        color: Colors.black,
+        child: Stack(
+          children: [
+            // 1
+            Container(
+              width: mediaQuery.width,
+              height: mediaQuery.height/1.3,
+              color: Colors.blueGrey,
+            ),
+
+            // 2
+            Positioned(
+              bottom: 0,
+              child: Container(
+                width: mediaQuery.width,
+                height: mediaQuery.height/7,
+                color: Colors.amber,
+              ),
+            )
+          ],
+        ),
+      )
     );
   }
 }
