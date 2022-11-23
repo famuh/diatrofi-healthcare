@@ -1,9 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:diatfori/common/constant.dart';
+import 'package:diatfori/presentation/calculate_screen.dart';
 import 'package:diatfori/widget/article_item_widget.dart';
 import 'package:diatfori/widget/food_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../widget/sub_heading.dart';
 
 class HomeScreen extends StatefulWidget {
   static const ROUTE_NAME = '/home';
@@ -41,8 +44,9 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           // diatrofi
           Container(
-              margin: const EdgeInsets.symmetric(vertical: 5),
-              child: Text('Diatrofi', style: kDiatrofi)),
+                  margin: const EdgeInsets.symmetric(vertical: 5),
+                  child: Text('Diatrofi', style: kDiatrofi)),
+              
 
           // search and profile
           Row(
@@ -103,21 +107,30 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
 
           //  gtau ni apaan
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: 180,
-            margin: const EdgeInsets.symmetric(vertical: 15),
-            decoration: BoxDecoration(
-              color: kPink,
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Center(
-              child: Text('Belum Tau ini mau dibuat fitur apa'),
+          InkWell(
+            onTap: () {
+                print('udh ditekan');
+                Navigator.pushNamed(
+                  context,
+                  CalculateScreen.ROUTE_NAME,
+                );
+              },
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              height: 180,
+              margin: const EdgeInsets.symmetric(vertical: 15),
+              decoration: BoxDecoration(
+                color: kPink,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Center(
+                child: Text('Belum Tau ini mau dibuat fitur apa'),
+              ),
             ),
           ),
 
           // articles
-          _buildSubHeading(
+          SubHeading(
               title: 'articles',
               onTap: (() => print('navigasi ke halaman article'))),
 
@@ -152,7 +165,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
 
           // check this out
-          _buildSubHeading(
+          SubHeading(
               title: 'check this out',
               onTap: () => print('ke halaman rekomendasi')),
 
@@ -162,11 +175,41 @@ class _HomeScreenState extends State<HomeScreen> {
             child: ListView(
               physics: const NeverScrollableScrollPhysics(),
               children: [
-                FoodItemWidget(foodImageUrl: 'https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80', kcal: 123, foodName: 'Spaghetti ayam bawank', foodDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
-                FoodItemWidget(foodImageUrl: 'https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80', kcal: 123, foodName: 'Spaghetti ayam bawank', foodDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
-                FoodItemWidget(foodImageUrl: 'https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80', kcal: 123, foodName: 'Spaghetti ayam bawank', foodDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
-                FoodItemWidget(foodImageUrl: 'https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80', kcal: 123, foodName: 'Spaghetti ayam bawank', foodDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
-                FoodItemWidget(foodImageUrl: 'https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80', kcal: 123, foodName: 'Spaghetti ayam bawank', foodDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
+                FoodItemWidget(
+                    foodImageUrl:
+                        'https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
+                    kcal: 123,
+                    foodName: 'Spaghetti ayam bawank',
+                    foodDesc:
+                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
+                FoodItemWidget(
+                    foodImageUrl:
+                        'https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
+                    kcal: 123,
+                    foodName: 'Spaghetti ayam bawank',
+                    foodDesc:
+                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
+                FoodItemWidget(
+                    foodImageUrl:
+                        'https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
+                    kcal: 123,
+                    foodName: 'Spaghetti ayam bawank',
+                    foodDesc:
+                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
+                FoodItemWidget(
+                    foodImageUrl:
+                        'https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
+                    kcal: 123,
+                    foodName: 'Spaghetti ayam bawank',
+                    foodDesc:
+                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
+                FoodItemWidget(
+                    foodImageUrl:
+                        'https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
+                    kcal: 123,
+                    foodName: 'Spaghetti ayam bawank',
+                    foodDesc:
+                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
               ],
             ),
           )
@@ -175,24 +218,5 @@ class _HomeScreenState extends State<HomeScreen> {
     ));
   }
 
-  _buildSubHeading({required String title, required Function() onTap}) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          title,
-          style: kSection,
-        ),
-        InkWell(
-          onTap: onTap,
-          child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                'See More',
-                style: TextStyle(color: kBrightGreen),
-              )),
-        ),
-      ],
-    );
-  }
+  
 }

@@ -61,7 +61,7 @@ const kColorScheme = ColorScheme(
   surface: kMatteBlack,
   background: kMatteBlack,
   error: Colors.red,
-  onPrimary: kMatteBlack,
+  onPrimary: Colors.white,
   onSecondary: Colors.white,
   onSurface: Colors.white,
   onBackground: Colors.white,

@@ -1,4 +1,5 @@
 import 'package:diatfori/common/constant.dart';
+import 'package:diatfori/presentation/calculate_screen.dart';
 import 'package:diatfori/firebase_options.dart';
 import 'package:diatfori/presentation/login/welcome.dart';
 import 'package:diatfori/presentation/mainpage.dart';
@@ -29,11 +30,15 @@ class MyApp extends StatelessWidget {
         primaryColor: kMatteBlack,
         scaffoldBackgroundColor: Colors.white,
       ),
+
       home: const WelcomePage(),
       navigatorObservers: [routeObserver],
       onGenerateRoute: (RouteSettings settings){
         switch (settings.name){
           case '/home':
+            return MaterialPageRoute(builder: (_) => HomeScreen());
+          case '/cal':
+            return MaterialPageRoute(builder: (_) => CalculateScreen());
           return MaterialPageRoute(builder: (_) => const HomeScreen());
           default:
              return MaterialPageRoute(builder: (_) {
