@@ -13,12 +13,12 @@ class ArticleResepDetail {
 
   final String method;
   final bool status;
-  final Results results;
+  final ResultArticleDetail results;
 
   factory ArticleResepDetail.fromJson(Map<String, dynamic> json) => ArticleResepDetail(
     method: json["method"],
     status: json["status"],
-    results: Results.fromJson(json["results"]),
+    results: ResultArticleDetail.fromJson(json["results"]),
   );
 
   Map<String, dynamic> toJson() => {
@@ -28,8 +28,8 @@ class ArticleResepDetail {
   };
 }
 
-class Results {
-  Results({
+class ResultArticleDetail {
+  ResultArticleDetail({
     required this.title,
     required this.thumb,
     required this.author,
@@ -43,7 +43,7 @@ class Results {
   final String datePublished;
   final String description;
 
-  factory Results.fromJson(Map<String, dynamic> json) => Results(
+  factory ResultArticleDetail.fromJson(Map<String, dynamic> json) => ResultArticleDetail(
     title: json["title"],
     thumb: json["thumb"],
     author: json["author"],

@@ -42,16 +42,16 @@ class DatabaseHelper {
     return _database;
   }
 
-  Future<void> insertFavorite(Result resep) async {
+  Future<void> insertFavorite(ResultResep resep) async {
     final db = await database;
     await db!.insert(_tblFavorite, resep.toJson());
   }
 
-  Future<List<Result>> getFavorite() async {
+  Future<List<ResultResep>> getFavorite() async {
     final db = await database;
     List<Map<String, dynamic>> results = await db!.query(_tblFavorite);
 
-    return results.map((res) => Result.fromJson(res)).toList();
+    return results.map((res) => ResultResep.fromJson(res)).toList();
   }
 
   Future<Map> getFavoriteByKey(String key) async {
