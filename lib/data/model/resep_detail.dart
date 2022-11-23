@@ -13,12 +13,12 @@ class Resepdetail {
 
   final String method;
   final bool status;
-  final Results results;
+  final ResultDetailResep results;
 
   factory Resepdetail.fromJson(Map<String, dynamic> json) => Resepdetail(
     method: json["method"],
     status: json["status"],
-    results: Results.fromJson(json["results"]),
+    results: ResultDetailResep.fromJson(json["results"]),
   );
 
   Map<String, dynamic> toJson() => {
@@ -28,8 +28,8 @@ class Resepdetail {
   };
 }
 
-class Results {
-  Results({
+class ResultDetailResep {
+  ResultDetailResep({
     required this.title,
     required this.thumb,
     required this.servings,
@@ -53,7 +53,7 @@ class Results {
   final List<String> ingredient;
   final List<String> step;
 
-  factory Results.fromJson(Map<String, dynamic> json) => Results(
+  factory ResultDetailResep.fromJson(Map<String, dynamic> json) => ResultDetailResep(
     title: json["title"],
     thumb: json["thumb"],
     servings: json["servings"],

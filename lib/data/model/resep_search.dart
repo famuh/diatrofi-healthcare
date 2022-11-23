@@ -13,12 +13,12 @@ class Resepsearch {
 
   final String method;
   final bool status;
-  final List<Result> results;
+  final List<ResultResepSearch> results;
 
   factory Resepsearch.fromJson(Map<String, dynamic> json) => Resepsearch(
     method: json["method"],
     status: json["status"],
-    results: List<Result>.from(json["results"].map((x) => Result.fromJson(x))),
+    results: List<ResultResepSearch>.from(json["results"].map((x) => ResultResepSearch.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
@@ -28,8 +28,8 @@ class Resepsearch {
   };
 }
 
-class Result {
-  Result({
+class ResultResepSearch {
+  ResultResepSearch({
     required this.title,
     required this.thumb,
     required this.key,
@@ -44,7 +44,7 @@ class Result {
   final String times;
   final String serving;
 
-  factory Result.fromJson(Map<String, dynamic> json) => Result(
+  factory ResultResepSearch.fromJson(Map<String, dynamic> json) => ResultResepSearch(
     title: json["title"],
     thumb: json["thumb"],
     key: json["key"],

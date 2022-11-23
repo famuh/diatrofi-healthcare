@@ -13,12 +13,12 @@ class ArticleResep {
 
   final String method;
   final bool status;
-  final List<Result> results;
+  final List<ResultArticle> results;
 
   factory ArticleResep.fromJson(Map<String, dynamic> json) => ArticleResep(
     method: json["method"],
     status: json["status"],
-    results: List<Result>.from(json["results"].map((x) => Result.fromJson(x))),
+    results: List<ResultArticle>.from(json["results"].map((x) => ResultArticle.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
@@ -28,8 +28,8 @@ class ArticleResep {
   };
 }
 
-class Result {
-  Result({
+class ResultArticle {
+  ResultArticle({
     required this.url,
     required this.key,
   });
@@ -37,7 +37,7 @@ class Result {
   final String url;
   final String key;
 
-  factory Result.fromJson(Map<String, dynamic> json) => Result(
+  factory ResultArticle.fromJson(Map<String, dynamic> json) => ResultArticle(
     url: json["url"],
     key: json["key"],
   );
