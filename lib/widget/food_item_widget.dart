@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:diatfori/widget/kcal_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -51,21 +52,7 @@ class FoodItemWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // kcal
-                  Row(
-                    children: [
-                      const FaIcon(
-                        FontAwesomeIcons.fire,
-                        color: Colors.deepOrange,
-                        size: 20,
-                      ),
-                      const SizedBox(width: 5),
-                      Text(
-                        '$kcal kcal',
-                        style: kBodyText.copyWith(
-                            fontWeight: FontWeight.w600, color: kMatteBlack),
-                      )
-                    ],
-                  ),
+                  KcalWidget(kcal: kcal),
 
                   // title
                   Text(
