@@ -68,3 +68,4 @@ const kColorScheme = ColorScheme(
   onError: Colors.white,
   brightness: Brightness.light,
 );
+enum ResultState { loading, error, noData, hasData }
