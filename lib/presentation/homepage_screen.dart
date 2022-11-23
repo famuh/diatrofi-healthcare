@@ -6,6 +6,8 @@ import 'package:diatfori/widget/food_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../widget/sub_heading.dart';
+
 class HomeScreen extends StatefulWidget {
   static const ROUTE_NAME = '/home';
 
@@ -128,7 +130,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
 
           // articles
-          _buildSubHeading(
+          SubHeading(
               title: 'articles',
               onTap: (() => print('navigasi ke halaman article'))),
 
@@ -163,7 +165,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
 
           // check this out
-          _buildSubHeading(
+          SubHeading(
               title: 'check this out',
               onTap: () => print('ke halaman rekomendasi')),
 
@@ -216,24 +218,5 @@ class _HomeScreenState extends State<HomeScreen> {
     ));
   }
 
-  _buildSubHeading({required String title, required Function() onTap}) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          title,
-          style: kSection,
-        ),
-        InkWell(
-          onTap: onTap,
-          child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                'See More',
-                style: TextStyle(color: kBrightGreen),
-              )),
-        ),
-      ],
-    );
-  }
+  
 }

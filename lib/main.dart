@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         primaryColor: kMatteBlack,
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: MainPage(),
+      home: CalculateScreen(),
       navigatorObservers: [routeObserver],
       onGenerateRoute: (RouteSettings settings){
         switch (settings.name){

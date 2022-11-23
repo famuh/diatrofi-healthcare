@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:diatfori/widget/nutritions_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../common/constant.dart';
@@ -106,34 +107,20 @@ class _CalculateFoodItemWidgetState extends State<CalculateFoodItemWidget> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Column(
-                        children: [
-                          Text(
-                            '$prots g',
-                            style: kBodyText.copyWith(
-                                fontWeight: FontWeight.bold,
-                                color: kBrightGreen),
-                          ),
-                          const Text('prots'),
-                        ],
+                      NutritionWidget(
+                        title: 'prots',
+                        total: prots,
+                        color: kBrightGreen,
                       ),
-                      Column(
-                        children: [
-                          Text('$carbs g',
-                              style: kBodyText.copyWith(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.amber[800])),
-                          const Text('carbs'),
-                        ],
+                      NutritionWidget(
+                        title: 'carbs',
+                        total: carbs,
+                        color: Colors.orange[800],
                       ),
-                      Column(
-                        children: [
-                          Text('$fats g',
-                              style: kBodyText.copyWith(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.yellow[800])),
-                          const Text('fats'),
-                        ],
+                      NutritionWidget(
+                        title: 'fats',
+                        total: fats,
+                        color: Color.fromARGB(255, 212, 132, 3),
                       ),
                     ],
                   ),
