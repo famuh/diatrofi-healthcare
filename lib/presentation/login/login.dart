@@ -4,6 +4,7 @@ import 'package:diatfori/presentation/login/deviderOr.dart';
 import 'package:diatfori/presentation/login/register.dart';
 import 'package:diatfori/presentation/mainpage.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -24,14 +25,11 @@ class LoginPage extends StatelessWidget {
               Text(
                 'MASUK',
                 style: Theme.of(context).textTheme.headline6?.copyWith(
-                      color: kStrongGreen,
+                      color: kMatteBlack,
                       fontWeight: FontWeight.w700,
                     ),
               ),
-              Image.asset(
-                'assets/images/bg.png',
-                height: size.height * 0.35,
-              ),
+              Lottie.asset("assets/lottie/login.json"),
               Container(
                 margin: const EdgeInsets.symmetric(vertical: 10),
                 padding:
@@ -47,7 +45,7 @@ class LoginPage extends StatelessWidget {
                   decoration: const InputDecoration(
                     icon: Icon(
                       Icons.person,
-                      color: kSoftGreen,
+                      color: kMatteBlack,
                     ),
                     hintText: "Email",
                     border: InputBorder.none,
@@ -71,7 +69,7 @@ class LoginPage extends StatelessWidget {
                   decoration: const InputDecoration(
                     icon: Icon(
                       Icons.lock,
-                      color: kSoftGreen,
+                      color: kMatteBlack,
                     ),
                     hintText: "Password",
                     border: InputBorder.none,
@@ -123,7 +121,7 @@ class LoginPage extends StatelessWidget {
                       }
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: kStrongGreen,
+                      primary: kLineGreen,
                       padding: const EdgeInsets.symmetric(
                         horizontal: 40,
                       ),
@@ -133,7 +131,7 @@ class LoginPage extends StatelessWidget {
                       style: Theme.of(context)
                           .textTheme
                           .button
-                          ?.copyWith(color: Colors.white),
+                          ?.copyWith(color: Colors.black),
                     ),
                   ),
                 ),
@@ -162,7 +160,7 @@ class LoginPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Image.asset(
-                          'assets/images/bg.png',
+                          'assets/images/google.png',
                           height: 20,
                           width: 20,
                         ),

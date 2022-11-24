@@ -3,6 +3,7 @@ import 'package:diatfori/data/authentic/service.dart';
 import 'package:diatfori/presentation/login/login.dart';
 import 'package:diatfori/presentation/mainpage.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -26,10 +27,9 @@ class RegisterPage extends StatelessWidget {
                       fontWeight: FontWeight.w700,
                     ),
               ),
-              Image.asset(
-                 'assets/images/bg.png',
-                height: size.height * 0.35,
-              ),
+              Lottie.asset(
+                  "assets/lottie/registers.json"),
+              SizedBox(height: size.height * 0.0),
               Container(
                 margin: const EdgeInsets.symmetric(vertical: 10),
                 padding:
@@ -45,7 +45,7 @@ class RegisterPage extends StatelessWidget {
                   decoration: const InputDecoration(
                     icon: Icon(
                       Icons.mail,
-                      color: kSoftGreen,
+                      color: kMatteBlack,
                     ),
                     hintText: "Email",
                     border: InputBorder.none,
@@ -68,7 +68,7 @@ class RegisterPage extends StatelessWidget {
                   decoration: const InputDecoration(
                     icon: Icon(
                       Icons.lock,
-                      color: kSoftGreen,
+                      color: kMatteBlack,
                     ),
                     hintText: "Password",
                     border: InputBorder.none,
@@ -84,8 +84,7 @@ class RegisterPage extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () async {
                       final result = await AuthServices.signUp(
-                          emailController.text, passwordController.text
-                      );
+                          emailController.text, passwordController.text);
                       if (result != null) {
                         Navigator.pushReplacement(
                           context,
@@ -93,31 +92,30 @@ class RegisterPage extends StatelessWidget {
                             builder: (context) => const LoginPage(),
                           ),
                         );
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Akun anda telah terdaftar, silahkan masuk kembali.'),
-                              duration: Duration(milliseconds: 4000),
-                            )
-                        );
-                      } else if (emailController.text == ""
-                          || passwordController.text == "") {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Email/Password tidak boleh kosong.'),
-                              duration: Duration(milliseconds: 4000),
-                            )
-                        );
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(const SnackBar(
+                          content: Text(
+                              'Akun anda telah terdaftar, silahkan masuk kembali.'),
+                          duration: Duration(milliseconds: 4000),
+                        ));
+                      } else if (emailController.text == "" ||
+                          passwordController.text == "") {
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(const SnackBar(
+                          content: Text('Email/Password tidak boleh kosong.'),
+                          duration: Duration(milliseconds: 4000),
+                        ));
                       } else {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Format email salah, silahkan coba kembali.'),
-                              duration: Duration(milliseconds: 4000),
-                            )
-                        );
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(const SnackBar(
+                          content: Text(
+                              'Format email salah, silahkan coba kembali.'),
+                          duration: Duration(milliseconds: 4000),
+                        ));
                       }
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: kSoftGreen,
+                      primary: kLineGreen,
                       padding: const EdgeInsets.symmetric(
                         horizontal: 40,
                       ),
@@ -126,7 +124,7 @@ class RegisterPage extends StatelessWidget {
                         style: Theme.of(context)
                             .textTheme
                             .button
-                            ?.copyWith(color: Colors.white)),
+                            ?.copyWith(color: Colors.black)),
                   ),
                 ),
               ),
@@ -152,7 +150,7 @@ class RegisterPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Image.asset(
-                           'assets/images/bg.png',
+                          'assets/images/google.png',
                           height: 20,
                           width: 20,
                         ),
@@ -192,7 +190,7 @@ class RegisterPage extends StatelessWidget {
                     child: Text(
                       "Masuk",
                       style: Theme.of(context).textTheme.button?.copyWith(
-                          color: kStrongGreen ,
+                          color: kMatteBlack,
                           fontWeight: FontWeight.bold,
                           fontSize: 14),
                     ),
