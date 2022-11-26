@@ -1,17 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:diatfori/data/model/article.dart';
 import 'package:flutter/material.dart';
 
 import '../common/constant.dart';
 
 class ArticleItemWidget extends StatelessWidget {
-  String articleTitle;
-  String articleSubtitle;
-  String articleImageUrl;
-  ArticleItemWidget(
-      {super.key,
-      required this.articleTitle,
-      required this.articleSubtitle,
-      required this.articleImageUrl});
+  final Article article;
+  ArticleItemWidget({super.key, required this.article});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +27,7 @@ class ArticleItemWidget extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: const BorderRadius.all(Radius.circular(20)),
                 child: CachedNetworkImage(
-                  imageUrl: articleImageUrl,
+                  imageUrl: article.urlToImage!,
                   fit: BoxFit.cover,
                   placeholder: (context, url) => const Center(
                     child: CircularProgressIndicator(),
@@ -42,12 +37,16 @@ class ArticleItemWidget extends StatelessWidget {
               ),
             ),
             Text(
-              articleTitle,
-              style: kItemTittleCard,
+              article.title,
+              maxLines: 2,
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 16
+              ),
               overflow: TextOverflow.ellipsis,
             ),
             Text(
-              articleSubtitle,
+              article.publishedAt.toString(),
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
               style: kBodyText,
