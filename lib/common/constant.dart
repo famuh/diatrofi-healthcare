@@ -11,6 +11,7 @@ const Color kSoftGrey = Color(0xFFEFEFEF);
 const Color kSoftGreen = Color.fromARGB(255, 192, 236, 171);
 const Color kBrightGreen = Color(0xFF449C1B);
 const Color kStrongGreen = Color(0xFF348756);
+const Color kLineGreen = Color(0xFF00FF74);
 
 // text style
 final TextStyle kAuthScreen = GoogleFonts.poppins(
