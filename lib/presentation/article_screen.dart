@@ -24,14 +24,14 @@ class _ArticleScreenState extends State<ArticleScreen> {
           // title
           Container(
               margin: const EdgeInsets.symmetric(vertical: 5),
-              child: Text('Articles', style: kTitleScreen)),
+              child: ListTile(
+                leading: const Icon(Icons.newspaper_rounded, size: 50, color: kStrongGreen,),
+                title: Text('Articles', style: kTitleScreen.copyWith(fontWeight: FontWeight.normal)),
+                subtitle: const Text('Top Health Articles of the Day !'),
+                )),
 
-          // // reccomendations
-          // Text('Recommendation', style: kSection,),
-            Container(
+            SizedBox(
             height: MediaQuery.of(context).size.height,
-            // color: Colors.grey,
-            padding: const EdgeInsets.only(right: 10),
             child: _buildList()
           ),
           

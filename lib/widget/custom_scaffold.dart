@@ -16,15 +16,13 @@ class CustomScaffold extends StatelessWidget {
           InkWell(
             onTap: () {
               Navigator.pop(context);
-              print('back to diatrofi');
             },
             child: Container(
-              padding: EdgeInsets.all(10),
-              decoration: BoxDecoration(
-              color: kSoftGreen,
-                borderRadius: BorderRadius.only(bottomRight: Radius.circular(30))
-                
-              ),
+              padding: const EdgeInsets.all(10),
+              decoration: const BoxDecoration(
+                  color: kSoftGreen,
+                  borderRadius:
+                      BorderRadius.only(bottomRight: Radius.circular(30))),
               margin: const EdgeInsets.all(0),
               child: Row(
                 mainAxisSize: MainAxisSize.min,

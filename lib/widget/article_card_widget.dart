@@ -19,14 +19,9 @@ class CardArticle extends StatelessWidget {
         height: 80,
         child: Center(
           child: ListTile(
-              // contentPadding:
-              //     const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
               leading: SizedBox(
-                // height: 100,
                 height: 100,
                 width: 100,
-                // color: Colors.black,
-                // margin: const EdgeInsets.only(bottom: 5),
                 child: ClipRRect(
                   borderRadius: const BorderRadius.all(Radius.circular(10)),
                   child: CachedNetworkImage(
@@ -44,10 +39,6 @@ class CardArticle extends StatelessWidget {
                 article.title,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-                // style: TextStyle(
-                //   fontWeight: FontWeight.w400,
-                //   fontSize: 16
-                // ),
               ),
               subtitle: Text(article.author!),
               onTap: () {
@@ -55,11 +46,6 @@ class CardArticle extends StatelessWidget {
                   context, ArticleWebView.routeName,
                     arguments: article.url);
               }
-              // Navigator.pushNamed(
-              //   context,
-              //   ArticleDetailPage.routeName,
-              //   arguments: article,
-              // ),
               ),
         ),
       ),
