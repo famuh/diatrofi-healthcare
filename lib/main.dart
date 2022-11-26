@@ -1,21 +1,18 @@
 import 'package:diatfori/common/constant.dart';
-import 'package:diatfori/presentation/article_screen.dart';
+import 'package:diatfori/presentation/article_web_view.dart';
 import 'package:diatfori/presentation/calculate_screen.dart';
 import 'package:diatfori/firebase_options.dart';
-import 'package:diatfori/presentation/login/welcome.dart';
 import 'package:diatfori/presentation/mainpage.dart';
-import 'package:diatfori/testing_ui.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'common/utils.dart';
-import 'presentation/homepage_screen.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-      await Firebase.initializeApp(
-        options: DefaultFirebaseOptions.currentPlatform,
-      );
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -31,28 +28,30 @@ class MyApp extends StatelessWidget {
         primaryColor: kMatteBlack,
         scaffoldBackgroundColor: Colors.white,
       ),
-
       home: const MainPage(),
       navigatorObservers: [routeObserver],
-      onGenerateRoute: (RouteSettings settings){
-        switch (settings.name){
+      onGenerateRoute: (RouteSettings settings) {
+        switch (settings.name) {
           case MainPage.ROUTE_NAME:
-            return MaterialPageRoute(builder: (_) => MainPage());
+            return MaterialPageRoute(builder: (_) => const MainPage());
           case CalculateScreen.ROUTE_NAME:
             return MaterialPageRoute(builder: (_) => CalculateScreen());
           // case '/articles':
           //   return MaterialPageRoute(builder: (_) => ArticleScreen());
+          case ArticleWebView.routeName:
+            final url = settings.arguments as String;
+            return MaterialPageRoute(
+                builder: (_) => ArticleWebView(url: url), settings: settings);
           default:
-             return MaterialPageRoute(builder: (_) {
-                return const Scaffold(
-                  body: Center(
-                    child: Text('Page not found :('),
-                  ),
-                );
-              });
+            return MaterialPageRoute(builder: (_) {
+              return const Scaffold(
+                body: Center(
+                  child: Text('Page not found :('),
+                ),
+              );
+            });
         }
       },
     );
   }
 }
-

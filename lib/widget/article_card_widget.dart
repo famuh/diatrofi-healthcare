@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:diatfori/presentation/article_web_view.dart';
 import 'package:flutter/material.dart';
 
 import '../common/constant.dart';
@@ -7,7 +8,7 @@ import '../data/model/article.dart';
 class CardArticle extends StatelessWidget {
   final Article article;
 
-  const CardArticle({Key? key,required this.article}): super(key: key);
+  const CardArticle({Key? key, required this.article}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,23 +22,24 @@ class CardArticle extends StatelessWidget {
               // contentPadding:
               //     const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
               leading: SizedBox(
-                  // height: 100,
-                  height: 100,
-                  width: 100,
-                  // color: Colors.black,
-                  // margin: const EdgeInsets.only(bottom: 5),
-                  child: ClipRRect(
-                    borderRadius: const BorderRadius.all(Radius.circular(10)),
-                    child: CachedNetworkImage(
-                      imageUrl: article.urlToImage!,
-                      fit: BoxFit.cover,
-                      placeholder: (context, url) => const Center(
-                        child: CircularProgressIndicator(),
-                      ),
-                      errorWidget: (context, url, error) => const Icon(Icons.error),
+                // height: 100,
+                height: 100,
+                width: 100,
+                // color: Colors.black,
+                // margin: const EdgeInsets.only(bottom: 5),
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.all(Radius.circular(10)),
+                  child: CachedNetworkImage(
+                    imageUrl: article.urlToImage!,
+                    fit: BoxFit.cover,
+                    placeholder: (context, url) => const Center(
+                      child: CircularProgressIndicator(),
                     ),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
                   ),
                 ),
+              ),
               title: Text(
                 article.title,
                 maxLines: 2,
@@ -48,7 +50,11 @@ class CardArticle extends StatelessWidget {
                 // ),
               ),
               subtitle: Text(article.author!),
-              onTap: () => print('ke detail article')
+              onTap: () {
+                Navigator.pushNamed(
+                  context, ArticleWebView.routeName,
+                    arguments: article.url);
+              }
               // Navigator.pushNamed(
               //   context,
               //   ArticleDetailPage.routeName,
