@@ -1,8 +1,14 @@
 import 'package:diatfori/common/constant.dart';
+import 'package:diatfori/data/api/api_service.dart';
 import 'package:diatfori/presentation/homepage_screen.dart';
+import 'package:diatfori/presentation/provider/article_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'article_screen.dart';
 
 class MainPage extends StatefulWidget {
+  static const ROUTE_NAME = '/main';
   const MainPage({super.key});
 
   @override
@@ -10,13 +16,19 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+
+  int currentIndex = 0;
+  final List screen = [
+    ChangeNotifierProvider<ArticleProvider>(
+      create: (_) => ArticleProvider(apiService: ApiService()),
+      child: HomeScreen()),
+    ChangeNotifierProvider<ArticleProvider>(
+      create: (_) => ArticleProvider(apiService: ApiService()),
+      child: const ArticleScreen()),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    int currentIndex = 0;
-    List screen = [
-      HomeScreen()
-    ];
-
     return Scaffold(
       body: screen[currentIndex],
       bottomNavigationBar: Container(
@@ -25,7 +37,6 @@ class _MainPageState extends State<MainPage> {
         decoration: BoxDecoration(
           color: kStrongGreen,
           borderRadius: BorderRadius.circular(30),
-
         ),
         child: BottomNavigationBar(
           backgroundColor: Colors.transparent,
@@ -37,6 +48,9 @@ class _MainPageState extends State<MainPage> {
           showUnselectedLabels: false,
           currentIndex: currentIndex,
           onTap: (index) {
+            setState(() {
+              currentIndex = index;
+            });
           },
           items: const [
             BottomNavigationBarItem(
@@ -45,7 +59,7 @@ class _MainPageState extends State<MainPage> {
                 icon: Icon(Icons.newspaper_rounded), label: "article"),
             BottomNavigationBarItem(
                 icon: Icon(Icons.favorite_rounded), label: "favorite"),
-                BottomNavigationBarItem(
+            BottomNavigationBarItem(
                 icon: Icon(Icons.restaurant), label: "recipe"),
           ],
         ),

@@ -4,8 +4,8 @@ import '../common/constant.dart';
 
 class SubHeading extends StatelessWidget {
   String title;
-  Function() onTap;
-  SubHeading({super.key, required this.title, required this.onTap});
+  // Function() onTap;
+  SubHeading({super.key, required this.title, });
 
   @override
   Widget build(BuildContext context) {
@@ -17,15 +17,15 @@ class SubHeading extends StatelessWidget {
           title,
           style: kSection,
         ),
-        InkWell(
-          onTap: onTap,
-          child: const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text(
-                'See More',
-                style: TextStyle(color: kBrightGreen),
-              )),
-        ),
+        // InkWell(
+        //   onTap: onTap,
+        //   child: const Padding(
+        //       padding: EdgeInsets.all(8.0),
+        //       child: Text(
+        //         'See More',
+        //         style: TextStyle(color: kBrightGreen),
+        //       )),
+        // ),
       ],
     );
   }
