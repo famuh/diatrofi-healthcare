@@ -2,6 +2,7 @@ import 'package:diatfori/common/constant.dart';
 import 'package:diatfori/presentation/login/login.dart';
 import 'package:diatfori/presentation/login/register.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({Key? key}) : super(key: key);
@@ -16,26 +17,36 @@ class WelcomePage extends StatelessWidget {
           children: <Widget>[
             SizedBox(height: size.height * 0.09),
             Text(
-              'Welcome',
+              'Hallo !!',
               style: Theme.of(context)
                   .textTheme
                   .headline5
                   ?.copyWith(color: kMatteBlack, fontWeight: FontWeight.w700),
             ),
-            SizedBox(height: size.height * 0.05),
-            Image.asset(
-              'assets/images/bg.png',
-              height: size.height * 0.45,
-            ),
-            SizedBox(height: size.height * 0.09),
-              Text(
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna . . .',
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Selamat Datang di ',
                   style: Theme.of(context)
                       .textTheme
                       .subtitle1
                       ?.copyWith(fontWeight: FontWeight.w700),
+                ),
+                const SizedBox(width: 2),
+                Text(
+                  ' DIATROFI ',
+                  style: Theme.of(context).textTheme.headline5?.copyWith(
+                        color: kMatteBlack,
+                        backgroundColor: kLineGreen,
+                      ),
+                ),
+              ],
             ),
-            SizedBox(height: size.height * 0.04),
+            SizedBox(height: size.height * 0.05),
+            Lottie.network(
+                "https://assets1.lottiefiles.com/packages/lf20_snmohqxj/lottie_step2/data.json"),
+            SizedBox(height: size.height * 0.05),
             Container(
               margin: const EdgeInsets.symmetric(vertical: 10),
               width: size.width * 0.8,
@@ -54,7 +65,7 @@ class WelcomePage extends StatelessWidget {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: kStrongGreen,
+                    primary: kLineGreen,
                     padding: const EdgeInsets.symmetric(
                       horizontal: 40,
                     ),

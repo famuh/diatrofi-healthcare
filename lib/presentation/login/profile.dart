@@ -24,7 +24,6 @@ class _ProfilePageState extends State<ProfilePage> {
     initUser();
   }
 
-
   initUser() async {
     user = _auth.currentUser!;
     setState(() {});
@@ -90,7 +89,8 @@ class _ProfilePageState extends State<ProfilePage> {
                 );
               },
               child: Container(
-                margin: const EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
+                margin:
+                    const EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
                 height: size.height * 1 / 16,
                 width: size.width * 0.9,
                 decoration: BoxDecoration(
