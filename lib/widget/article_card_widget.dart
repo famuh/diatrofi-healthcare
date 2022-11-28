@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:diatfori/presentation/article_web_view.dart';
 import 'package:flutter/material.dart';
 
 import '../common/constant.dart';
 import '../data/model/article.dart';
+import '../presentation/screen/article_web_view.dart';
 
 class CardArticle extends StatelessWidget {
   final Article article;

@@ -1,6 +1,6 @@
 import 'package:diatfori/common/constant.dart';
 import 'package:diatfori/data/api/api_service.dart';
-import 'package:diatfori/presentation/homepage_screen.dart';
+import 'package:diatfori/presentation/login/welcome.dart';
 import 'package:diatfori/presentation/provider/article_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -21,7 +21,7 @@ class _MainPageState extends State<MainPage> {
   final List screen = [
     ChangeNotifierProvider<ArticleProvider>(
       create: (_) => ArticleProvider(apiService: ApiService()),
-      child: HomeScreen()),
+      child: WelcomePage()),
     ChangeNotifierProvider<ArticleProvider>(
       create: (_) => ArticleProvider(apiService: ApiService()),
       child: const ArticleScreen()),

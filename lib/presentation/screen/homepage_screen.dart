@@ -1,14 +1,12 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:diatfori/common/constant.dart';
-import 'package:diatfori/presentation/calculate_screen.dart';
 import 'package:diatfori/presentation/provider/article_provider.dart';
 import 'package:diatfori/widget/article_item_widget.dart';
 import 'package:diatfori/widget/food_item_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
-import '../widget/sub_heading.dart';
+import '../../widget/sub_heading.dart';
+import 'calculate_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static const ROUTE_NAME = '/home';
@@ -83,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 },
                                 icon: const Icon(Icons.close_rounded),
                               )
-                            : Icon(Icons.close, color: Colors.transparent)),
+                            : const Icon(Icons.close, color: Colors.transparent)),
                     onChanged: (value) {
                       if (value.isNotEmpty) {
                         setState(() {
@@ -110,7 +108,6 @@ class _HomeScreenState extends State<HomeScreen> {
           //  gtau ni apaan
           InkWell(
             onTap: () {
-              print('udh ditekan');
               Navigator.pushNamed(
                 context,
                 CalculateScreen.ROUTE_NAME,

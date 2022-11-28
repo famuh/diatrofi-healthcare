@@ -16,13 +16,13 @@ class WelcomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             SizedBox(height: size.height * 0.09),
-            Text(
-              'Hallo !!',
-              style: Theme.of(context)
-                  .textTheme
-                  .headline5
-                  ?.copyWith(color: kMatteBlack, fontWeight: FontWeight.w700),
-            ),
+            // Text(
+            //   'Hallo !!',
+            //   style: Theme.of(context)
+            //       .textTheme
+            //       .headline5
+            //       ?.copyWith(color: kMatteBlack, fontWeight: FontWeight.w700),
+            // ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -35,7 +35,7 @@ class WelcomePage extends StatelessWidget {
                 ),
                 const SizedBox(width: 2),
                 Text(
-                  ' DIATROFI ',
+                  'Diatrofi',
                   style: Theme.of(context).textTheme.headline5?.copyWith(
                         color: kMatteBlack,
                         backgroundColor: kLineGreen,
@@ -65,7 +65,7 @@ class WelcomePage extends StatelessWidget {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: kLineGreen,
+                    backgroundColor: kLineGreen,
                     padding: const EdgeInsets.symmetric(
                       horizontal: 40,
                     ),
@@ -95,7 +95,7 @@ class WelcomePage extends StatelessWidget {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: kMatteBlack,
+                    backgroundColor: kMatteBlack,
                     padding: const EdgeInsets.symmetric(
                       horizontal: 40,
                     ),

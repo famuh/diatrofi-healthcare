@@ -1,8 +1,9 @@
 import 'package:diatfori/common/constant.dart';
 import 'package:diatfori/data/authentic/service.dart';
-import 'package:diatfori/presentation/mainpage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import '../screen/mainpage.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({

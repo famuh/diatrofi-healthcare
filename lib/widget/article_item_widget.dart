@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../common/constant.dart';
-import '../presentation/article_web_view.dart';
+import '../presentation/screen/article_web_view.dart';
 
 class ArticleItemWidget extends StatelessWidget {
   final Article article;

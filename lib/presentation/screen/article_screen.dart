@@ -3,7 +3,7 @@ import 'package:diatfori/presentation/provider/article_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../widget/article_card_widget.dart';
+import '../../widget/article_card_widget.dart';
 
 class ArticleScreen extends StatefulWidget {
   static const ROUTE_NAME = '/articles';

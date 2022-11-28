@@ -2,17 +2,32 @@ import 'package:diatfori/common/constant.dart';
 import 'package:diatfori/data/authentic/service.dart';
 import 'package:diatfori/presentation/login/deviderOr.dart';
 import 'package:diatfori/presentation/login/register.dart';
-import 'package:diatfori/presentation/mainpage.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-class LoginPage extends StatelessWidget {
+import '../screen/mainpage.dart';
+
+class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
   @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    TextEditingController emailController = TextEditingController(text: "");
-    TextEditingController passwordController = TextEditingController(text: "");
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: kSoftGrey,
@@ -50,7 +65,7 @@ class LoginPage extends StatelessWidget {
                     hintText: "Email",
                     border: InputBorder.none,
                   ),
-                  onChanged: (String value) {},
+                  
                 ),
               ),
               Container(
@@ -74,7 +89,6 @@ class LoginPage extends StatelessWidget {
                     hintText: "Password",
                     border: InputBorder.none,
                   ),
-                  onChanged: (String value) {},
                 ),
               ),
               Container(
@@ -85,43 +99,44 @@ class LoginPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(7),
                   child: ElevatedButton(
                     onPressed: () async {
+                      print('Ini email : ${emailController.text}');
+                      print('Ini password : ${passwordController.text}');
                       final result = await AuthServices.signIn(
-                          emailController.text,
-                          passwordController.text
-                      );
-                      if (result != null && emailController.text != 'gobooks.admin@email.com') {
+                          emailController.text, passwordController.text);
+                      if (result != null &&
+                          emailController.text != 'gobooks.admin@email.com') {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                             builder: (context) => const MainPage(),
                           ),
                         );
-                      } else if(emailController.text == ""
-                          || passwordController.text == "") {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Email / Password tidak boleh kosong.'),
-                              duration: Duration(milliseconds: 600),
-                            )
-                        );
-                      } else if(emailController.text == 'gobooks.admin@email.com') {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Email anda tidak terdaftar sebagai user.'),
-                              duration: Duration(milliseconds: 600),
-                            )
-                        );
+                      } else if (emailController.text == "" ||
+                          passwordController.text == "") {
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(const SnackBar(
+                          content: Text('Email / Password tidak boleh kosong.'),
+                          duration: Duration(milliseconds: 600),
+                        ));
+                      } else if (emailController.text ==
+                          'gobooks.admin@email.com') {
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(const SnackBar(
+                          content:
+                              Text('Email anda tidak terdaftar sebagai user.'),
+                          duration: Duration(milliseconds: 600),
+                        ));
                       } else {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Email / Password salah. Silakan coba lagi.'),
-                              duration: Duration(milliseconds: 600),
-                            )
-                        );
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(const SnackBar(
+                          content: Text(
+                              'Email / Password salah. Silakan coba lagi.'),
+                          duration: Duration(milliseconds: 600),
+                        ));
                       }
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: kLineGreen,
+                      backgroundColor: kLineGreen,
                       padding: const EdgeInsets.symmetric(
                         horizontal: 40,
                       ),
@@ -146,15 +161,15 @@ class LoginPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(7),
                   child: OutlinedButton(
                     onPressed: () async {
-                       final result = await AuthServices.signUpWithGoogle();
-                       if (result != null) {
-                         Navigator.pushReplacement(
-                           context,
-                           MaterialPageRoute(
-                             builder: (context) => const MainPage(),
-                           ),
-                         );
-                       }
+                      final result = await AuthServices.signUpWithGoogle();
+                      if (result != null) {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const MainPage(),
+                          ),
+                        );
+                      }
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -169,8 +184,7 @@ class LoginPage extends StatelessWidget {
                             style: Theme.of(context)
                                 .textTheme
                                 .button
-                                ?.copyWith(color: Colors.black, fontSize: 13)
-                        ),
+                                ?.copyWith(color: Colors.black, fontSize: 13)),
                       ],
                     ),
                   ),

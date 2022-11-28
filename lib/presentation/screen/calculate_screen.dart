@@ -3,7 +3,8 @@ import 'package:diatfori/widget/calculate_food_item_widget.dart';
 import 'package:diatfori/widget/sub_heading.dart';
 import 'package:flutter/material.dart';
 
-import '../widget/nutritions_widget.dart';
+import '../../widget/nutritions_widget.dart';
+
 
 class CalculateScreen extends StatefulWidget {
   static const ROUTE_NAME = '/cal';

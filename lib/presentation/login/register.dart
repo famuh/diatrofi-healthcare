@@ -1,9 +1,10 @@
 import 'package:diatfori/common/constant.dart';
 import 'package:diatfori/data/authentic/service.dart';
 import 'package:diatfori/presentation/login/login.dart';
-import 'package:diatfori/presentation/mainpage.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+
+import '../screen/mainpage.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({Key? key}) : super(key: key);
