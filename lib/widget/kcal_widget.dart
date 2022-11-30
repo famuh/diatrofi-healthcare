@@ -10,7 +10,7 @@ class KcalWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         const FaIcon(
           FontAwesomeIcons.fire,

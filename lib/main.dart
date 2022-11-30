@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         primaryColor: kMatteBlack,
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: const DetailScreen(),
+      home: const MainPage(),
       navigatorObservers: [routeObserver],
       onGenerateRoute: (RouteSettings settings) {
         switch (settings.name) {
@@ -45,6 +45,8 @@ class MyApp extends StatelessWidget {
             final url = settings.arguments as String;
             return MaterialPageRoute(
                 builder: (_) => ArticleWebView(url: url), settings: settings);
+          case DetailScreen.ROUTE_NAME:
+            return MaterialPageRoute(builder: (_) => DetailScreen());
           default:
             return MaterialPageRoute(builder: (_) {
               return const Scaffold(

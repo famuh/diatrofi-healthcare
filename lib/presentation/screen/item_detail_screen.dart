@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class DetailScreen extends StatefulWidget {
+  static const ROUTE_NAME = '/detail';
   const DetailScreen({super.key});
 
   @override
@@ -21,7 +22,9 @@ class _DetailScreenState extends State<DetailScreen> {
           return [
             SliverAppBar(
               leading: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                   icon: const Icon(
                     Icons.arrow_back_ios_new_rounded,
                   )),
@@ -49,50 +52,74 @@ class _DetailScreenState extends State<DetailScreen> {
           ];
         },
         body: SingleChildScrollView(
-          padding: EdgeInsets.fromLTRB(20, 20, 20, 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                      constraints: const BoxConstraints(maxWidth: 120),
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 10,
-                        horizontal: 5
-                      ),
-                      decoration: BoxDecoration(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                  margin: EdgeInsets.symmetric(vertical: 15),
+                  constraints: const BoxConstraints(maxWidth: 120),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                  decoration: BoxDecoration(
                       color: Colors.pink[100],
-                        borderRadius: BorderRadius.circular(20)
-                      ),
-                      child: KcalWidget(kcal: 123)),
+                      borderRadius: BorderRadius.circular(20)),
+                  child: KcalWidget(kcal: 123)),
 
-                      const SizedBox(height: 10,),
-
-                  // Informasi Nutrisi
-                  Container(
-                    width: mediaQuery.width,
-                    height: 80,
-                    decoration: BoxDecoration(
-                    color: kSoftGreen,
-                      borderRadius: BorderRadius.circular(30)
-                    ),
-                    child: Center(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          NutritionWidget(title: "prots",total: 120,size: 18, color: kBrightGreen,),
-                          NutritionWidget(title: "carbs",total: 120,size: 18, color: kCarbs,),
-                          NutritionWidget(title: "fats",total: 120,size: 18,color: kFats,),
-
-                        ],
-                      ),
-                    ),
-                  ),
-                  
-                ],
+              // Nama item
+              Text(
+                'Spaghetti Carbonara',
+                style: const TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w600,
+                ),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
               ),
-            ),
-          
-       
+
+              // Informasi Nutrisi
+              Container(
+                width: mediaQuery.width,
+                height: 80,
+                margin: const EdgeInsets.symmetric(vertical: 15),
+                decoration: BoxDecoration(
+                    color: kSoftGreen, borderRadius: BorderRadius.circular(30)),
+                child: Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      NutritionWidget(
+                        title: "prots",
+                        total: 120,
+                        size: 18,
+                        color: kBrightGreen,
+                      ),
+                      NutritionWidget(
+                        title: "carbs",
+                        total: 120,
+                        size: 18,
+                        color: kCarbs,
+                      ),
+                      NutritionWidget(
+                        title: "fats",
+                        total: 120,
+                        size: 18,
+                        color: kFats,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              // deskripsi
+              Text(
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non blandit massa enim nec. Interdum varius sit amet mattis vulputate enim nulla. Enim tortor at auctor urna nunc id.',
+                maxLines: 4,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ],
+          ),
+        ),
       ),
     );
 
