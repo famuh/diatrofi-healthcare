@@ -8,6 +8,8 @@ import 'package:diatfori/data/model/resep_list.dart';
 import 'package:diatfori/data/model/resep_detail.dart';
 import 'package:diatfori/data/model/resep_search.dart';
 
+import '../model/recipe/recipe.dart';
+
 class ApiService {
   static const String _baseUrl = 'https://masak-apa.tomorisakura.vercel.app/';
   static const String _throw = 'Failed to load data';
@@ -38,36 +40,8 @@ class ApiService {
       throw Exception(_throw);
     }
   }
-
-  // Future<ArticleResep> getArticleResep() async {
-  //   final response = await http.get(Uri.parse("${_baseUrl}api/articles/new"));
-  //   if (response.statusCode == 200) {
-  //     return ArticleResep.fromJson(json.decode(response.body));
-  //   } else {
-  //     throw Exception(_throw);
-  //   }
-  // }
-
-  // Future<ArticleResepDetail> getArticleResepDetail(String tag, key) async {
-  //   final response = await http.get(Uri.parse("${_baseUrl}/api/article/:$tag/:$key"));
-  //   if (response.statusCode == 200) {
-  //     return ArticleResepDetail.fromJson(json.decode(response.body));
-  //   } else {
-  //     throw Exception(_throw);
-  //   }
-  // }
-
-  // Future<ArticleResepCategory> getArticleResepCategory() async {
-  //   final response = await http.get(Uri.parse('${_baseUrl}api/category/article'));
-  //   if (response.statusCode == 200) {
-  //     return ArticleResepCategory.fromJson(json.decode(response.body));
-  //   } else {
-  //     throw Exception(_throw);
-  //   }
-  // }
   
-// https://newsapi.org/v2/top-headlines?country=id&category=health&apiKey=711d960e44b242d0b13100d48d6b3ec3
-  // article
+ // article
   static const String _articleBaseUrl = 'https://newsapi.org/v2/';
   static const String _articleApiKey = '711d960e44b242d0b13100d48d6b3ec3';
   static const String _articleCategory = 'health';
@@ -81,5 +55,19 @@ class ApiService {
       throw Exception('Failed to load top headlines');
     }
   }
+
+  // recipe
+  static const String _recipeBaseUrl = 'https://63802b4f8efcfcedacfe2a8a.mockapi.io/';
+
+  Future<Recipe> recipeTopHeadline() async {
+    final response = await http.get(Uri.parse("${_recipeBaseUrl}reseplist"));
+    if (response.statusCode == 200) {
+      print(response.body);
+      return Recipe.fromJson(json.decode(response.body));
+    } else {
+      throw Exception(_throw);
+    }
+  }
+
 }
 

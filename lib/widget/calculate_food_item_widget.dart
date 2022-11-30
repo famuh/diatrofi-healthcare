@@ -115,12 +115,12 @@ class _CalculateFoodItemWidgetState extends State<CalculateFoodItemWidget> {
                       NutritionWidget(
                         title: 'carbs',
                         total: carbs,
-                        color: Colors.orange[800],
+                        color: kCarbs,
                       ),
                       NutritionWidget(
                         title: 'fats',
                         total: fats,
-                        color: Color.fromARGB(255, 212, 132, 3),
+                        color: kFats,
                       ),
                     ],
                   ),

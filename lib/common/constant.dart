@@ -13,6 +13,10 @@ const Color kBrightGreen = Color(0xFF449C1B);
 const Color kStrongGreen = Color(0xFF348756);
 const Color kLineGreen = Color(0xFF00FF74);
 
+const Color kFats = Color.fromARGB(255, 212, 132, 3);
+const Color kCarbs = Color.fromARGB(255, 239, 108, 0);
+
+
 // text style
 final TextStyle kAuthScreen = GoogleFonts.poppins(
   fontSize: 24,
