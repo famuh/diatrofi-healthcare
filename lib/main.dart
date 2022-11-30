@@ -1,6 +1,8 @@
 import 'package:diatfori/common/constant.dart';
 import 'package:diatfori/firebase_options.dart';
 import 'package:diatfori/presentation/login/welcome.dart';
+import 'package:diatfori/presentation/screen/item_detail_screen.dart';
+import 'package:diatfori/presentation/screen/test_recipe.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -29,7 +31,7 @@ class MyApp extends StatelessWidget {
         primaryColor: kMatteBlack,
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: const WelcomePage(),
+      home: const DetailScreen(),
       navigatorObservers: [routeObserver],
       onGenerateRoute: (RouteSettings settings) {
         switch (settings.name) {
