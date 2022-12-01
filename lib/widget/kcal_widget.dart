@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../common/constant.dart';
 
 class KcalWidget extends StatelessWidget {
-  double kcal;
+  num kcal;
   KcalWidget({super.key, required this.kcal});
 
   @override

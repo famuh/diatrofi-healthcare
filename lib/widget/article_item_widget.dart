@@ -51,7 +51,9 @@ class ArticleItemWidget extends StatelessWidget {
                     const TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
                 overflow: TextOverflow.ellipsis,
               ),
-              const SizedBox(height: 5,),
+              const SizedBox(
+                height: 5,
+              ),
               Text(
                 DateFormat.yMMMMd().format(article.publishedAt!),
                 maxLines: 2,

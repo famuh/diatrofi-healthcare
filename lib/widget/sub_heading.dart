@@ -10,23 +10,9 @@ class SubHeading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
+    return Text(
           title,
           style: kSection,
-        ),
-        // InkWell(
-        //   onTap: onTap,
-        //   child: const Padding(
-        //       padding: EdgeInsets.all(8.0),
-        //       child: Text(
-        //         'See More',
-        //         style: TextStyle(color: kBrightGreen),
-        //       )),
-        // ),
-      ],
-    );
+        );
   }
   }
