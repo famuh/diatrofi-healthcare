@@ -1,5 +1,6 @@
 import 'package:diatfori/common/constant.dart';
 import 'package:diatfori/firebase_options.dart';
+import 'package:diatfori/presentation/login/profile.dart';
 import 'package:diatfori/presentation/login/welcome.dart';
 import 'package:diatfori/presentation/screen/item_detail_screen.dart';
 import 'package:diatfori/presentation/screen/test_recipe.dart';
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
         primaryColor: kMatteBlack,
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: const MainPage(),
+      home: const WelcomePage(),
       navigatorObservers: [routeObserver],
       onGenerateRoute: (RouteSettings settings) {
         switch (settings.name) {
@@ -47,6 +48,8 @@ class MyApp extends StatelessWidget {
                 builder: (_) => ArticleWebView(url: url), settings: settings);
           case DetailScreen.ROUTE_NAME:
             return MaterialPageRoute(builder: (_) => DetailScreen());
+          case ProfilePage.routeName:
+            return MaterialPageRoute(builder: (_) => ProfilePage());
           default:
             return MaterialPageRoute(builder: (_) {
               return const Scaffold(

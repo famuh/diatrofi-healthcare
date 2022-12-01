@@ -1,10 +1,10 @@
 import 'package:diatfori/common/constant.dart';
 import 'package:diatfori/data/authentic/service.dart';
+import 'package:diatfori/main.dart';
 import 'package:diatfori/presentation/login/welcome.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../screen/mainpage.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({
@@ -18,12 +18,19 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  late User user;
 
+  bool isNotif = false;
   @override
   void initState() {
     super.initState();
+    initUser();
   }
 
+  initUser() async {
+    user = _auth.currentUser!;
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +44,7 @@ class _ProfilePageState extends State<ProfilePage> {
         title: Text(
           'Profile',
           style: Theme.of(context).textTheme.headline6?.copyWith(
-              color: kSoftGrey, fontWeight: FontWeight.bold, fontSize: 25),
+              color: kMatteBlack, fontWeight: FontWeight.bold, fontSize: 25),
         ),
       ),
       body: Column(
@@ -53,16 +60,20 @@ class _ProfilePageState extends State<ProfilePage> {
                   width: size.width * 0.9,
                   height: size.height * 1 / 6,
                   margin:
-                      const EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
+                  const EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
                   decoration: BoxDecoration(
-                    color: kStrongGreen,
+                    color: kMatteBlack,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-
-                      const Text('Status : USER',
+                      Text('${user.email}',
+                          style: Theme.of(context)
+                              .textTheme
+                              .headline6
+                              ?.copyWith(color: Colors.white)),
+                      const Text('Status : Mahasiswa',
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             color: Colors.white,
@@ -81,12 +92,11 @@ class _ProfilePageState extends State<ProfilePage> {
                 );
               },
               child: Container(
-                margin:
-                    const EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
+                margin: const EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
                 height: size.height * 1 / 16,
                 width: size.width * 0.9,
                 decoration: BoxDecoration(
-                  color: kStrongGreen,
+                  color: kMatteBlack,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Row(
@@ -94,21 +104,45 @@ class _ProfilePageState extends State<ProfilePage> {
                   children: [
                     const Icon(
                       Icons.logout_rounded,
-                      color: Colors.white,
+                      color: Colors.black,
                       size: 25,
                     ),
                     const SizedBox(width: 5),
                     Text(
                       'Log Out',
                       style: Theme.of(context).textTheme.button?.copyWith(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
                     ),
                   ],
                 ),
               ),
+            ),
+            Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text(
+                    'Notifikasi',
+                    style: Theme.of(context).textTheme.button?.copyWith(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                  Switch(
+                    value: isNotif,
+                    onChanged: (bool value) {
+                      setState(() {
+                        isNotif = value;
+                        print('switch state changed to ${value}');
+                      });
+                    },
+                    activeTrackColor: Colors.greenAccent,
+                    activeColor: Colors.green,
+                  ),
+                ]
             ),
           ]),
     );
