@@ -63,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: kSoftGrey),
                   child: TextField(
                     controller: searchController,
-                    autofocus: true,
+                    autofocus: false,
                     decoration: InputDecoration(
                         border: InputBorder.none,
                         contentPadding: const EdgeInsets.only(
