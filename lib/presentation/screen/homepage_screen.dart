@@ -1,4 +1,5 @@
 import 'package:diatfori/common/constant.dart';
+import 'package:diatfori/data/model/food/food.dart';
 import 'package:diatfori/presentation/provider/article_provider.dart';
 import 'package:diatfori/widget/article_item_widget.dart';
 import 'package:diatfori/widget/food_item_widget.dart';
@@ -81,7 +82,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 },
                                 icon: const Icon(Icons.close_rounded),
                               )
-                            : const Icon(Icons.close, color: Colors.transparent)),
+                            : const Icon(Icons.close,
+                                color: Colors.transparent)),
                     onChanged: (value) {
                       if (value.isNotEmpty) {
                         setState(() {
@@ -172,57 +174,42 @@ class _HomeScreenState extends State<HomeScreen> {
                   );
                 }
               })),
-
+const SizedBox(height: 15,),
           // check this out
           SubHeading(
             title: 'check this out',
           ),
           // check this out item
-          SizedBox(
-            height: 500,
-            child: ListView(
-              physics: const NeverScrollableScrollPhysics(),
-              children: [
-                FoodItemWidget(
-                    foodImageUrl:
-                        'https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
-                    kcal: 123,
-                    foodName: 'Spaghetti ayam bawank',
-                    foodDesc:
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
-                FoodItemWidget(
-                    foodImageUrl:
-                        'https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
-                    kcal: 123,
-                    foodName: 'Spaghetti ayam bawank',
-                    foodDesc:
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
-                FoodItemWidget(
-                    foodImageUrl:
-                        'https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
-                    kcal: 123,
-                    foodName: 'Spaghetti ayam bawank',
-                    foodDesc:
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
-                FoodItemWidget(
-                    foodImageUrl:
-                        'https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
-                    kcal: 123,
-                    foodName: 'Spaghetti ayam bawank',
-                    foodDesc:
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
-                FoodItemWidget(
-                    foodImageUrl:
-                        'https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
-                    kcal: 123,
-                    foodName: 'Spaghetti ayam bawank',
-                    foodDesc:
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
-              ],
-            ),
-          )
+          SizedBox(height: 400, child: _buildList(context))
         ],
       ),
     ));
   }
 }
+
+_buildList(ctx) {
+    return FutureBuilder(
+      future:
+          DefaultAssetBundle.of(ctx).loadString('assets/food_data.json'),
+      builder: (context, AsyncSnapshot snapshot) {
+        if (snapshot.hasError) {
+          return const Text("error");
+        }
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator());
+        }
+
+        final List<Food> foods = foodListFromJson(snapshot.requireData).foods;
+
+        return ListView.builder(
+          scrollDirection: Axis.vertical,
+          physics: NeverScrollableScrollPhysics(),
+          itemCount: foods.length,
+          itemBuilder: (BuildContext context, int index) {
+            return FoodItemWidget(food: foods[index]);
+          },
+        );
+      },
+    );
+  }
+
