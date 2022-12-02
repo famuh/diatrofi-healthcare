@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final foodList = foodListFromJson(jsonString);
-
 import 'package:meta/meta.dart';
 import 'dart:convert';
 
@@ -28,8 +24,9 @@ class FoodList {
 class Food {
     Food({
         required this.id,
-        required this.name,
+      required this.name,
         required this.description,
+        required this.category,
         required this.imgUrl,
         required this.kcal,
         required this.fats,
@@ -42,6 +39,7 @@ class Food {
     final int id;
     final String name;
     final String description;
+    final String category;
     final String imgUrl;
     final int kcal;
     final int fats;
@@ -54,6 +52,7 @@ class Food {
         id: json["id"],
         name: json["name"],
         description: json["description"],
+        category: json["category"],
         imgUrl: json["imgUrl"],
         kcal: json["kcal"],
         fats: json["fats"],
@@ -67,6 +66,7 @@ class Food {
         "id": id,
         "name": name,
         "description": description,
+        "category": category,
         "imgUrl": imgUrl,
         "kcal": kcal,
         "fats": fats,

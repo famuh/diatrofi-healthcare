@@ -3,8 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../common/constant.dart';
 import '../../data/model/food/food.dart';
-import '../../widget/kcal_widget.dart';
-import '../../widget/nutritions_widget.dart';
+
 
 class FoodRecipeScreen extends StatefulWidget {
   static const ROUTE_NAME = '/food-recipe';
@@ -19,7 +18,7 @@ class _FoodRecipeScreenState extends State<FoodRecipeScreen> {
   @override
   Widget build(BuildContext context) {
     var food = widget.food;
-    var mediaQuery = MediaQuery.of(context).size;
+    // var mediaQuery = MediaQuery.of(context).size;
     return Scaffold(
       // appBar: AppBar(
       //     title: const Text('Calculate Your Intake'),
@@ -62,17 +61,21 @@ class _FoodRecipeScreenState extends State<FoodRecipeScreen> {
           ];
         },
         body: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const SizedBox(
+                height: 20,
+              ),
               // Nama item
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     food.name,
                     style: const TextStyle(
-                      fontSize: 24,
+                      fontSize: 26,
                       fontWeight: FontWeight.w600,
                     ),
                     maxLines: 2,
@@ -80,54 +83,93 @@ class _FoodRecipeScreenState extends State<FoodRecipeScreen> {
                   ),
                   IconButton(
                       onPressed: () {},
-                      icon: Icon(Icons.favorite, color: kPink))
+                      icon: Icon(
+                        Icons.favorite_border_rounded,
+                        color: kPink,
+                        size: 30,
+                      ))
                 ],
               ),
 
               // ingredients
+              _sectionRecipe('ingredients'),
               Container(
-                  margin: EdgeInsets.symmetric(vertical: 15),
-                  constraints: const BoxConstraints(maxWidth: 120),
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                  decoration: BoxDecoration(
-                      color: Colors.pink[100],
-                      borderRadius: BorderRadius.circular(20)),
-                  child: Text('ingredients')),
+                  margin: const EdgeInsets.only(left: 20),
+                  constraints: const BoxConstraints(
+                    maxHeight: 50
+                  ),
+                  child: MediaQuery.removePadding(
+                    context: context,
+                    removeTop: true,
+                    child: ListView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: food.recipe.ingredient.length,
+                        itemBuilder: (context, index) {
+                          return Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                width: 10,
+                                height: 10,
+                                decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: kStrongGreen),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Text(food.recipe.ingredient[index])
+                            ],
+                          );
+                        }),
+                  )),
 
-              SizedBox(
-                height: 200,
-                child: ListView.builder(
-                    physics: NeverScrollableScrollPhysics(),
-                    itemCount: food.recipe.ingredient.length,
-                    itemBuilder: (context, index) {
-                      return Text(food.recipe.ingredient[index]);
-                    }),
-              ),
-
-              // ingredients
+              // steps
+              _sectionRecipe('steps'),
+              const SizedBox(height: 5,),
               Container(
-                  margin: EdgeInsets.symmetric(vertical: 15),
-                  constraints: const BoxConstraints(maxWidth: 120),
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                  decoration: BoxDecoration(
-                      color: Colors.pink[100],
-                      borderRadius: BorderRadius.circular(20)),
-                  child: Text('steps')),
-              SizedBox(
-                height: 200,
-                child: ListView.builder(
-                    physics: NeverScrollableScrollPhysics(),
-                    itemCount: food.recipe.steps.length,
-                    itemBuilder: (context, index) {
-                      return Text(food.recipe.steps[index]);
-                    }),
-              ),
+                  margin: const EdgeInsets.only(left: 20),
+                  height: 100,
+                  child: MediaQuery.removePadding(
+                    context: context,
+                    removeTop: true,
+                    child: ListView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: food.recipe.ingredient.length,
+                        itemBuilder: (context, index) {
+                          return Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                width: 10,
+                                height: 10,
+                                decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: kStrongGreen),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Text(food.recipe.steps[index])
+                            ],
+                          );
+                        }),
+                  )),
+
             ],
           ),
         ),
       ),
     );
+  }
+
+  Container _sectionRecipe(String title) {
+    return Container(
+        constraints: const BoxConstraints(maxWidth: 120),
+        margin: const EdgeInsets.symmetric(vertical: 10),
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+        decoration: BoxDecoration(
+            color: Colors.pink[100], borderRadius: BorderRadius.circular(20)),
+        child: Text(title));
   }
 }
