@@ -191,7 +191,8 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 230,
               // color: Colors.grey,
               padding: const EdgeInsets.only(right: 10),
-              child: Consumer<ArticleProvider>(builder: (context, state, _) {
+              child: Consumer<ArticleProvider>(
+                builder: (context, state, _) {
                 if (state.state == ResultState.loading) {
                   return const Center(child: CircularProgressIndicator());
                 } else if (state.state == ResultState.hasData) {

@@ -1,42 +1,21 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:diatfori/data/model/nutrisi.dart';
+import 'package:diatfori/presentation/provider/nutrients_provider.dart';
 import 'package:diatfori/widget/nutritions_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../common/constant.dart';
 import 'kcal_widget.dart';
 
-class CalculateFoodItemWidget extends StatefulWidget {
-  String imgUrl;
-  double kcal;
-  String itemName;
-  double prots;
-  double carbs;
-  double fats;
+class CalculateFoodItemWidget extends StatelessWidget {
+  Nutrient item;
 
-  CalculateFoodItemWidget(
-      {super.key,
-      required this.imgUrl,
-      required this.kcal,
-      required this.itemName,
-      required this.prots,
-      required this.carbs,
-      required this.fats});
+  CalculateFoodItemWidget({super.key, required this.item});
 
-  @override
-  State<CalculateFoodItemWidget> createState() =>
-      _CalculateFoodItemWidgetState();
-}
-
-class _CalculateFoodItemWidgetState extends State<CalculateFoodItemWidget> {
   @override
   Widget build(BuildContext context) {
-    String imgUrl = widget.imgUrl;
-    double kcal = widget.kcal;
-    String itemName = widget.itemName;
-    double prots = widget.prots;
-    double carbs = widget.carbs;
-    double fats = widget.fats;
-
+    final prov = Provider.of<NutrientProvider>(context);
     return Container(
       width: 320,
       margin: const EdgeInsets.symmetric(horizontal: 5),
@@ -54,7 +33,7 @@ class _CalculateFoodItemWidgetState extends State<CalculateFoodItemWidget> {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: CachedNetworkImage(
-                imageUrl: imgUrl,
+                imageUrl: item.pictureId,
                 fit: BoxFit.cover,
                 placeholder: (context, url) => const Center(
                   child: CircularProgressIndicator(),
@@ -78,10 +57,12 @@ class _CalculateFoodItemWidgetState extends State<CalculateFoodItemWidget> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          KcalWidget(kcal: kcal),
+                          KcalWidget(kcal: item.kalori),
                           const SizedBox(height: 5),
                           Text(
-                            itemName,
+                            item.name,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
                             style: kItemTittleCard,
                           )
                         ],
@@ -96,7 +77,24 @@ class _CalculateFoodItemWidgetState extends State<CalculateFoodItemWidget> {
                           ),
                         ),
                         onTap: () {
-                          print('add item');
+                          prov.totalItems.add({
+                            "id": item.id,
+                            "name": item.name,
+                            "kategori": item.kategori,
+                            "pictureId": item.pictureId,
+                            "kalori": item.kalori,
+                            "lemak": item.lemak,
+                            "protein": item.protein,
+                            "karbohidrat": item.karbohidrat
+                          });
+                          prov.totalKalori.add(item.kalori);
+                          prov.totalLemak.add(item.lemak);
+                          prov.totalProtein.add(item.protein);
+                          prov.totalKarbohidrat.add(item.karbohidrat);
+
+                          // print('${item.name} Added');
+                          print(prov.totalItems);
+                          print("calculate ${prov.calculateKalori()}");
                         },
                       )
                     ],
@@ -109,17 +107,17 @@ class _CalculateFoodItemWidgetState extends State<CalculateFoodItemWidget> {
                     children: [
                       NutritionWidget(
                         title: 'prots',
-                        total: prots,
+                        total: item.protein,
                         color: kBrightGreen,
                       ),
                       NutritionWidget(
                         title: 'carbs',
-                        total: carbs,
+                        total: item.karbohidrat,
                         color: kCarbs,
                       ),
                       NutritionWidget(
                         title: 'fats',
-                        total: fats,
+                        total: item.lemak,
                         color: kFats,
                       ),
                     ],

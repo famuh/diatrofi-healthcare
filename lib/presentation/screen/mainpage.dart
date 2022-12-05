@@ -2,7 +2,10 @@ import 'package:diatfori/common/constant.dart';
 import 'package:diatfori/data/api/api_service.dart';
 import 'package:diatfori/presentation/login/welcome.dart';
 import 'package:diatfori/presentation/provider/article_provider.dart';
+import 'package:diatfori/presentation/provider/nutrients_provider.dart';
 import 'package:diatfori/presentation/provider/resep_list_provider.dart';
+import 'package:diatfori/presentation/screen/calculate_screen.dart';
+import 'package:diatfori/presentation/screen/favorite_screen.dart';
 import 'package:diatfori/presentation/screen/homepage_screen.dart';
 import 'package:diatfori/presentation/screen/recipe_screen.dart';
 import 'package:diatfori/presentation/screen/resep_screen.dart';
@@ -20,20 +23,18 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-
   int currentIndex = 0;
   final List screen = [
     ChangeNotifierProvider<ArticleProvider>(
         create: (_) => ArticleProvider(apiService: ApiService()),
         child: HomeScreen()),
     ChangeNotifierProvider<ArticleProvider>(
-
         create: (_) => ArticleProvider(apiService: ApiService()),
         child: const ArticleScreen()),
     ChangeNotifierProvider<ResepListProvider>(
         create: (_) => ResepListProvider(apiService: ApiService()),
         child: const ResepScreen()),
-
+    
   ];
 
   @override
