@@ -41,7 +41,6 @@ class ResepCard extends StatelessWidget {
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
               ),
-              subtitle: Text(resep.thumb),
               onTap: () {}
           ),
         ),
