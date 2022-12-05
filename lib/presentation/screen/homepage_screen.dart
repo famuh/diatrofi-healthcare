@@ -120,7 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
 
-          //  gtau ni apaan
+          //  calculate
           InkWell(
             onTap: () {
               Navigator.pushNamed(

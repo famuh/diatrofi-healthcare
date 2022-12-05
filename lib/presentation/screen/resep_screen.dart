@@ -48,7 +48,7 @@ class _ResepScreenState extends State<ResepScreen> {
         return const Center(child: CircularProgressIndicator());
       } else if (state.state == ResultState.hasData) {
         return ListView.builder(
-          scrollDirection: Axis.horizontal,
+          scrollDirection: Axis.vertical,
           shrinkWrap: true,
           itemCount: state
               .result.results.length, // ke halaman article utk artikel lengkap
