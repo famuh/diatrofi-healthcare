@@ -3,6 +3,7 @@ import 'package:diatfori/data/model/food/food.dart';
 import 'package:diatfori/data/api/api_service.dart';
 import 'package:diatfori/firebase_options.dart';
 import 'package:diatfori/presentation/login/profile.dart';
+import 'package:diatfori/presentation/provider/nutrients_provider.dart';
 import 'package:diatfori/presentation/provider/resep_list_provider.dart';
 import 'package:diatfori/presentation/screen/homepage_screen.dart';
 import 'package:diatfori/presentation/screen/item_detail_screen.dart';
@@ -33,6 +34,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<ResepListProvider>(
             create: (_) => ResepListProvider(apiService: ApiService()),
             child: HomeScreen()),
+        ChangeNotifierProvider<NutrientProvider>(
+        create: (_) => NutrientProvider(apiService: ApiService()),
+        child: const CalculateScreen()),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

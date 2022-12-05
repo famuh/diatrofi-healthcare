@@ -14,6 +14,24 @@ class NutrientProvider extends ChangeNotifier {
     _fetchAllNutrients();
   }
 
+  final List _totalItems = [];
+  final List _totalKalori = [];
+  final List _totalLemak = [];
+  final List _totalProtein = [];
+  final List _totalKarbohidrat = [];
+
+  List get totalItems => _totalItems;
+  List get totalKalori => _totalKalori;
+  List get totalLemak => _totalLemak;
+  List get totalProtein => _totalProtein;
+  List get totalKarbohidrat => _totalKarbohidrat;
+  
+ 
+  calculateKalori(){
+    num hasil = totalKalori.fold(0, (a, b) => a+b);
+    return hasil;
+  }
+
   late Nutrients _articlesResult;
   late ResultState _state;
   String _message = '';
@@ -44,4 +62,6 @@ class NutrientProvider extends ChangeNotifier {
       return _message = 'Error --> $e';
     }
   }
+
+  
 }
