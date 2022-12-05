@@ -1,9 +1,8 @@
 import 'dart:convert';
 import 'package:diatfori/data/model/article.dart';
+import 'package:diatfori/data/model/nutrisi.dart';
 import 'package:http/http.dart' as http;
 import 'package:diatfori/data/model/resep_list.dart';
-import 'package:diatfori/data/model/resep_detail.dart';
-import 'package:diatfori/data/model/resep_search.dart';
 
 
 class ApiService {
@@ -51,6 +50,15 @@ class ApiService {
       return ArticlesResult.fromJson(json.decode(response.body));
     } else {
       throw Exception('Failed to load top headlines');
+    }
+  }
+  Future<Nutrients> nutrients() async {
+    final response = await http.get(Uri.parse(
+        "https://mocki.io/v1/b1b15cac-0116-4122-bb81-6915c22741d4"));
+    if (response.statusCode == 200) {
+      return Nutrients.fromJson(json.decode(response.body));
+    } else {
+      throw Exception('Failed to load nutrients');
     }
   }
 
