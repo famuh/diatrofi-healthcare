@@ -1,8 +1,10 @@
 import 'package:diatfori/common/constant.dart';
 import 'package:diatfori/presentation/login/profile.dart';
 import 'package:diatfori/presentation/provider/article_provider.dart';
+import 'package:diatfori/presentation/provider/resep_list_provider.dart';
 import 'package:diatfori/widget/article_item_widget.dart';
 import 'package:diatfori/widget/food_item_widget.dart';
+import 'package:diatfori/widget/reseplist_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
@@ -224,50 +226,43 @@ class _HomeScreenState extends State<HomeScreen> {
           SubHeading(
             title: 'check this out',
           ),
-          // check this out item
-          SizedBox(
-            height: 500,
-            child: ListView(
-              physics: const NeverScrollableScrollPhysics(),
-              children: [
-                FoodItemWidget(
-                    foodImageUrl:
-                        'https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
-                    kcal: 123,
-                    foodName: 'Spaghetti ayam bawank',
-                    foodDesc:
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
-                FoodItemWidget(
-                    foodImageUrl:
-                        'https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
-                    kcal: 123,
-                    foodName: 'Spaghetti ayam bawank',
-                    foodDesc:
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
-                FoodItemWidget(
-                    foodImageUrl:
-                        'https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
-                    kcal: 123,
-                    foodName: 'Spaghetti ayam bawank',
-                    foodDesc:
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
-                FoodItemWidget(
-                    foodImageUrl:
-                        'https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
-                    kcal: 123,
-                    foodName: 'Spaghetti ayam bawank',
-                    foodDesc:
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
-                FoodItemWidget(
-                    foodImageUrl:
-                        'https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
-                    kcal: 123,
-                    foodName: 'Spaghetti ayam bawank',
-                    foodDesc:
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
-              ],
-            ),
-          )
+          Container(
+              height: 230,
+              // color: Colors.grey,
+              padding: const EdgeInsets.only(right: 10),
+              child: Consumer<ResepListProvider>(builder: (context, state, _) {
+                if (state.state == ResultState.loading) {
+                  return const Center(child: CircularProgressIndicator());
+                } else if (state.state == ResultState.hasData) {
+                  return ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    shrinkWrap: true,
+                    itemCount: state.result.results.length, // ke halaman article utk artikel lengkap
+                    itemBuilder: (context, index) {
+                      var resep = state.result.results[index];
+                      return ResepItem(resep: resep);
+                    },
+                  );
+                } else if (state.state == ResultState.noData) {
+                  return Center(
+                    child: Material(
+                      child: Text(state.message),
+                    ),
+                  );
+                } else if (state.state == ResultState.error) {
+                  return Center(
+                    child: Material(
+                      child: Text(state.message),
+                    ),
+                  );
+                } else {
+                  return const Center(
+                    child: Material(
+                      child: Text(''),
+                    ),
+                  );
+                }
+              })),
         ],
       ),
     ));
