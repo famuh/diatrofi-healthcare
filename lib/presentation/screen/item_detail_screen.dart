@@ -1,23 +1,22 @@
 import 'package:diatfori/common/constant.dart';
+import 'package:diatfori/data/model/food/food.dart';
+import 'package:diatfori/presentation/screen/food_recipe_screen.dart';
 import 'package:diatfori/widget/kcal_widget.dart';
 import 'package:diatfori/widget/nutritions_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class DetailScreen extends StatefulWidget {
+class DetailScreen extends StatelessWidget {
   static const ROUTE_NAME = '/detail';
-  const DetailScreen({super.key});
+  final Food food;
+  const DetailScreen({super.key, required this.food});
 
-  @override
-  State<DetailScreen> createState() => _DetailScreenState();
-}
-
-class _DetailScreenState extends State<DetailScreen> {
   @override
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context).size;
     return Scaffold(
-      body: NestedScrollView(
+      body: 
+      NestedScrollView(
         headerSliverBuilder: (context, isScrolled) {
           return [
             SliverAppBar(
@@ -30,7 +29,9 @@ class _DetailScreenState extends State<DetailScreen> {
                   )),
               actions: [
                 IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, FoodRecipeScreen.ROUTE_NAME, arguments: food);
+                    },
                     icon: FaIcon(
                       FontAwesomeIcons.fire,
                     )),
@@ -45,7 +46,7 @@ class _DetailScreenState extends State<DetailScreen> {
               expandedHeight: 300,
               flexibleSpace: FlexibleSpaceBar(
                 background: Image.network(
-                    "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+                    food.imgUrl,
                     fit: BoxFit.cover),
               ),
             ),
@@ -68,7 +69,7 @@ class _DetailScreenState extends State<DetailScreen> {
 
               // Nama item
               Text(
-                'Spaghetti Carbonara',
+                food.name,
                 style: const TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.w600,
@@ -90,19 +91,19 @@ class _DetailScreenState extends State<DetailScreen> {
                     children: [
                       NutritionWidget(
                         title: "prots",
-                        total: 120,
+                        total: food.prots,
                         size: 18,
                         color: kBrightGreen,
                       ),
                       NutritionWidget(
                         title: "carbs",
-                        total: 120,
+                        total: food.carbs,
                         size: 18,
                         color: kCarbs,
                       ),
                       NutritionWidget(
                         title: "fats",
-                        total: 120,
+                        total: food.fats,
                         size: 18,
                         color: kFats,
                       ),
@@ -113,7 +114,7 @@ class _DetailScreenState extends State<DetailScreen> {
 
               // deskripsi
               Text(
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non blandit massa enim nec. Interdum varius sit amet mattis vulputate enim nulla. Enim tortor at auctor urna nunc id.',
+                food.description,
                 maxLines: 4,
                 overflow: TextOverflow.ellipsis,
               ),

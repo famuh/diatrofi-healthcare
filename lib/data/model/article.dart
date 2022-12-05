@@ -17,6 +17,7 @@ class ArticlesResult {
             .where((article) =>
                 article.author != null &&
                 article.description != null &&
+                article.url != "" &&
                 article.urlToImage != null &&
                 article.publishedAt != null &&
                 article.content != null)),

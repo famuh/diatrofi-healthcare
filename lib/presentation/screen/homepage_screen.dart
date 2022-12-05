@@ -1,4 +1,6 @@
 import 'package:diatfori/common/constant.dart';
+
+import 'package:diatfori/data/model/food/food.dart';
 import 'package:diatfori/presentation/login/profile.dart';
 import 'package:diatfori/presentation/provider/article_provider.dart';
 import 'package:diatfori/presentation/provider/resep_list_provider.dart';
@@ -67,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: kSoftGrey),
                   child: TextField(
                     controller: searchController,
-                    autofocus: true,
+                    autofocus: false,
                     decoration: InputDecoration(
                         border: InputBorder.none,
                         contentPadding: const EdgeInsets.only(
@@ -86,7 +88,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 },
                                 icon: const Icon(Icons.close_rounded),
                               )
-                            : const Icon(Icons.close, color: Colors.transparent)),
+                            : const Icon(Icons.close,
+                                color: Colors.transparent)),
                     onChanged: (value) {
                       if (value.isNotEmpty) {
                         setState(() {
@@ -221,7 +224,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   );
                 }
               })),
-
+const SizedBox(height: 15,),
           // check this out
           SubHeading(
             title: 'check this out',
@@ -268,3 +271,30 @@ class _HomeScreenState extends State<HomeScreen> {
     ));
   }
 }
+
+_buildList(ctx) {
+    return FutureBuilder(
+      future:
+          DefaultAssetBundle.of(ctx).loadString('assets/food_data.json'),
+      builder: (context, AsyncSnapshot snapshot) {
+        if (snapshot.hasError) {
+          return const Text("error");
+        }
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator());
+        }
+
+        final List<Food> foods = foodListFromJson(snapshot.requireData).foods;
+
+        return ListView.builder(
+          scrollDirection: Axis.vertical,
+          physics: NeverScrollableScrollPhysics(),
+          itemCount: foods.length,
+          itemBuilder: (BuildContext context, int index) {
+            return FoodItemWidget(food: foods[index]);
+          },
+        );
+      },
+    );
+  }
+

@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:diatfori/data/model/food/food.dart';
 import 'package:diatfori/presentation/screen/item_detail_screen.dart';
 import 'package:diatfori/widget/kcal_widget.dart';
 import 'package:flutter/material.dart';
@@ -7,17 +8,11 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../common/constant.dart';
 
 class FoodItemWidget extends StatelessWidget {
-  String foodImageUrl;
-  double kcal;
-  String foodName;
-  String foodDesc;
+  Food food;
 
   FoodItemWidget(
       {super.key,
-      required this.foodImageUrl,
-      required this.kcal,
-      required this.foodName,
-      required this.foodDesc});
+      required this.food});
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +33,7 @@ class FoodItemWidget extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: const BorderRadius.all(Radius.circular(20)),
                   child: CachedNetworkImage(
-                    imageUrl: foodImageUrl,
+                    imageUrl: food.imgUrl,
                     fit: BoxFit.cover,
                     placeholder: (context, url) => const Center(
                       child: CircularProgressIndicator(),
@@ -54,16 +49,16 @@ class FoodItemWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // kcal
-                    KcalWidget(kcal: kcal),
+                    KcalWidget(kcal: food.kcal),
       
                     // title
                     Text(
-                      foodName,
+                      food.name,
                       style: kItemTittleCard,
                       overflow: TextOverflow.ellipsis,
                     ),
                     Text(
-                      foodDesc,
+                      food.description,
                       style: kBodyText,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,
@@ -76,7 +71,7 @@ class FoodItemWidget extends StatelessWidget {
         ),
 
         onTap: (){
-          Navigator.pushNamed(context, DetailScreen.ROUTE_NAME);
+          Navigator.pushNamed(context, DetailScreen.ROUTE_NAME, arguments: food);
         },
       ),
       

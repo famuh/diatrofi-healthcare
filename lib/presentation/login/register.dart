@@ -6,13 +6,27 @@ import 'package:lottie/lottie.dart';
 
 import '../screen/mainpage.dart';
 
-class RegisterPage extends StatelessWidget {
+class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
 
   @override
+  State<RegisterPage> createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<RegisterPage> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    TextEditingController emailController = TextEditingController(text: "");
-    TextEditingController passwordController = TextEditingController(text: "");
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: kSoftGrey,
@@ -28,8 +42,7 @@ class RegisterPage extends StatelessWidget {
                       fontWeight: FontWeight.w700,
                     ),
               ),
-              Lottie.asset(
-                  "assets/lottie/registers.json"),
+              Lottie.asset("assets/lottie/registers.json"),
               SizedBox(height: size.height * 0.0),
               Container(
                 margin: const EdgeInsets.symmetric(vertical: 10),
@@ -90,7 +103,7 @@ class RegisterPage extends StatelessWidget {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const LoginPage(),
+                            builder: (_) => const LoginPage(),
                           ),
                         );
                         ScaffoldMessenger.of(context)

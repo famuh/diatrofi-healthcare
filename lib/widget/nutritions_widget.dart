@@ -4,7 +4,7 @@ import '../common/constant.dart';
 
 class NutritionWidget extends StatelessWidget {
   String title;
-  double? total;
+  num? total;
   Color? color;
   double? size;
   NutritionWidget({super.key, required this.title, this.total, this.color, this.size});
