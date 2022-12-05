@@ -1,12 +1,11 @@
-// import 'dart:async';
-// import 'dart:io';
-// import 'package:flutter/material.dart';
-// import 'package:diatfori/common/constant.dart';
-// import 'package:diatfori/data/api/api_service.dart';
-// import 'package:diatfori/data/model/resep_list.dart';
+import 'dart:async';
+import 'package:flutter/material.dart';
+import 'package:diatfori/common/constant.dart';
+import 'package:diatfori/data/api/api_service.dart';
+import 'package:diatfori/data/model/resep_list.dart';
 
-// class ResepListProvider extends ChangeNotifier {
-//   final ApiService apiService;
+class ResepListProvider extends ChangeNotifier {
+  final ApiService apiService;
 
   ResepListProvider({required this.apiService}) {
     _fetchAllArticle();
@@ -16,12 +15,12 @@
   late ResultState _state;
   String _message = '';
 
-//   String get message => _message;
+  String get message => _message;
 
 
   Reseplist get result => _articlesResult;
 
-//   ResultState get state => _state;
+  ResultState get state => _state;
 
   Future<dynamic> _fetchAllArticle() async {
     try {

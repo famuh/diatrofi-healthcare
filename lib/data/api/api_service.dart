@@ -10,14 +10,14 @@ class ApiService {
   static const String _baseUrl = 'https://masak-apa.tomorisakura.vercel.app/';
   static const String _throw = 'Failed to load data';
 
-  // Future<Reseplist> topHeadlines() async {
-  //   final response = await http.get(Uri.parse("${_baseUrl}api/recipes"));
-  //   if (response.statusCode == 200) {
-  //     return Reseplist.fromJson(json.decode(response.body));
-  //   } else {
-  //     throw Exception(_throw);
-  //   }
-  // }
+  Future<Reseplist> topHeadlines() async {
+    final response = await http.get(Uri.parse("${_baseUrl}api/recipes"));
+    if (response.statusCode == 200) {
+      return Reseplist.fromJson(json.decode(response.body));
+    } else {
+      throw Exception(_throw);
+    }
+  }
 
   // Future<Resepdetail> getDetailId(String key) async {
   //   final response = await http.get(Uri.parse("$_baseUrl/api/recipe/:$key"));

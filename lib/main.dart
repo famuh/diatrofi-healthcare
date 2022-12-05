@@ -53,16 +53,18 @@ class MyApp extends StatelessWidget {
               return MaterialPageRoute(builder: (_) => const MainPage());
             case CalculateScreen.ROUTE_NAME:
               return MaterialPageRoute(builder: (_) => const CalculateScreen());
-          // case '/articles':
-          //   return MaterialPageRoute(builder: (_) => ArticleScreen());
+            // case '/articles':
+            //   return MaterialPageRoute(builder: (_) => ArticleScreen());
             case ArticleWebView.routeName:
               final url = settings.arguments as String;
               return MaterialPageRoute(
                   builder: (_) => ArticleWebView(url: url), settings: settings);
             case DetailScreen.ROUTE_NAME:
-              return MaterialPageRoute(builder: (_) => DetailScreen());
+              final food = settings.arguments as Food;
+              return MaterialPageRoute(
+                  builder: (_) => DetailScreen(food: food), settings: settings);
             case ProfilePage.routeName:
-              return MaterialPageRoute(builder: (_) => ProfilePage());
+              return MaterialPageRoute(builder: (_) => const ProfilePage());
             default:
               return MaterialPageRoute(builder: (_) {
                 return const Scaffold(

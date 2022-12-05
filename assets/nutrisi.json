@@ -1,0 +1,83 @@
+[
+  {
+    "id": "rqev5juczeskfw1e867",
+    "name": "Nutrisi 1 (Nasi Food)",
+    "pictureId" : "https://images.unsplash.com/photo-1596560548464-f010549b84d7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+    "Kalori": 130,
+    "Lemak": 0.3,
+    "Protein": 2.7,
+    "Karbohidrat": 28
+  },
+  {
+    "id": "abdv5juczeskfw1e867",
+    "name": "Nutrisi 2 (Ayam Food)",
+    "pictureId" : "https://images.unsplash.com/photo-1647102398925-e23f6486ca04?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    "Kalori": 239,
+    "Lemak": 14,
+    "Protein": 27,
+    "Karbohidrat": 0
+  },
+  {
+    "id": "abdeg5juczeskfw1e867",
+    "name": "Nutrisi 3 (Rendang Food)",
+    "pictureId" : "https://images.unsplash.com/photo-1620700668269-d3ad2a88f27e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+    "Kalori": 468,
+    "Lemak": 10.78,
+    "Protein": 47.23,
+    "Karbohidrat": 10.78
+  },
+  {
+    "id": "bcdv5juczeskfw1e867",
+    "name": "Nutrisi 4 (Sayur bayam Fruit & Vegie)",
+    "pictureId": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.bola.com%2Fragam%2Fread%2F4473841%2F8-manfaat-bayam-bagi-kesehatan-tanaman-murah-kaya-khasiat&psig=AOvVaw1g3bsOeO106OhSPm0MZRBa&ust=1670172713721000&source=images&cd=vfe&ved=0CA8QjRxqFwoTCPj4kK303fsCFQAAAAAdAAAAABAE",
+    "Kalori": 23.2,
+    "Lemak": 0.4,
+    "Protein": 2.9,
+    "Karbohidrat": 3.6
+  },
+  {
+    "id": "cddv5juczeskfw1e867",
+    "name": "Nutrisi 5 (Telur Fruit & Vegie)",
+    "pictureId": "https://images.unsplash.com/photo-1610328466269-1f36faad83c1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
+    "Kalori": 155.1,
+    "Lemak": 11,
+    "Protein": 13,
+    "Karbohidrat": 1.1
+  },
+  {
+    "id": "cddv567juczeskfw1e867",
+    "name": "Nutrisi 6 (Apel Fruit & Vegie)",
+    "pictureId": "https://images.unsplash.com/photo-1589217157232-464b505b197f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+    "Kalori": 52,
+    "Lemak": 0.2,
+    "Protein": 0.3,
+    "Karbohidrat": 14
+  },
+  {
+    "id": "dedv5juczeskfw1e867",
+    "name": "Nutrisi 7 (Susu Drink)",
+    "pictureId": "https://images.unsplash.com/photo-1563636619-e9143da7973b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80",
+    "Kalori": 42.3,
+    "Lemak": 1,
+    "Protein": 2.7,
+    "Karbohidrat": 5
+  },
+  {
+    "id": "efdv5juczeskfw1e867",
+    "name": "Nutrisi 8 (Sirop Drink)",
+    "pictureId" : "https://images.unsplash.com/photo-1552314971-d2feb3513949?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c3lydXB8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+    "Kalori": 260,
+    "Lemak": 0.1,
+    "Protein": 0,
+    "Karbohidrat": 0
+  },
+  {
+    "id": "efdv5juczeskfw1e867",
+    "name": "Nutrisi 9 (Mineral Water Drink)",
+    "pictureId" : "https://images.unsplash.com/photo-1638688569176-5b6db19f9d2a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+    "Kalori": 0,
+    "Lemak": 0,
+    "Protein": 0,
+    "Karbohidrat": 0
+  }
+]

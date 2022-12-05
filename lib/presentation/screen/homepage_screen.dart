@@ -148,10 +148,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           maxLines: 3,
                           overflow: TextOverflow.ellipsis,
                           style:
-                          Theme.of(context).textTheme.subtitle2?.copyWith(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15,
-                          ),
+                              Theme.of(context).textTheme.subtitle2?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15,
+                                  ),
                         ),
                       ),
                       const SizedBox(height: 3),
@@ -163,9 +163,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           maxLines: 3,
                           overflow: TextOverflow.ellipsis,
                           style:
-                          Theme.of(context).textTheme.bodyText1?.copyWith(
-                            fontSize: 12,
-                          ),
+                              Theme.of(context).textTheme.bodyText1?.copyWith(
+                                    fontSize: 12,
+                                  ),
                         ),
                       ),
                     ],
@@ -224,7 +224,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   );
                 }
               })),
-const SizedBox(height: 15,),
+          const SizedBox(
+            height: 15,
+          ),
           // check this out
           SubHeading(
             title: 'check this out',
@@ -240,7 +242,8 @@ const SizedBox(height: 15,),
                   return ListView.builder(
                     scrollDirection: Axis.horizontal,
                     shrinkWrap: true,
-                    itemCount: state.result.results.length, // ke halaman article utk artikel lengkap
+                    itemCount: state.result.results
+                        .length, // ke halaman article utk artikel lengkap
                     itemBuilder: (context, index) {
                       var resep = state.result.results[index];
                       return ResepItem(resep: resep);
@@ -273,28 +276,26 @@ const SizedBox(height: 15,),
 }
 
 _buildList(ctx) {
-    return FutureBuilder(
-      future:
-          DefaultAssetBundle.of(ctx).loadString('assets/food_data.json'),
-      builder: (context, AsyncSnapshot snapshot) {
-        if (snapshot.hasError) {
-          return const Text("error");
-        }
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(child: CircularProgressIndicator());
-        }
+  return FutureBuilder(
+    future: DefaultAssetBundle.of(ctx).loadString('assets/food_data.json'),
+    builder: (context, AsyncSnapshot snapshot) {
+      if (snapshot.hasError) {
+        return const Text("error");
+      }
+      if (snapshot.connectionState == ConnectionState.waiting) {
+        return const Center(child: CircularProgressIndicator());
+      }
 
-        final List<Food> foods = foodListFromJson(snapshot.requireData).foods;
+      final List<Food> foods = foodListFromJson(snapshot.requireData).foods;
 
-        return ListView.builder(
-          scrollDirection: Axis.vertical,
-          physics: NeverScrollableScrollPhysics(),
-          itemCount: foods.length,
-          itemBuilder: (BuildContext context, int index) {
-            return FoodItemWidget(food: foods[index]);
-          },
-        );
-      },
-    );
-  }
-
+      return ListView.builder(
+        scrollDirection: Axis.vertical,
+        physics: NeverScrollableScrollPhysics(),
+        itemCount: foods.length,
+        itemBuilder: (BuildContext context, int index) {
+          return FoodItemWidget(food: foods[index]);
+        },
+      );
+    },
+  );
+}
