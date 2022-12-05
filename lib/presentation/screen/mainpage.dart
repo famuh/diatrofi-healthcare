@@ -2,8 +2,10 @@ import 'package:diatfori/common/constant.dart';
 import 'package:diatfori/data/api/api_service.dart';
 import 'package:diatfori/presentation/login/welcome.dart';
 import 'package:diatfori/presentation/provider/article_provider.dart';
+import 'package:diatfori/presentation/provider/resep_list_provider.dart';
 import 'package:diatfori/presentation/screen/homepage_screen.dart';
 import 'package:diatfori/presentation/screen/recipe_screen.dart';
+import 'package:diatfori/presentation/screen/resep_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -22,14 +24,15 @@ class _MainPageState extends State<MainPage> {
   int currentIndex = 0;
   final List screen = [
     ChangeNotifierProvider<ArticleProvider>(
-      create: (_) => ArticleProvider(apiService: ApiService()),
-      child: HomeScreen()),
+        create: (_) => ArticleProvider(apiService: ApiService()),
+        child: HomeScreen()),
     ChangeNotifierProvider<ArticleProvider>(
-      create: (_) => ArticleProvider(apiService: ApiService()),
-      child: const ArticleScreen()),
-    
-    RecipeScreen(),
-    RecipeScreen(),
+
+        create: (_) => ArticleProvider(apiService: ApiService()),
+        child: const ArticleScreen()),
+    ChangeNotifierProvider<ResepListProvider>(
+        create: (_) => ResepListProvider(apiService: ApiService()),
+        child: const ResepScreen()),
 
   ];
 
@@ -64,9 +67,9 @@ class _MainPageState extends State<MainPage> {
             BottomNavigationBarItem(
                 icon: Icon(Icons.newspaper_rounded), label: "article"),
             BottomNavigationBarItem(
-                icon: Icon(Icons.favorite_rounded), label: "favorite"),
+                icon: Icon(Icons.restaurant), label: "receipe"),
             BottomNavigationBarItem(
-                icon: Icon(Icons.restaurant), label: "recipe"),
+                icon: Icon(Icons.favorite_rounded), label: "favorite"),
           ],
         ),
       ),

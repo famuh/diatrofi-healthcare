@@ -1,9 +1,14 @@
 import 'package:diatfori/common/constant.dart';
+
 import 'package:diatfori/data/model/food/food.dart';
+import 'package:diatfori/presentation/login/profile.dart';
 import 'package:diatfori/presentation/provider/article_provider.dart';
+import 'package:diatfori/presentation/provider/resep_list_provider.dart';
 import 'package:diatfori/widget/article_item_widget.dart';
 import 'package:diatfori/widget/food_item_widget.dart';
+import 'package:diatfori/widget/reseplist_item_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
 import '../../widget/sub_heading.dart';
@@ -38,6 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
         body: Padding(
       padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
@@ -101,8 +107,15 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
 
               // PROFILE
-              const CircleAvatar(
-                backgroundColor: kStrongGreen,
+              IconButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, ProfilePage.routeName);
+                },
+                icon: const Icon(
+                  Icons.person_rounded,
+                  color: Colors.black,
+                  size: 25,
+                ),
               )
             ],
           ),
@@ -116,16 +129,53 @@ class _HomeScreenState extends State<HomeScreen> {
               );
             },
             child: Container(
-              width: MediaQuery.of(context).size.width,
-              height: 180,
-              margin: const EdgeInsets.symmetric(vertical: 15),
+              margin: const EdgeInsets.only(top: 17, bottom: 17),
+              padding: const EdgeInsets.symmetric(horizontal: 17),
+              height: size.height * 0.15,
               decoration: BoxDecoration(
-                color: kPink,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Center(
-                child: Text(
-                    'ini untuk trigger ke \nhalaman calculate \n gambarnya nyusul'),
+                  borderRadius: BorderRadius.circular(20), color: kPink),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        width: 160,
+                        child: Text(
+                          'Selamat datang di Diatrofi',
+                          textAlign: TextAlign.start,
+                          maxLines: 3,
+                          overflow: TextOverflow.ellipsis,
+                          style:
+                          Theme.of(context).textTheme.subtitle2?.copyWith(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 3),
+                      SizedBox(
+                        width: 160,
+                        child: Text(
+                          'Mari wujudkan pola makan sehat mulai dari sekarang.',
+                          textAlign: TextAlign.start,
+                          maxLines: 3,
+                          overflow: TextOverflow.ellipsis,
+                          style:
+                          Theme.of(context).textTheme.bodyText1?.copyWith(
+                            fontSize: 12,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Lottie.asset(
+                    "assets/lottie/login.json",
+                    fit: BoxFit.fitWidth,
+                    width: 125,
+                  ),
+                ],
               ),
             ),
           ),
@@ -179,8 +229,43 @@ const SizedBox(height: 15,),
           SubHeading(
             title: 'check this out',
           ),
-          // check this out item
-          SizedBox(height: 400, child: _buildList(context))
+          Container(
+              height: 230,
+              // color: Colors.grey,
+              padding: const EdgeInsets.only(right: 10),
+              child: Consumer<ResepListProvider>(builder: (context, state, _) {
+                if (state.state == ResultState.loading) {
+                  return const Center(child: CircularProgressIndicator());
+                } else if (state.state == ResultState.hasData) {
+                  return ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    shrinkWrap: true,
+                    itemCount: state.result.results.length, // ke halaman article utk artikel lengkap
+                    itemBuilder: (context, index) {
+                      var resep = state.result.results[index];
+                      return ResepItem(resep: resep);
+                    },
+                  );
+                } else if (state.state == ResultState.noData) {
+                  return Center(
+                    child: Material(
+                      child: Text(state.message),
+                    ),
+                  );
+                } else if (state.state == ResultState.error) {
+                  return Center(
+                    child: Material(
+                      child: Text(state.message),
+                    ),
+                  );
+                } else {
+                  return const Center(
+                    child: Material(
+                      child: Text(''),
+                    ),
+                  );
+                }
+              })),
         ],
       ),
     ));
