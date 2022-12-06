@@ -54,7 +54,7 @@ class ApiService {
   }
   Future<Nutrients> nutrients() async {
     final response = await http.get(Uri.parse(
-        "https://mocki.io/v1/80489809-b161-4b08-b936-c5a2afdd76af"));
+        "https://mocki.io/v1/34871b54-8a6b-49f0-9e8b-b815af83ac2b"));
     if (response.statusCode == 200) {
       return Nutrients.fromJson(json.decode(response.body));
     } else {

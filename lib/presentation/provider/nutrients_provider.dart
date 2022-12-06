@@ -87,6 +87,10 @@ class NutrientProvider extends ChangeNotifier {
 
   clearItem() {
     totalItems.clear();
+    totalKalori = 0;
+    totalProtein = 0;
+    totalKarbo = 0;
+    totalLemak = 0;
     notifyListeners();
   }
 

@@ -105,37 +105,98 @@ class _CalculateScreenState extends State<CalculateScreen> {
                         title: 'drink',
                         // onTap: (() => print('ke halaman more'))
                       ),
-                      // Container(
-                      //   height: 120,
-                      //   margin: const EdgeInsets.fromLTRB(0, 5, 0, 10),
-                      //   child:
+                      Container(
+                          height: 120,
+                          margin: const EdgeInsets.fromLTRB(0, 5, 0, 10),
+                          child: Consumer<NutrientProvider>(
+                            builder: (context, state, _) {
+                              if (state.state == ResultState.loading) {
+                                return const Center(
+                                    child: CircularProgressIndicator());
+                              } else if (state.state == ResultState.hasData) {
+                                return ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  shrinkWrap: true,
+                                  itemCount: 10,
+                                  itemBuilder: (context, index) {
+                                    var items = state.result.nutrients.where(
+                                        (item) => item.kategori == "minuman");
+                                    var itemFix = List.from(items)[index];
 
-                      // ),
+                                    return CalculateFoodItemWidget(
+                                      item: itemFix,
+                                    );
+                                  },
+                                );
+                              } else if (state.state == ResultState.noData) {
+                                return Center(
+                                  child: Material(
+                                    child: Text(state.message),
+                                  ),
+                                );
+                              } else if (state.state == ResultState.error) {
+                                return Center(
+                                  child: Material(
+                                    child: Text(state.message),
+                                  ),
+                                );
+                              } else {
+                                return const Center(
+                                  child: Material(
+                                    child: Text(''),
+                                  ),
+                                );
+                              }
+                            },
+                          )),
                       SubHeading(
                         title: 'fruit & vegie',
                         // onTap: (() => print('ke halaman more'))
                       ),
-                      Consumer<NutrientProvider>(
-                        builder: (context, value, child) {
-                          return IconButton(
-                              onPressed: () {
-                                value.clearItem();
-                                print("items ${value.totalItems}");
-                                print("total kalori : ${value.totalKalori}");
-                                print("total protein : ${value.totalProtein}");
-                                print("total karbo : ${value.totalKarbo}");
-                                print("total lemak : ${value.totalLemak}");
-                              },
-                              icon: Icon(Icons.clear));
-                        },
-                      ),
+                      Container(
+                          height: 120,
+                          margin: const EdgeInsets.fromLTRB(0, 5, 0, 10),
+                          child: Consumer<NutrientProvider>(
+                            builder: (context, state, _) {
+                              if (state.state == ResultState.loading) {
+                                return const Center(
+                                    child: CircularProgressIndicator());
+                              } else if (state.state == ResultState.hasData) {
+                                return ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  shrinkWrap: true,
+                                  itemCount: 10,
+                                  itemBuilder: (context, index) {
+                                    var items = state.result.nutrients.where(
+                                        (item) => item.kategori == "tumbuhan");
+                                    var itemFix = List.from(items)[index];
 
-                      // Container(
-                      //   height: 120,
-                      //   margin: const EdgeInsets.fromLTRB(0, 5, 0, 10),
-                      //   child:
-
-                      // ),
+                                    return CalculateFoodItemWidget(
+                                      item: itemFix,
+                                    );
+                                  },
+                                );
+                              } else if (state.state == ResultState.noData) {
+                                return Center(
+                                  child: Material(
+                                    child: Text(state.message),
+                                  ),
+                                );
+                              } else if (state.state == ResultState.error) {
+                                return Center(
+                                  child: Material(
+                                    child: Text(state.message),
+                                  ),
+                                );
+                              } else {
+                                return const Center(
+                                  child: Material(
+                                    child: Text(''),
+                                  ),
+                                );
+                              }
+                            },
+                          )),
                     ],
                   ),
                 ),
@@ -147,7 +208,7 @@ class _CalculateScreenState extends State<CalculateScreen> {
                 bottom: 0,
                 child: Container(
                   width: mediaQuery.width,
-                  height: mediaQuery.height / 5.5,
+                  height: mediaQuery.height / 4.5,
                   padding: const EdgeInsets.fromLTRB(10, 15, 10, 0),
                   decoration: const BoxDecoration(
                     borderRadius: BorderRadius.only(
@@ -157,6 +218,7 @@ class _CalculateScreenState extends State<CalculateScreen> {
                     color: kStrongGreen,
                   ),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -199,6 +261,7 @@ class _CalculateScreenState extends State<CalculateScreen> {
                           ],
                         ),
                       ),
+                      const SizedBox(height: 5,),
                       Container(
                           decoration: BoxDecoration(
                               color: Colors.white,
@@ -206,56 +269,75 @@ class _CalculateScreenState extends State<CalculateScreen> {
                           height: 75,
                           child: Consumer<NutrientProvider>(
                             builder: (context, value, child) {
-                              return  Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    const FaIcon(
-                                      FontAwesomeIcons.fire,
-                                      size: 22,
-                                      color: Colors.redAccent,
-                                    ),
-                                    const SizedBox(
-                                      height: 5,
-                                    ),
-                                    Text(value.totalKalori.toString())
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: 50,
-                                  child: NutritionWidget(
+                              return Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      const FaIcon(
+                                        FontAwesomeIcons.fire,
+                                        size: 22,
+                                        color: Colors.redAccent,
+                                      ),
+                                      const SizedBox(
+                                        height: 5,
+                                      ),
+                                      Text(value.totalKalori.toString())
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 50,
+                                    child: NutritionWidget(
                                       title: 'prots',
                                       total: value.totalProtein,
                                       color: kBrightGreen,
                                       size: 18,
                                     ),
-                                ),
-                                SizedBox(
-                                  height: 50,
-                                  child: NutritionWidget(
-                                    title: 'carbs',
-                                    total: value.totalKarbo,
-                                    color: Colors.orange[800],
-                                    size: 18,
                                   ),
-                                ),
-                                SizedBox(
-                                  height: 50,
-                                  child: NutritionWidget(
-                                    title: 'fats',
-                                    total: value.totalLemak,
-                                    color: const Color.fromARGB(255, 212, 132, 3),
-                                    size: 18,
+                                  SizedBox(
+                                    height: 50,
+                                    child: NutritionWidget(
+                                      title: 'carbs',
+                                      total: value.totalKarbo,
+                                      color: Colors.orange[800],
+                                      size: 18,
+                                    ),
                                   ),
-                                ),
-                              ],
-                            );
-                          
+                                  SizedBox(
+                                    height: 50,
+                                    child: NutritionWidget(
+                                      title: 'fats',
+                                      total: value.totalLemak,
+                                      color: const Color.fromARGB(
+                                          255, 212, 132, 3),
+                                      size: 18,
+                                    ),
+                                  ),
+                                ],
+                              );
                             },
-                           
-                          ))
+                          )),
+                      Consumer<NutrientProvider>(
+                        builder: (context, value, child) {
+                          return TextButton(
+                            child: Text(
+                              'clear',
+                              
+                              style: TextStyle(color: Colors.white,),
+                            ),
+                            onPressed: () {
+                              value.clearItem();
+                              print("items ${value.totalItems}");
+                              print("total kalori : ${value.totalKalori}");
+                              print("total protein : ${value.totalProtein}");
+                              print("total karbo : ${value.totalKarbo}");
+                              print("total lemak : ${value.totalLemak}");
+                            },
+                          );
+                        },
+                      ),
                     ],
                   ),
                 ),
