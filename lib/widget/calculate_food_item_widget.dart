@@ -88,6 +88,7 @@ class CalculateFoodItemWidget extends StatelessWidget {
                                   item.lemak,
                                   item.protein,
                                   item.karbohidrat);
+                                  val.calculateKalori();
                                   print("total ${val.totalItems}");
                             },
                           );

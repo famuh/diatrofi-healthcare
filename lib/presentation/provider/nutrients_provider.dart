@@ -58,9 +58,11 @@ class NutrientProvider extends ChangeNotifier {
   num totalKalori = 0;
   
   calculateKalori(){
+    totalKalori = 0;
     for (var item in totalItems) {
       totalKalori += item.kalori;
     }
+    print("total kalori : $totalKalori");
     notifyListeners();
   }
   
