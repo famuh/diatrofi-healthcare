@@ -118,8 +118,7 @@ class _CalculateScreenState extends State<CalculateScreen> {
                       ),
                       IconButton(
                           onPressed: () {
-                            prov.totalItems.clear();
-                            prov.totalKalori.clear();
+                            prov.clearItem();
                             print("items ${prov.totalItems}");
                             
                           },
@@ -203,7 +202,12 @@ class _CalculateScreenState extends State<CalculateScreen> {
                               children: [
                                 const FaIcon(FontAwesomeIcons.fire, size: 22, color: Colors.redAccent,),
                                 const SizedBox(height: 5,),
-                                Text(prov.calculateKalori().toString())
+                                Consumer<NutrientProvider>(
+                                  builder: (context, value, child) {
+                                    return Text(prov.totalKalori.toString());
+                                    
+                                  },
+                                  )
                               ],
                             ),
                             

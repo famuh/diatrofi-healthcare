@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import '../../common/constant.dart';
 import '../../data/api/api_service.dart';
 
-
 class NutrientProvider extends ChangeNotifier {
   final ApiService apiService;
 
@@ -14,23 +13,15 @@ class NutrientProvider extends ChangeNotifier {
     _fetchAllNutrients();
   }
 
-  final List _totalItems = [];
-  final List _totalKalori = [];
+  final List<Nutrient> _totalItems = [];
   final List _totalLemak = [];
   final List _totalProtein = [];
   final List _totalKarbohidrat = [];
 
-  List get totalItems => _totalItems;
-  List get totalKalori => _totalKalori;
+  List<Nutrient> get totalItems => _totalItems;
   List get totalLemak => _totalLemak;
   List get totalProtein => _totalProtein;
   List get totalKarbohidrat => _totalKarbohidrat;
-  
- 
-  calculateKalori(){
-    num hasil = totalKalori.fold(0, (a, b) => a+b);
-    return hasil;
-  }
 
   late Nutrients _articlesResult;
   late ResultState _state;
@@ -63,5 +54,37 @@ class NutrientProvider extends ChangeNotifier {
     }
   }
 
+  // hitung total cal
+  num totalKalori = 0;
   
+  calculateKalori(){
+    for (var item in totalItems) {
+      totalKalori += item.kalori;
+    }
+    notifyListeners();
+  }
+  
+
+  addItem(id, String name, String kategori, String pictureId, double kalori,
+      double lemak, double protein, double karbohidrat) {
+    totalItems.add(Nutrient(
+        id: id,
+        name: name,
+        kategori: kategori,
+        pictureId: pictureId,
+        kalori: kalori,
+        lemak: lemak,
+        protein: protein,
+        karbohidrat: karbohidrat));
+        notifyListeners();
+  }
+  clearItem(){
+    totalItems.clear();
+    notifyListeners();
+  }
+
+  delItem(int index){
+    totalItems.removeAt(index);
+    notifyListeners();
+  }
 }

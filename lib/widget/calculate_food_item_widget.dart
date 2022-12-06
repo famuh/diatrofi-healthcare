@@ -67,34 +67,30 @@ class CalculateFoodItemWidget extends StatelessWidget {
                           )
                         ],
                       ),
-                      InkWell(
-                        child: const CircleAvatar(
-                          radius: 20,
-                          backgroundColor: kStrongGreen,
-                          child: Icon(
-                            Icons.add,
-                            color: Colors.white,
-                          ),
-                        ),
-                        onTap: () {
-                          prov.totalItems.add({
-                            "id": item.id,
-                            "name": item.name,
-                            "kategori": item.kategori,
-                            "pictureId": item.pictureId,
-                            "kalori": item.kalori,
-                            "lemak": item.lemak,
-                            "protein": item.protein,
-                            "karbohidrat": item.karbohidrat
-                          });
-                          prov.totalKalori.add(item.kalori);
-                          prov.totalLemak.add(item.lemak);
-                          prov.totalProtein.add(item.protein);
-                          prov.totalKarbohidrat.add(item.karbohidrat);
-
-                          // print('${item.name} Added');
-                          print(prov.totalItems);
-                          print("calculate ${prov.calculateKalori()}");
+                      Consumer<NutrientProvider>(
+                        builder: (context, val, _) {
+                          return InkWell(
+                            child: const CircleAvatar(
+                              radius: 20,
+                              backgroundColor: kStrongGreen,
+                              child: Icon(
+                                Icons.add,
+                                color: Colors.white,
+                              ),
+                            ),
+                            onTap: () {
+                              val.addItem(
+                                  item.id,
+                                  item.name,
+                                  item.kategori,
+                                  item.pictureId,
+                                  item.kalori,
+                                  item.lemak,
+                                  item.protein,
+                                  item.karbohidrat);
+                                  print("total ${val.totalItems}");
+                            },
+                          );
                         },
                       )
                     ],
