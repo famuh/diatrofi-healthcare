@@ -15,7 +15,6 @@ class CalculateFoodItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final prov = Provider.of<NutrientProvider>(context);
     return Container(
       width: 320,
       margin: const EdgeInsets.symmetric(horizontal: 5),
@@ -88,8 +87,8 @@ class CalculateFoodItemWidget extends StatelessWidget {
                                   item.lemak,
                                   item.protein,
                                   item.karbohidrat);
-                                  val.calculateKalori();
-                                  print("total ${val.totalItems}");
+                              val.calculateKalori();
+                              print("total ${val.totalItems}");
                             },
                           );
                         },
@@ -100,26 +99,28 @@ class CalculateFoodItemWidget extends StatelessWidget {
                 SizedBox(
                   width: 160,
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      NutritionWidget(
-                        title: 'prots',
-                        total: item.protein,
-                        color: kBrightGreen,
-                      ),
-                      NutritionWidget(
-                        title: 'carbs',
-                        total: item.karbohidrat,
-                        color: kCarbs,
-                      ),
-                      NutritionWidget(
-                        title: 'fats',
-                        total: item.lemak,
-                        color: kFats,
-                      ),
-                    ],
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          NutritionWidget(
+                            title: 'prots',
+                            total: item.protein,
+                            color: kBrightGreen,
+                          ),
+                          NutritionWidget(
+                            title: 'carbs',
+                            total: item.karbohidrat,
+                            color: kCarbs,
+                          ),
+                          NutritionWidget(
+                            title: 'fats',
+                            total: item.lemak,
+                            color: kFats,
+                          ),
+                        ],
+                      )
+                    
                   ),
-                )
+                
               ],
             ),
           )

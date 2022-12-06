@@ -14,14 +14,7 @@ class NutrientProvider extends ChangeNotifier {
   }
 
   final List<Nutrient> _totalItems = [];
-  final List _totalLemak = [];
-  final List _totalProtein = [];
-  final List _totalKarbohidrat = [];
-
   List<Nutrient> get totalItems => _totalItems;
-  List get totalLemak => _totalLemak;
-  List get totalProtein => _totalProtein;
-  List get totalKarbohidrat => _totalKarbohidrat;
 
   late Nutrients _articlesResult;
   late ResultState _state;
@@ -54,18 +47,29 @@ class NutrientProvider extends ChangeNotifier {
     }
   }
 
-  // hitung total cal
+  // hitung total
   num totalKalori = 0;
-  
-  calculateKalori(){
+
+  num totalProtein = 0;
+  num totalKarbo = 0;
+  num totalLemak = 0;
+  calculateKalori() {
     totalKalori = 0;
+    totalProtein = 0;
+    totalKarbo = 0;
+    totalLemak = 0;
     for (var item in totalItems) {
       totalKalori += item.kalori;
+      totalProtein += item.protein;
+      totalKarbo += item.karbohidrat;
+      totalLemak += item.lemak;
     }
     print("total kalori : $totalKalori");
+    print("total protein : $totalProtein");
+    print("total karbo : $totalKarbo");
+    print("total lemak : $totalLemak");
     notifyListeners();
   }
-  
 
   addItem(id, String name, String kategori, String pictureId, double kalori,
       double lemak, double protein, double karbohidrat) {
@@ -78,14 +82,15 @@ class NutrientProvider extends ChangeNotifier {
         lemak: lemak,
         protein: protein,
         karbohidrat: karbohidrat));
-        notifyListeners();
+    notifyListeners();
   }
-  clearItem(){
+
+  clearItem() {
     totalItems.clear();
     notifyListeners();
   }
 
-  delItem(int index){
+  delItem(int index) {
     totalItems.removeAt(index);
     notifyListeners();
   }

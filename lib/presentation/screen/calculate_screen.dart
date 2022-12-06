@@ -19,7 +19,7 @@ class CalculateScreen extends StatefulWidget {
 class _CalculateScreenState extends State<CalculateScreen> {
   @override
   Widget build(BuildContext context) {
-    final prov = Provider.of<NutrientProvider>(context, listen: true);
+    // final prov = Provider.of<NutrientProvider>(context, listen: true);
     final mediaQuery = MediaQuery.of(context).size;
 
     final listItem = [];
@@ -69,8 +69,7 @@ class _CalculateScreenState extends State<CalculateScreen> {
                                 return ListView.builder(
                                   scrollDirection: Axis.horizontal,
                                   shrinkWrap: true,
-                                  itemCount:
-                                      7, // ke halaman article utk artikel lengkap
+                                  itemCount: 10,
                                   itemBuilder: (context, index) {
                                     var items = state.result.nutrients.where(
                                         (item) => item.kategori == "makanan");
@@ -116,14 +115,21 @@ class _CalculateScreenState extends State<CalculateScreen> {
                         title: 'fruit & vegie',
                         // onTap: (() => print('ke halaman more'))
                       ),
-                      IconButton(
-                          onPressed: () {
-                            prov.clearItem();
-                            print("items ${prov.totalItems}");
-                            
-                          },
-                          icon: Icon(Icons.clear)),
-                      
+                      Consumer<NutrientProvider>(
+                        builder: (context, value, child) {
+                          return IconButton(
+                              onPressed: () {
+                                value.clearItem();
+                                print("items ${value.totalItems}");
+                                print("total kalori : ${value.totalKalori}");
+                                print("total protein : ${value.totalProtein}");
+                                print("total karbo : ${value.totalKarbo}");
+                                print("total lemak : ${value.totalLemak}");
+                              },
+                              icon: Icon(Icons.clear));
+                        },
+                      ),
+
                       // Container(
                       //   height: 120,
                       //   margin: const EdgeInsets.fromLTRB(0, 5, 0, 10),
@@ -174,8 +180,12 @@ class _CalculateScreenState extends State<CalculateScreen> {
                                     CircleAvatar(
                                       radius: 15,
                                       backgroundColor: kMatteBlack,
-                                      child: Text(
-                                          prov.totalItems.length.toString()),
+                                      child: Consumer<NutrientProvider>(
+                                        builder: (context, value, child) {
+                                          return Text(value.totalItems.length
+                                              .toString());
+                                        },
+                                      ),
                                     ),
                                     const SizedBox(
                                       width: 10,
@@ -190,57 +200,62 @@ class _CalculateScreenState extends State<CalculateScreen> {
                         ),
                       ),
                       Container(
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(20)),
-                        height: 75,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(20)),
+                          height: 75,
+                          child: Consumer<NutrientProvider>(
+                            builder: (context, value, child) {
+                              return  Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                const FaIcon(FontAwesomeIcons.fire, size: 22, color: Colors.redAccent,),
-                                const SizedBox(height: 5,),
-                                Consumer<NutrientProvider>(
-                                  builder: (context, value, child) {
-                                    return Text(prov.totalKalori.toString());
-                                    
-                                  },
-                                  )
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const FaIcon(
+                                      FontAwesomeIcons.fire,
+                                      size: 22,
+                                      color: Colors.redAccent,
+                                    ),
+                                    const SizedBox(
+                                      height: 5,
+                                    ),
+                                    Text(value.totalKalori.toString())
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 50,
+                                  child: NutritionWidget(
+                                      title: 'prots',
+                                      total: value.totalProtein,
+                                      color: kBrightGreen,
+                                      size: 18,
+                                    ),
+                                ),
+                                SizedBox(
+                                  height: 50,
+                                  child: NutritionWidget(
+                                    title: 'carbs',
+                                    total: value.totalKarbo,
+                                    color: Colors.orange[800],
+                                    size: 18,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 50,
+                                  child: NutritionWidget(
+                                    title: 'fats',
+                                    total: value.totalLemak,
+                                    color: const Color.fromARGB(255, 212, 132, 3),
+                                    size: 18,
+                                  ),
+                                ),
                               ],
-                            ),
-                            
-                            SizedBox(
-                              height: 50,
-                              child: NutritionWidget(
-                                title: 'prots',
-                                total: totalProts,
-                                color: kBrightGreen,
-                                size: 18,
-                              ),
-                            ),
-                            SizedBox(
-                              height: 50,
-                              child: NutritionWidget(
-                                title: 'carbs',
-                                total: totalCarbs,
-                                color: Colors.orange[800],
-                                size: 18,
-                              ),
-                            ),
-                            SizedBox(
-                              height: 50,
-                              child: NutritionWidget(
-                                title: 'fats',
-                                total: totalFats,
-                                color: const Color.fromARGB(255, 212, 132, 3),
-                                size: 18,
-                              ),
-                            ),
-                          ],
-                        ),
-                      )
+                            );
+                          
+                            },
+                           
+                          ))
                     ],
                   ),
                 ),

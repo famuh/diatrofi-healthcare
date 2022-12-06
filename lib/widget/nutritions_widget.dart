@@ -16,7 +16,7 @@ class NutritionWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            '$total g',
+            '${total!.toStringAsFixed(2)} g',
             style: kBodyText.copyWith(
                 fontWeight: FontWeight.bold, color: color, fontSize: size),
           ),
