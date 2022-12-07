@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
         child: const CalculateScreen()),
       ],
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Diatrofi',
         theme: ThemeData.light().copyWith(
           colorScheme: kColorScheme,
           primaryColor: kMatteBlack,

@@ -55,7 +55,6 @@ class _CalculateScreenState extends State<CalculateScreen> {
                     children: [
                       SubHeading(
                         title: 'food',
-                        // onTap: (() => print('ke halaman more'))
                       ),
                       Container(
                           height: 120,
@@ -103,7 +102,6 @@ class _CalculateScreenState extends State<CalculateScreen> {
                           )),
                       SubHeading(
                         title: 'drink',
-                        // onTap: (() => print('ke halaman more'))
                       ),
                       Container(
                           height: 120,
@@ -151,7 +149,6 @@ class _CalculateScreenState extends State<CalculateScreen> {
                           )),
                       SubHeading(
                         title: 'fruit & vegie',
-                        // onTap: (() => print('ke halaman more'))
                       ),
                       Container(
                           height: 120,

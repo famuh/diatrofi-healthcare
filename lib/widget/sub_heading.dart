@@ -4,7 +4,6 @@ import '../common/constant.dart';
 
 class SubHeading extends StatelessWidget {
   String title;
-  // Function() onTap;
   SubHeading({super.key, required this.title, });
 
   @override
