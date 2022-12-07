@@ -1,5 +1,6 @@
 import 'package:diatfori/common/constant.dart';
 import 'package:diatfori/presentation/provider/resep_list_provider.dart';
+import 'package:diatfori/presentation/screen/screen/card.dart';
 import 'package:diatfori/widget/resep_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

@@ -3,7 +3,10 @@ import 'package:diatfori/common/constant.dart';
 import 'package:diatfori/data/model/food/food.dart';
 import 'package:diatfori/presentation/login/profile.dart';
 import 'package:diatfori/presentation/provider/article_provider.dart';
+import 'package:diatfori/presentation/provider/resep_detail_provider.dart';
 import 'package:diatfori/presentation/provider/resep_list_provider.dart';
+import 'package:diatfori/presentation/screen/screen/card.dart';
+import 'package:diatfori/presentation/screen/screen/detail_page.dart';
 import 'package:diatfori/widget/article_item_widget.dart';
 import 'package:diatfori/widget/food_item_widget.dart';
 import 'package:diatfori/widget/reseplist_item_widget.dart';
@@ -227,6 +230,50 @@ class _HomeScreenState extends State<HomeScreen> {
           const SizedBox(
             height: 15,
           ),
+          SubHeading(
+            title: 'Detail',
+          ),
+          Container(
+              height: 230,
+              // color: Colors.grey,
+              padding: const EdgeInsets.only(right: 10),
+              child: Consumer<ResepListProvider>(builder: (context, state, _) {
+                if (state.state == ResultState.loading) {
+                  return const Center(child: CircularProgressIndicator());
+                } else if (state.state == ResultState.hasData) {
+                  return ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    shrinkWrap: true,
+                    itemCount: state.result.results
+                        .length, // ke halaman article utk artikel lengkap
+                    itemBuilder: (context, index) {
+                      var resep = state.result.results[index];
+                      return CardRestaurant(restaurant: resep);
+                    },
+                  );
+                } else if (state.state == ResultState.noData) {
+                  return Center(
+                    child: Material(
+                      child: Text(state.message),
+                    ),
+                  );
+                } else if (state.state == ResultState.error) {
+                  return Center(
+                    child: Material(
+                      child: Text(state.message),
+                    ),
+                  );
+                } else {
+                  return const Center(
+                    child: Material(
+                      child: Text(''),
+                    ),
+                  );
+                }
+              },
+            )
+              
+          ),
           // check this out
           SubHeading(
             title: 'check this out',
@@ -268,7 +315,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   );
                 }
-              })),
+              },
+            )
+              
+          ),
         ],
       ),
     ));

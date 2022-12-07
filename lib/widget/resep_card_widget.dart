@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:diatfori/data/model/resep_list.dart';
+import 'package:diatfori/presentation/screen/screen/detail_page.dart';
 import 'package:flutter/material.dart';
 
 import '../common/constant.dart';
@@ -41,7 +42,9 @@ class ResepCard extends StatelessWidget {
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
               ),
-              onTap: () {}
+              onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return RestaurantDetailPage(keyResto: resep.key);
+        }));}
           ),
         ),
       ),

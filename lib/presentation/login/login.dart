@@ -18,7 +18,6 @@ class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-
   @override
   void dispose() {
     emailController.dispose();
@@ -56,10 +55,8 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 child: TextField(
                   controller: emailController,
-                  decoration: ThemeHelper()
-                                        .textInputDecoration(
-                                            'Masukan Email'),
-                  
+                  decoration:
+                      ThemeHelper().textInputDecoration('Masukan Email'),
                 ),
               ),
               Container(
@@ -73,9 +70,8 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 child: TextField(
                   controller: passwordController,
-                  decoration: ThemeHelper()
-                                        .textInputDecoration(
-                                            'Masukan Password'),
+                  decoration:
+                      ThemeHelper().textInputDecoration('Masukan Password'),
                 ),
               ),
               Container(
@@ -91,7 +87,7 @@ class _LoginPageState extends State<LoginPage> {
                       final result = await AuthServices.signIn(
                           emailController.text, passwordController.text);
                       if (result != null &&
-                          emailController.text != 'gobooks.admin@email.com') {
+                          emailController.text != '') {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
@@ -106,7 +102,7 @@ class _LoginPageState extends State<LoginPage> {
                           duration: Duration(milliseconds: 600),
                         ));
                       } else if (emailController.text ==
-                          'gobooks.admin@email.com') {
+                          '') {
                         ScaffoldMessenger.of(context)
                             .showSnackBar(const SnackBar(
                           content:

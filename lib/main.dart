@@ -7,6 +7,7 @@ import 'package:diatfori/presentation/login/welcome.dart';
 import 'package:diatfori/presentation/provider/resep_list_provider.dart';
 import 'package:diatfori/presentation/screen/homepage_screen.dart';
 import 'package:diatfori/presentation/screen/item_detail_screen.dart';
+import 'package:diatfori/presentation/screen/screen/home.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
