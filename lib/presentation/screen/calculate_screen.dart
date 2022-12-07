@@ -1,5 +1,6 @@
 import 'package:diatfori/common/constant.dart';
 import 'package:diatfori/presentation/provider/nutrients_provider.dart';
+import 'package:diatfori/presentation/screen/items_bag_screen.dart';
 import 'package:diatfori/widget/calculate_food_item_widget.dart';
 import 'package:diatfori/widget/sub_heading.dart';
 import 'package:flutter/material.dart';
@@ -21,11 +22,6 @@ class _CalculateScreenState extends State<CalculateScreen> {
   Widget build(BuildContext context) {
     // final prov = Provider.of<NutrientProvider>(context, listen: true);
     final mediaQuery = MediaQuery.of(context).size;
-
-    final listItem = [];
-    final double totalProts = 0;
-    final double totalCarbs = 0;
-    final double totalFats = 0;
 
     return Scaffold(
         appBar: AppBar(
@@ -249,16 +245,24 @@ class _CalculateScreenState extends State<CalculateScreen> {
                                     const SizedBox(
                                       width: 10,
                                     ),
-                                    Text('items',
-                                        style: kItemTittleCard.copyWith(
-                                            fontWeight: FontWeight.w500,
-                                            color: kSoftGrey)),
+                                    GestureDetector(
+                                      child: Text('items',
+                                          style: kItemTittleCard.copyWith(
+                                              fontWeight: FontWeight.w500,
+                                              color: kSoftGrey)),
+                                      onTap: () {
+                                        Navigator.pushNamed(
+                                            context, ItemBagScreen.ROUTE_NAME);
+                                      },
+                                    ),
                                   ],
                                 ))
                           ],
                         ),
                       ),
-                      const SizedBox(height: 5,),
+                      const SizedBox(
+                        height: 5,
+                      ),
                       Container(
                           decoration: BoxDecoration(
                               color: Colors.white,
@@ -321,8 +325,9 @@ class _CalculateScreenState extends State<CalculateScreen> {
                           return TextButton(
                             child: Text(
                               'clear',
-                              
-                              style: TextStyle(color: Colors.white,),
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
                             ),
                             onPressed: () {
                               value.clearItem();

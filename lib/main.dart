@@ -7,6 +7,7 @@ import 'package:diatfori/presentation/provider/nutrients_provider.dart';
 import 'package:diatfori/presentation/provider/resep_list_provider.dart';
 import 'package:diatfori/presentation/screen/homepage_screen.dart';
 import 'package:diatfori/presentation/screen/item_detail_screen.dart';
+import 'package:diatfori/presentation/screen/items_bag_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -33,10 +34,13 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<ResepListProvider>(
             create: (_) => ResepListProvider(apiService: ApiService()),
-            child: HomeScreen()),
+            child: const HomeScreen()),
         ChangeNotifierProvider<NutrientProvider>(
         create: (_) => NutrientProvider(apiService: ApiService()),
         child: const CalculateScreen()),
+        ChangeNotifierProvider<NutrientProvider>(
+        create: (_) => NutrientProvider(apiService: ApiService()),
+        child: const ItemBagScreen()),
       ],
       child: MaterialApp(
         title: 'Diatrofi',
@@ -45,7 +49,7 @@ class MyApp extends StatelessWidget {
           primaryColor: kMatteBlack,
           scaffoldBackgroundColor: Colors.white,
         ),
-        home: const MainPage(),
+        home: const CalculateScreen(),
         navigatorObservers: [routeObserver],
         onGenerateRoute: (RouteSettings settings) {
           switch (settings.name) {
@@ -65,6 +69,8 @@ class MyApp extends StatelessWidget {
                   builder: (_) => DetailScreen(food: food), settings: settings);
             case ProfilePage.routeName:
               return MaterialPageRoute(builder: (_) => const ProfilePage());
+            case ItemBagScreen.ROUTE_NAME:
+              return MaterialPageRoute(builder: (_) => const ItemBagScreen(),);
             default:
               return MaterialPageRoute(builder: (_) {
                 return const Scaffold(
