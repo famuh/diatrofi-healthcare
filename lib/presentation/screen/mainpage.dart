@@ -5,6 +5,7 @@ import 'package:diatfori/presentation/provider/article_provider.dart';
 import 'package:diatfori/presentation/provider/resep_list_provider.dart';
 import 'package:diatfori/presentation/screen/homepage_screen.dart';
 import 'package:diatfori/presentation/screen/recipe_screen.dart';
+import 'package:diatfori/presentation/screen/resep_favorite.dart';
 import 'package:diatfori/presentation/screen/resep_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -33,6 +34,8 @@ class _MainPageState extends State<MainPage> {
     ChangeNotifierProvider<ResepListProvider>(
         create: (_) => ResepListProvider(apiService: ApiService()),
         child: const ResepScreen()),
+    const ResepFavoriteScreen(),
+
 
   ];
 
