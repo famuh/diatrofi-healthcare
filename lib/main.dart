@@ -4,12 +4,14 @@ import 'package:diatfori/data/api/api_service.dart';
 import 'package:diatfori/firebase_options.dart';
 import 'package:diatfori/presentation/login/profile.dart';
 import 'package:diatfori/presentation/provider/resep_list_provider.dart';
+import 'package:diatfori/presentation/provider/resep_search_provider.dart';
 import 'package:diatfori/presentation/screen/homepage_screen.dart';
 import 'package:diatfori/presentation/screen/item_detail_screen.dart';
+import 'package:diatfori/presentation/screen/resep_favorite.dart';
+import 'package:diatfori/presentation/screen/search_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import 'common/utils.dart';
 import 'presentation/screen/article_web_view.dart';
 import 'presentation/screen/calculate_screen.dart';
@@ -33,6 +35,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<ResepListProvider>(
             create: (_) => ResepListProvider(apiService: ApiService()),
             child: HomeScreen()),
+        ChangeNotifierProvider<SearchResepProvider>(
+            create: (_) => SearchResepProvider(apiService: ApiService()),
+            child: ResepSearchPage()),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -47,6 +52,11 @@ class MyApp extends StatelessWidget {
           switch (settings.name) {
             case MainPage.ROUTE_NAME:
               return MaterialPageRoute(builder: (_) => const MainPage());
+            case ResepSearchPage.ROUTE_NAME:
+              return MaterialPageRoute(builder: (_) => const ResepSearchPage());
+            case ResepFavoriteScreen.ROUTE_NAME:
+              return MaterialPageRoute(
+                  builder: (_) => const ResepFavoriteScreen());
             case CalculateScreen.ROUTE_NAME:
               return MaterialPageRoute(builder: (_) => const CalculateScreen());
             // case '/articles':
