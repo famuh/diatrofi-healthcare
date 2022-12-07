@@ -1,42 +1,20 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:diatfori/data/model/nutrisi.dart';
+import 'package:diatfori/presentation/provider/nutrients_provider.dart';
 import 'package:diatfori/widget/nutritions_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../common/constant.dart';
 import 'kcal_widget.dart';
 
-class CalculateFoodItemWidget extends StatefulWidget {
-  String imgUrl;
-  double kcal;
-  String itemName;
-  double prots;
-  double carbs;
-  double fats;
+class CalculateFoodItemWidget extends StatelessWidget {
+  Nutrient item;
 
-  CalculateFoodItemWidget(
-      {super.key,
-      required this.imgUrl,
-      required this.kcal,
-      required this.itemName,
-      required this.prots,
-      required this.carbs,
-      required this.fats});
+  CalculateFoodItemWidget({super.key, required this.item});
 
-  @override
-  State<CalculateFoodItemWidget> createState() =>
-      _CalculateFoodItemWidgetState();
-}
-
-class _CalculateFoodItemWidgetState extends State<CalculateFoodItemWidget> {
   @override
   Widget build(BuildContext context) {
-    String imgUrl = widget.imgUrl;
-    double kcal = widget.kcal;
-    String itemName = widget.itemName;
-    double prots = widget.prots;
-    double carbs = widget.carbs;
-    double fats = widget.fats;
-
     return Container(
       width: 320,
       margin: const EdgeInsets.symmetric(horizontal: 5),
@@ -54,7 +32,7 @@ class _CalculateFoodItemWidgetState extends State<CalculateFoodItemWidget> {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: CachedNetworkImage(
-                imageUrl: imgUrl,
+                imageUrl: item.pictureId,
                 fit: BoxFit.cover,
                 placeholder: (context, url) => const Center(
                   child: CircularProgressIndicator(),
@@ -78,25 +56,41 @@ class _CalculateFoodItemWidgetState extends State<CalculateFoodItemWidget> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          KcalWidget(kcal: kcal),
+                          KcalWidget(kcal: item.kalori),
                           const SizedBox(height: 5),
                           Text(
-                            itemName,
+                            item.name,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
                             style: kItemTittleCard,
                           )
                         ],
                       ),
-                      InkWell(
-                        child: const CircleAvatar(
-                          radius: 20,
-                          backgroundColor: kStrongGreen,
-                          child: Icon(
-                            Icons.add,
-                            color: Colors.white,
-                          ),
-                        ),
-                        onTap: () {
-                          print('add item');
+                      Consumer<NutrientProvider>(
+                        builder: (context, val, _) {
+                          return InkWell(
+                            child: const CircleAvatar(
+                              radius: 20,
+                              backgroundColor: kStrongGreen,
+                              child: Icon(
+                                Icons.add,
+                                color: Colors.white,
+                              ),
+                            ),
+                            onTap: () {
+                              val.addItem(
+                                  item.id,
+                                  item.name,
+                                  item.kategori,
+                                  item.pictureId,
+                                  item.kalori,
+                                  item.lemak,
+                                  item.protein,
+                                  item.karbohidrat);
+                              val.calculateKalori();
+                              print("total ${val.totalItems}");
+                            },
+                          );
                         },
                       )
                     ],
@@ -105,26 +99,28 @@ class _CalculateFoodItemWidgetState extends State<CalculateFoodItemWidget> {
                 SizedBox(
                   width: 160,
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      NutritionWidget(
-                        title: 'prots',
-                        total: prots,
-                        color: kBrightGreen,
-                      ),
-                      NutritionWidget(
-                        title: 'carbs',
-                        total: carbs,
-                        color: kCarbs,
-                      ),
-                      NutritionWidget(
-                        title: 'fats',
-                        total: fats,
-                        color: kFats,
-                      ),
-                    ],
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          NutritionWidget(
+                            title: 'prots',
+                            total: item.protein,
+                            color: kBrightGreen,
+                          ),
+                          NutritionWidget(
+                            title: 'carbs',
+                            total: item.karbohidrat,
+                            color: kCarbs,
+                          ),
+                          NutritionWidget(
+                            title: 'fats',
+                            total: item.lemak,
+                            color: kFats,
+                          ),
+                        ],
+                      )
+                    
                   ),
-                )
+                
               ],
             ),
           )

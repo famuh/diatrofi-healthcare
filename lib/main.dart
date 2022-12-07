@@ -3,12 +3,15 @@ import 'package:diatfori/data/model/food/food.dart';
 import 'package:diatfori/data/api/api_service.dart';
 import 'package:diatfori/firebase_options.dart';
 import 'package:diatfori/presentation/login/profile.dart';
+import 'package:diatfori/presentation/provider/nutrients_provider.dart';
+import 'package:diatfori/presentation/screen/item_detail_screen.dart';
+import 'package:diatfori/presentation/screen/items_bag_screen.dart';
 import 'package:diatfori/presentation/provider/resep_list_provider.dart';
 import 'package:diatfori/presentation/provider/resep_search_provider.dart';
 import 'package:diatfori/presentation/screen/homepage_screen.dart';
-import 'package:diatfori/presentation/screen/item_detail_screen.dart';
 import 'package:diatfori/presentation/screen/resep_favorite.dart';
 import 'package:diatfori/presentation/screen/search_screen.dart';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -34,13 +37,23 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<ResepListProvider>(
             create: (_) => ResepListProvider(apiService: ApiService()),
-            child: HomeScreen()),
+            child: const HomeScreen()),
+            
+        ChangeNotifierProvider<NutrientProvider>(
+            create: (_) => NutrientProvider(apiService: ApiService()),
+            child: const CalculateScreen()),
+        
+        ChangeNotifierProvider<NutrientProvider>(
+            create: (_) => NutrientProvider(apiService: ApiService()),
+            child: const ItemBagScreen()),
+
         ChangeNotifierProvider<SearchResepProvider>(
             create: (_) => SearchResepProvider(apiService: ApiService()),
             child: ResepSearchPage()),
+
       ],
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Diatrofi',
         theme: ThemeData.light().copyWith(
           colorScheme: kColorScheme,
           primaryColor: kMatteBlack,
@@ -71,6 +84,8 @@ class MyApp extends StatelessWidget {
                   builder: (_) => DetailScreen(food: food), settings: settings);
             case ProfilePage.routeName:
               return MaterialPageRoute(builder: (_) => const ProfilePage());
+            case ItemBagScreen.ROUTE_NAME:
+              return MaterialPageRoute(builder: (_) => const ItemBagScreen(),);
             default:
               return MaterialPageRoute(builder: (_) {
                 return const Scaffold(

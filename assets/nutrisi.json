@@ -43,7 +43,7 @@
     "id": "F05",
     "name": "Udang",
     "kategori": "makanan",
-    "pictureId": "https://images.unsplash.com/photo-1657856198189-fbfaa6f798bb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+    "pictureId": "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
     "Kalori": 7,
     "Lemak": 0.12,
     "Protein": 1.38,
@@ -99,10 +99,6 @@
     "Protein": 7.22,
     "Karbohidrat": 40.02
   },
-
-
-
-
  
   {
     "id": "D01",
@@ -213,7 +209,7 @@
     "id": "V01",
     "name": "Sayur Bayam",
     "kategori": "tumbuhan",
-    "pictureId": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.bola.com%2Fragam%2Fread%2F4473841%2F8-manfaat-bayam-bagi-kesehatan-tanaman-murah-kaya-khasiat&psig=AOvVaw1g3bsOeO106OhSPm0MZRBa&ust=1670172713721000&source=images&cd=vfe&ved=0CA8QjRxqFwoTCPj4kK303fsCFQAAAAAdAAAAABAE",
+    "pictureId": "https://images.unsplash.com/photo-1576045057995-568f588f82fb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80",
     "Kalori": 23.2,
     "Lemak": 0.4,
     "Protein": 2.9,

@@ -138,14 +138,35 @@ class _HomeScreenState extends State<HomeScreen> {
                     CalculateScreen.ROUTE_NAME,
                   );
                 },
-                child: Container(
-                  margin: const EdgeInsets.only(top: 17, bottom: 17),
-                  padding: const EdgeInsets.symmetric(horizontal: 17),
-                  height: size.height * 0.15,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20), color: kPink),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                icon: const Icon(
+                  Icons.person_rounded,
+                  color: Colors.black,
+                  size: 25,
+                ),
+              )
+            ],
+          ),
+
+          //  calculate
+          InkWell(
+            onTap: () {
+              Navigator.pushNamed(
+                context,
+                CalculateScreen.ROUTE_NAME,
+              );
+            },
+            child: Container(
+              margin: const EdgeInsets.only(top: 17, bottom: 17),
+              padding: const EdgeInsets.symmetric(horizontal: 17),
+              height: size.height * 0.15,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20), color: kPink),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+
                     children: [
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -280,6 +301,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     }
                   })),
             ],
+
           ),
         ));
   }
