@@ -230,32 +230,32 @@ class _CalculateScreenState extends State<CalculateScreen> {
                             const Spacer(),
                             SizedBox(
                                 width: 90,
-                                child: Row(
-                                  children: [
-                                    CircleAvatar(
-                                      radius: 15,
-                                      backgroundColor: kMatteBlack,
-                                      child: Consumer<NutrientProvider>(
-                                        builder: (context, value, child) {
-                                          return Text(value.totalItems.length
-                                              .toString());
-                                        },
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Navigator.pushNamed(
+                                        context, ItemBagScreen.ROUTE_NAME);
+                                  },
+                                  child: Row(
+                                    children: [
+                                      CircleAvatar(
+                                        radius: 15,
+                                        backgroundColor: kMatteBlack,
+                                        child: Consumer<NutrientProvider>(
+                                          builder: (context, value, child) {
+                                            return Text(value.totalItems.length
+                                                .toString());
+                                          },
+                                        ),
                                       ),
-                                    ),
-                                    const SizedBox(
-                                      width: 10,
-                                    ),
-                                    GestureDetector(
-                                      child: Text('items',
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text('items',
                                           style: kItemTittleCard.copyWith(
                                               fontWeight: FontWeight.w500,
                                               color: kSoftGrey)),
-                                      onTap: () {
-                                        Navigator.pushNamed(
-                                            context, ItemBagScreen.ROUTE_NAME);
-                                      },
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ))
                           ],
                         ),
@@ -323,7 +323,7 @@ class _CalculateScreenState extends State<CalculateScreen> {
                       Consumer<NutrientProvider>(
                         builder: (context, value, child) {
                           return TextButton(
-                            child: Text(
+                            child: const Text(
                               'clear',
                               style: TextStyle(
                                 color: Colors.white,

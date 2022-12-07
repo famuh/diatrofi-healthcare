@@ -53,12 +53,12 @@ class DetailScreen extends StatelessWidget {
           ];
         },
         body: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                  margin: EdgeInsets.symmetric(vertical: 15),
+                  margin: const EdgeInsets.symmetric(vertical: 15),
                   constraints: const BoxConstraints(maxWidth: 120),
                   padding:
                       const EdgeInsets.symmetric(vertical: 10, horizontal: 15),

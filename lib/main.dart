@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
           primaryColor: kMatteBlack,
           scaffoldBackgroundColor: Colors.white,
         ),
-        home: const CalculateScreen(),
+        home: const MainPage(),
         navigatorObservers: [routeObserver],
         onGenerateRoute: (RouteSettings settings) {
           switch (settings.name) {
