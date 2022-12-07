@@ -56,15 +56,9 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 child: TextField(
                   controller: emailController,
-                  cursorColor: kSoftGreen,
-                  decoration: const InputDecoration(
-                    icon: Icon(
-                      Icons.person,
-                      color: kMatteBlack,
-                    ),
-                    hintText: "Email",
-                    border: InputBorder.none,
-                  ),
+                  decoration: ThemeHelper()
+                                        .textInputDecoration(
+                                            'Masukan Email'),
                   
                 ),
               ),
@@ -79,16 +73,9 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 child: TextField(
                   controller: passwordController,
-                  obscureText: true,
-                  cursorColor: kSoftGreen,
-                  decoration: const InputDecoration(
-                    icon: Icon(
-                      Icons.lock,
-                      color: kMatteBlack,
-                    ),
-                    hintText: "Password",
-                    border: InputBorder.none,
-                  ),
+                  decoration: ThemeHelper()
+                                        .textInputDecoration(
+                                            'Masukan Password'),
                 ),
               ),
               Container(

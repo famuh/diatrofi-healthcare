@@ -16,6 +16,75 @@ const Color kLineGreen = Color(0xFF00FF74);
 const Color kFats = Color.fromARGB(255, 212, 132, 3);
 const Color kCarbs = Color.fromARGB(255, 239, 108, 0);
 
+//Login
+class ThemeHelper{
+
+  InputDecoration textInputDecoration([String hintText = ""]){
+    return InputDecoration(
+      icon: Icon(
+                      Icons.person,
+                      color: kMatteBlack,
+                    ),
+      hintText: hintText,
+      fillColor: kSoftGreen,
+      focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(7), borderSide: BorderSide(color: kSoftGreen)),
+      enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(7), borderSide: BorderSide(color: kSoftGreen)),
+      errorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(7), borderSide: BorderSide(color: kSoftGreen)),
+      focusedErrorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(7), borderSide: BorderSide(color: kSoftGreen)),
+    );
+  }
+
+  BoxDecoration inputBoxDecorationShaddow() {
+    return BoxDecoration(boxShadow: [
+      BoxShadow(
+        color: Colors.black.withOpacity(0.1),
+        blurRadius: 20,
+        offset: const Offset(0, 5),
+        
+      )
+    ]);
+  }
+  
+
+  ButtonStyle buttonStyle() {
+    return ButtonStyle(
+      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+        RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30.0),
+        ),
+      ),
+      minimumSize: MaterialStateProperty.all(Size(50, 50)),
+      backgroundColor: MaterialStateProperty.all(Colors.transparent),
+      shadowColor: MaterialStateProperty.all(Colors.transparent),
+    );
+  }
+
+  AlertDialog alartDialog(String title, String content, BuildContext context) {
+    return AlertDialog(
+      title: Text(title),
+      content: Text(content),
+      actions: [
+        TextButton(
+          child: Text(
+            "OK",
+            style: TextStyle(color: Colors.white),
+          ),
+          style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(Colors.black38)),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+      ],
+    );
+  }
+
+}
+
+class LoginFormStyle{
+
+}
+
 // text style
 final TextStyle kAuthScreen = GoogleFonts.poppins(
   fontSize: 24,

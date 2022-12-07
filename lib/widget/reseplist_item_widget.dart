@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:diatfori/data/model/resep_list.dart';
+import 'package:diatfori/presentation/screen/screen/item_resep_detail.dart';
 import 'package:flutter/material.dart';
 
 import '../common/constant.dart';
@@ -16,7 +17,9 @@ class ResepItem extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       color: kSoftGrey,
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.pushNamed(context, ItemDetailScreen.ROUTE_NAME, arguments: resep);
+        },
         child: Container(
           width: 210,
           padding: const EdgeInsets.all(8.0),
