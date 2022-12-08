@@ -22,7 +22,7 @@ class ItemBagScreen extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(8),
             
-            height: MediaQuery.of(context).size.height / 8,
+            height: MediaQuery.of(context).size.height / 6,
             decoration: const BoxDecoration(
             color: kStrongGreen,
             borderRadius: BorderRadius.only(

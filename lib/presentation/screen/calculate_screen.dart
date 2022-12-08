@@ -201,7 +201,7 @@ class _CalculateScreenState extends State<CalculateScreen> {
                 bottom: 0,
                 child: Container(
                   width: mediaQuery.width,
-                  height: mediaQuery.height / 4.5,
+                  height: mediaQuery.height / 4,
                   padding: const EdgeInsets.fromLTRB(10, 15, 10, 0),
                   decoration: const BoxDecoration(
                     borderRadius: BorderRadius.only(
@@ -267,7 +267,7 @@ class _CalculateScreenState extends State<CalculateScreen> {
                           decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(20)),
-                          height: 75,
+                          height: 70,
                           child: Consumer<NutrientProvider>(
                             builder: (context, value, child) {
                               return Row(
