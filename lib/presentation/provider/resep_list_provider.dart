@@ -8,7 +8,7 @@ class ResepListProvider extends ChangeNotifier {
   final ApiService apiService;
 
   ResepListProvider({required this.apiService}) {
-    _fetchAllArticle();
+    _fetchAllRecipes();
   }
 
   late Reseplist _articlesResult;
@@ -22,7 +22,7 @@ class ResepListProvider extends ChangeNotifier {
 
   ResultState get state => _state;
 
-  Future<dynamic> _fetchAllArticle() async {
+  Future<dynamic> _fetchAllRecipes() async {
     try {
       _state = ResultState.loading;
       notifyListeners();

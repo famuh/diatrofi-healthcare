@@ -20,10 +20,10 @@ class ApiService {
     }
   }
 
-  Future<Resepdetail> getDetailId(String key) async {
-    final response = await http.get(Uri.parse("$_baseUrl/api/recipe/:$key"));
+  Future<ResepDetail> getDetailId(String key) async {
+    final response = await http.get(Uri.parse("${_baseUrl}api/recipe/:$key"));
     if (response.statusCode == 200) {
-      return Resepdetail.fromJson(json.decode(response.body));
+      return ResepDetail.fromJson(json.decode(response.body));
     } else {
       throw Exception(_throw);
     }

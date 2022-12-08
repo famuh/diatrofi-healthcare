@@ -1,11 +1,11 @@
 import 'dart:convert';
 
-Resepdetail resepdetailFromJson(String str) => Resepdetail.fromJson(json.decode(str));
+ResepDetail resepdetailFromJson(String str) => ResepDetail.fromJson(json.decode(str));
 
-String resepdetailToJson(Resepdetail data) => json.encode(data.toJson());
+String resepdetailToJson(ResepDetail data) => json.encode(data.toJson());
 
-class Resepdetail {
-  Resepdetail({
+class ResepDetail {
+  ResepDetail({
     required this.method,
     required this.status,
     required this.results,
@@ -15,7 +15,7 @@ class Resepdetail {
   final bool status;
   final ResultDetailResep results;
 
-  factory Resepdetail.fromJson(Map<String, dynamic> json) => Resepdetail(
+  factory ResepDetail.fromJson(Map<String, dynamic> json) => ResepDetail(
     method: json["method"],
     status: json["status"],
     results: ResultDetailResep.fromJson(json["results"]),

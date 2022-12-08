@@ -1,125 +1,100 @@
 import 'package:diatfori/common/constant.dart';
-import 'package:diatfori/data/model/food/food.dart';
-import 'package:diatfori/presentation/screen/food_recipe_screen.dart';
-import 'package:diatfori/widget/kcal_widget.dart';
-import 'package:diatfori/widget/nutritions_widget.dart';
+import 'package:diatfori/data/api/api_service.dart';
+import 'package:diatfori/presentation/provider/resep_detail_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
+
+import '../../data/model/food/food.dart';
+import '../../data/model/resep_detail.dart';
+import '../../widget/kcal_widget.dart';
+import 'food_recipe_screen.dart';
 
 class DetailScreen extends StatelessWidget {
   static const ROUTE_NAME = '/detail';
-  final Food food;
-  const DetailScreen({super.key, required this.food});
+  String keyResep;
+  DetailScreen({super.key, required this.keyResep});
 
   @override
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context).size;
-    return Scaffold(
-      body: 
-      NestedScrollView(
-        headerSliverBuilder: (context, isScrolled) {
-          return [
-            SliverAppBar(
-              leading: IconButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(
-                    Icons.arrow_back_ios_new_rounded,
-                  )),
-              actions: [
-                IconButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, FoodRecipeScreen.ROUTE_NAME, arguments: food);
-                    },
-                    icon: FaIcon(
-                      FontAwesomeIcons.fire,
-                    )),
-                IconButton(
-                    onPressed: () {},
-                    icon: FaIcon(
-                      FontAwesomeIcons.plus,
-                    )),
-              ],
-              elevation: 0,
-              shadowColor: Colors.transparent,
-              expandedHeight: 300,
-              flexibleSpace: FlexibleSpaceBar(
-                background: Image.network(
-                    food.imgUrl,
-                    fit: BoxFit.cover),
-              ),
-            ),
-          ];
-        },
-        body: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                  margin: const EdgeInsets.symmetric(vertical: 15),
-                  constraints: const BoxConstraints(maxWidth: 120),
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                  decoration: BoxDecoration(
-                      color: Colors.pink[100],
-                      borderRadius: BorderRadius.circular(20)),
-                  child: KcalWidget(kcal: 123)),
-
-              // Nama item
-              Text(
-                food.name,
-                style: const TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w600,
-                ),
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-              ),
-
-              // Informasi Nutrisi
-              Container(
-                width: mediaQuery.width,
-                height: 80,
-                margin: const EdgeInsets.symmetric(vertical: 15),
-                decoration: BoxDecoration(
-                    color: kSoftGreen, borderRadius: BorderRadius.circular(30)),
-                child: Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+    return ChangeNotifierProvider(
+      create: (_) =>
+          ResepDetailProvider(apiService: ApiService(), keyResep: keyResep),
+      child: Scaffold(
+        body: Consumer<ResepDetailProvider>(
+          builder: (context, state, _) {
+            if (state.state == ResultState.loading) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (state.state == ResultState.hasData) {
+              var resep = state.result.results;
+              return NestedScrollView(
+                headerSliverBuilder: (context, isScrolled) {
+                  return [
+                    SliverAppBar(
+                      leading: IconButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          icon: const Icon(
+                            Icons.arrow_back_ios_new_rounded,
+                          )),
+                      actions: [
+                        IconButton(
+                            onPressed: () {
+                              Navigator.pushNamed(
+                                  context, FoodRecipeScreen.ROUTE_NAME,
+                                  arguments: ModalRoute.of(context)?.settings
+                                      as ResultDetailResep);
+                            },
+                            icon: FaIcon(
+                              FontAwesomeIcons.fire,
+                            )),
+                      ],
+                      elevation: 0,
+                      shadowColor: Colors.transparent,
+                      expandedHeight: 300,
+                      flexibleSpace: FlexibleSpaceBar(
+                        background:
+                            Image.network(resep.thumb, fit: BoxFit.cover),
+                      ),
+                    ),
+                  ];
+                },
+                body: SingleChildScrollView(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      NutritionWidget(
-                        title: "prots",
-                        total: food.prots,
-                        size: 18,
-                        color: kBrightGreen,
+                      // Nama item
+                      Text(
+                        resep.title,
+                        style: const TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.w600,
+                        ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                      NutritionWidget(
-                        title: "carbs",
-                        total: food.carbs,
-                        size: 18,
-                        color: kCarbs,
-                      ),
-                      NutritionWidget(
-                        title: "fats",
-                        total: food.fats,
-                        size: 18,
-                        color: kFats,
+
+                      // deskripsi
+                      Text(
+                        resep.desc,
+                        maxLines: 4,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ],
                   ),
                 ),
-              ),
-
-              // deskripsi
-              Text(
-                food.description,
-                maxLines: 4,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ],
-          ),
+              );
+            } else if (state.state == ResultState.error) {
+              return Center(
+                child: Text(state.message),
+              );
+            } else {
+              return const Text('');
+            }
+          },
         ),
       ),
     );

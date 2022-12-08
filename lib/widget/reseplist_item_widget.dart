@@ -1,10 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:diatfori/data/model/resep_list.dart';
+import 'package:diatfori/presentation/screen/item_detail_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../common/constant.dart';
-import '../data/model/article.dart';
-import '../presentation/screen/article_web_view.dart';
 
 class ResepItem extends StatelessWidget {
   final ResultResep resep;
@@ -16,7 +15,12 @@ class ResepItem extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       color: kSoftGrey,
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.pushNamed(context, 
+          DetailScreen.ROUTE_NAME,
+          arguments: resep.key
+          );
+        },
         child: Container(
           width: 210,
           padding: const EdgeInsets.all(8.0),
@@ -37,7 +41,7 @@ class ResepItem extends StatelessWidget {
                       child: CircularProgressIndicator(),
                     ),
                     errorWidget: (context, url, error) =>
-                    const Icon(Icons.error),
+                        const Icon(Icons.error),
                   ),
                 ),
               ),
@@ -45,16 +49,17 @@ class ResepItem extends StatelessWidget {
                 resep.title,
                 maxLines: 2,
                 style:
-                const TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
+                    const TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
                 overflow: TextOverflow.ellipsis,
               ),
-
-              const SizedBox(height: 5,),
-              Text( "Durasi Penyajian : " +
-                  resep.times,
+              const SizedBox(
+                height: 5,
+              ),
+              Text(
+                "Durasi Penyajian : " + resep.times,
                 maxLines: 2,
                 style:
-                const TextStyle(fontWeight: FontWeight.w400, fontSize: 14),
+                    const TextStyle(fontWeight: FontWeight.w400, fontSize: 14),
                 overflow: TextOverflow.ellipsis,
               ),
             ],

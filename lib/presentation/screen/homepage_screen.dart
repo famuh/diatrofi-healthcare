@@ -181,14 +181,13 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ],
                         ),
-                        
                       ],
                     ),
                     Lottie.asset(
-                          "assets/lottie/login.json",
-                          fit: BoxFit.fitWidth,
-                          width: 125,
-                        ),
+                      "assets/lottie/login.json",
+                      fit: BoxFit.fitWidth,
+                      width: 125,
+                    ),
                   ]),
             ),
           ),
@@ -240,6 +239,7 @@ class _HomeScreenState extends State<HomeScreen> {
           const SizedBox(
             height: 15,
           ),
+
           // check this out
           SubHeading(
             title: 'check this out',
@@ -256,7 +256,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     scrollDirection: Axis.horizontal,
                     shrinkWrap: true,
                     itemCount: state.result.results
-                        .length, // ke halaman article utk artikel lengkap
+                        .length,
                     itemBuilder: (context, index) {
                       var resep = state.result.results[index];
                       return ResepItem(resep: resep);
