@@ -51,4 +51,6 @@ class CardArticle extends StatelessWidget {
       ),
     );
   }
+
 }
+

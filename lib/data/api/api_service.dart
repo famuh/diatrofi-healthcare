@@ -5,6 +5,9 @@ import 'package:http/http.dart' as http;
 import 'package:diatfori/data/model/resep_list.dart';
 import 'package:diatfori/data/model/resep_detail.dart';
 import 'package:diatfori/data/model/resep_search.dart';
+import 'package:http/http.dart' as http;
+import 'package:diatfori/data/model/resep_list.dart';
+
 
 class ApiService {
   static const String _baseUrl = 'https://masak-apa.tomorisakura.vercel.app/';
@@ -30,7 +33,7 @@ class ApiService {
 
   Future<Resepsearch> getTextField(String parameter) async {
     final response =
-        await http.get(Uri.parse('${_baseUrl}api/search/?q=$parameter'));
+    await http.get(Uri.parse('${_baseUrl}api/search/?q=$parameter'));
     if (response.statusCode == 200) {
       return Resepsearch.fromJson(json.decode(response.body));
     } else {
@@ -57,10 +60,12 @@ class ApiService {
   Future<Nutrients> nutrients() async {
     final response = await http.get(
         Uri.parse("https://mocki.io/v1/34871b54-8a6b-49f0-9e8b-b815af83ac2b"));
+
     if (response.statusCode == 200) {
       return Nutrients.fromJson(json.decode(response.body));
     } else {
       throw Exception('Failed to load nutrients');
     }
   }
+
 }
