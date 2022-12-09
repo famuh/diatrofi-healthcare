@@ -102,7 +102,7 @@ class FoodRecipeScreen extends StatelessWidget {
                       ),
 
                       // ingredients
-                      _sectionRecipe('bahan-bahan'),
+                      _sectionRecipe('bahan'),
                       Container(
                           margin: const EdgeInsets.only(left: 20),
                           constraints: const BoxConstraints(maxHeight: 50),
@@ -127,14 +127,14 @@ class FoodRecipeScreen extends StatelessWidget {
                                       const SizedBox(
                                         width: 10,
                                       ),
-                                      Text(resep.ingredient[index])
+                                      Expanded(child: Text(resep.ingredient[index]))
                                     ],
                                   );
                                 }),
                           )),
 
                       // steps
-                      _sectionRecipe('langkah-langkah'),
+                      _sectionRecipe('cara'),
                       const SizedBox(
                         height: 5,
                       ),
