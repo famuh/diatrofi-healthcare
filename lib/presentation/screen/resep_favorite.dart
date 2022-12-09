@@ -1,5 +1,9 @@
 import 'package:diatfori/common/constant.dart';
+import 'package:diatfori/presentation/provider/database_provider.dart';
+import 'package:diatfori/widget/resep_card_widget.dart';
+import 'package:diatfori/widget/reseplist_item_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 
 class ResepFavoriteScreen extends StatefulWidget {
@@ -39,5 +43,32 @@ class _ResepFavoriteScreen extends State<ResepFavoriteScreen> {
     );
   }
 
-  _buildList() {}
+  _buildList() {
+    return Consumer<DatabaseProvider>(
+      builder: (context, state, _) {
+        if (state.state == ResultState.loading) {
+          return const Center(child: CircularProgressIndicator());
+        } else if (state.state == ResultState.hasData) {
+          return ListView.builder(
+            shrinkWrap: true,
+            itemCount: state.favorites.length,
+            itemBuilder: (context, index) {
+              var restaurant = state.favorites[index];
+              return ResepCard(
+                resep: restaurant,
+              );
+            },
+          );
+        } else if (state.state == ResultState.noData) {
+          return Center(child: Text(state.message));
+        } else if (state.state == ResultState.error) {
+          return Center(child: Text(state.message));
+        } else {
+          return const Center(child: Text(''));
+        }
+      },
+    );
+
+
+  }
 }

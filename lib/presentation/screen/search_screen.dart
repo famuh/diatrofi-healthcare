@@ -82,9 +82,9 @@ class _ResepSearchPageState extends State<ResepSearchPage> {
                         shrinkWrap: true,
                         itemCount: state.result!.results.length,
                         itemBuilder: (context, index) {
-                          var restaurant =
+                          var resep =
                           state.result!.results[index];
-                          return CardSearch(restaurant: restaurant);
+                          return CardSearch(resep: resep);
                         },
                       );
                     } else if (state.state == ResultState.noData) {
