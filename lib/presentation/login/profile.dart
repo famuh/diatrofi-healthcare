@@ -19,19 +19,9 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  late User user;
-
-
   @override
   void initState() {
     super.initState();
-
-    initUser();
-  }
-
-  initUser() async {
-    user = _auth.currentUser!;
-    setState(() {});
   }
 
 
@@ -47,8 +37,7 @@ class _ProfilePageState extends State<ProfilePage> {
         title: Text(
           'Profile',
           style: Theme.of(context).textTheme.headline6?.copyWith(
-              color: kMatteBlack, fontWeight: FontWeight.bold, fontSize: 25),
-
+              color: kSoftGrey, fontWeight: FontWeight.bold, fontSize: 25),
         ),
       ),
       body: Column(
@@ -64,7 +53,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   width: size.width * 0.9,
                   height: size.height * 1 / 6,
                   margin:
-                      const EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
+                  const EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
                   decoration: BoxDecoration(
                     color: kStrongGreen,
                     borderRadius: BorderRadius.circular(10),
@@ -72,13 +61,8 @@ class _ProfilePageState extends State<ProfilePage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('${user.email}',
-                          style: Theme.of(context)
-                              .textTheme
-                              .headline6
-                              ?.copyWith(color: Colors.white)),
-                      const Text('Status : Mahasiswa',
 
+                      const Text('Status : USER',
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             color: Colors.white,
@@ -98,7 +82,7 @@ class _ProfilePageState extends State<ProfilePage> {
               },
               child: Container(
                 margin:
-                    const EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
+                const EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
                 height: size.height * 1 / 16,
                 width: size.width * 0.9,
                 decoration: BoxDecoration(
@@ -110,17 +94,17 @@ class _ProfilePageState extends State<ProfilePage> {
                   children: [
                     const Icon(
                       Icons.logout_rounded,
-                      color: Colors.black,
+                      color: Colors.white,
                       size: 25,
                     ),
                     const SizedBox(width: 5),
                     Text(
                       'Log Out',
                       style: Theme.of(context).textTheme.button?.copyWith(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
                     ),
                   ],
                 ),

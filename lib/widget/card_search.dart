@@ -1,11 +1,12 @@
 import 'package:diatfori/common/constant.dart';
 import 'package:diatfori/data/model/resep_search.dart';
+import 'package:diatfori/presentation/screen/item_detail_screen.dart';
 import 'package:flutter/material.dart';
 
 class CardSearch extends StatelessWidget {
-  final ResultResepSearch restaurant;
+  final Result resep;
 
-  const CardSearch({Key? key, required this.restaurant}) : super(key: key);
+  const CardSearch({Key? key, required this.resep}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,15 +27,16 @@ class CardSearch extends StatelessWidget {
                     child: Container(
                         padding: const EdgeInsets.all(5.0),
                         child: Image.network(
-                            restaurant.thumb)),
+                            resep.thumb)),
                   ),
                 ),
                 title: Text(
-                  restaurant.title,
+                  resep.title,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
-                onTap: () {}
+                onTap: () {Navigator.pushNamed(context, DetailScreen.ROUTE_NAME,
+                    arguments: resep.key);}
             ),
           ),
         ),
