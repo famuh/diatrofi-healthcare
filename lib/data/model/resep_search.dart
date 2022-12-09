@@ -25,7 +25,7 @@ class Resepsearch {
     method: json["method"],
     status: json["status"],
     results:
-    List<Result>.from(json["results"].map((x) => Result.fromJson(x))),
+    List<ResultResepSearch>.from(json["results"].map((x) => ResultResepSearch.fromJson(x))),
 
   );
 
