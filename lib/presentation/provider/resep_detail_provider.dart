@@ -1,48 +1,44 @@
-// import 'dart:io';
-// import 'dart:async';
-// import 'package:flutter/material.dart';
-// import 'package:diatfori/common/constant.dart';
-// import 'package:diatfori/data/api/api_service.dart';
 // import 'package:diatfori/data/model/resep_detail.dart';
+// import 'package:flutter/cupertino.dart';
+// import 'package:flutter/material.dart';
+// import '../../common/state.dart';
+// import '../../data/api/api_service.dart';
 
-// class DetailResepProvider extends ChangeNotifier {
+// class ResepDetailProvider extends ChangeNotifier {
 //   final ApiService apiService;
-//   final String key;
+//   final String keyResep;
+  
+//   ResepDetailProvider({required this.apiService, required this.keyResep}) {
+//      fetchDetail(keyResep);
+//   }
 
-//   late Resepdetail _detailResep;
+//   late ResepDetail _restoResult;
 //   late ResultState _state;
 //   String _message = '';
 
-//   DetailResepProvider({required this.key, required this.apiService}) {
-//     getDetailResep(key);
-//   }
-
 //   String get message => _message;
-//   Resepdetail get result => _detailResep;
+//   ResepDetail get result => _restoResult;
 //   ResultState get state => _state;
 
-//   Future<dynamic> getDetailResep(String key) async {
+//   Future<dynamic> fetchDetail(String keyResep) async {
 //     try {
 //       _state = ResultState.loading;
 //       notifyListeners();
-//       final detailResep = await apiService.getDetailId(key);
-//       if (detailResep.status) {
+//       final result = await apiService.getDetailId(keyResep);
+//       if (result.results.title.isEmpty) {
 //         _state = ResultState.noData;
-//         notifyListeners();
 //         return _message = 'Empty Data';
 //       } else {
 //         _state = ResultState.hasData;
 //         notifyListeners();
-//         return _detailResep = detailResep;
+//         // print('Result');
+//         // print(result);
+//         return _restoResult = result;
 //       }
-//     } on SocketException {
-//       _state = ResultState.error;
-//       notifyListeners();
-//       return _message = "No internet connection";
 //     } catch (e) {
 //       _state = ResultState.error;
 //       notifyListeners();
-//       return _message = e.toString();
+//       return _message = 'No Internet Connection';
 //     }
 //   }
 // }

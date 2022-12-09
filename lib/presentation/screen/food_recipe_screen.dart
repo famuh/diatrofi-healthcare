@@ -1,14 +1,15 @@
+import 'package:diatfori/data/model/resep_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../common/constant.dart';
-import '../../data/model/food/food.dart';
+import '../../data/model/food.dart';
 
 
 class FoodRecipeScreen extends StatefulWidget {
   static const ROUTE_NAME = '/food-recipe';
-  final Food food;
-  const FoodRecipeScreen({super.key, required this.food});
+  final ResultDetailResep resep;
+  const FoodRecipeScreen({super.key, required this.resep});
 
   @override
   State<FoodRecipeScreen> createState() => _FoodRecipeScreenState();
@@ -17,7 +18,7 @@ class FoodRecipeScreen extends StatefulWidget {
 class _FoodRecipeScreenState extends State<FoodRecipeScreen> {
   @override
   Widget build(BuildContext context) {
-    var food = widget.food;
+    var resep = widget.resep;
     // var mediaQuery = MediaQuery.of(context).size;
     return Scaffold(
       // appBar: AppBar(
@@ -55,7 +56,7 @@ class _FoodRecipeScreenState extends State<FoodRecipeScreen> {
               shadowColor: Colors.transparent,
               expandedHeight: 300,
               flexibleSpace: FlexibleSpaceBar(
-                background: Image.network(food.imgUrl, fit: BoxFit.cover),
+                background: Image.network(resep.thumb, fit: BoxFit.cover),
               ),
             ),
           ];
@@ -73,7 +74,7 @@ class _FoodRecipeScreenState extends State<FoodRecipeScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    food.name,
+                    resep.title,
                     style: const TextStyle(
                       fontSize: 26,
                       fontWeight: FontWeight.w600,
@@ -103,7 +104,7 @@ class _FoodRecipeScreenState extends State<FoodRecipeScreen> {
                     removeTop: true,
                     child: ListView.builder(
                         physics: const NeverScrollableScrollPhysics(),
-                        itemCount: food.recipe.ingredient.length,
+                        itemCount: resep.ingredient.length,
                         itemBuilder: (context, index) {
                           return Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
@@ -118,7 +119,7 @@ class _FoodRecipeScreenState extends State<FoodRecipeScreen> {
                               const SizedBox(
                                 width: 10,
                               ),
-                              Text(food.recipe.ingredient[index])
+                              Text(resep.ingredient[index])
                             ],
                           );
                         }),
@@ -135,7 +136,7 @@ class _FoodRecipeScreenState extends State<FoodRecipeScreen> {
                     removeTop: true,
                     child: ListView.builder(
                         physics: const NeverScrollableScrollPhysics(),
-                        itemCount: food.recipe.ingredient.length,
+                        itemCount: resep.step.length,
                         itemBuilder: (context, index) {
                           return Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
@@ -150,7 +151,7 @@ class _FoodRecipeScreenState extends State<FoodRecipeScreen> {
                               const SizedBox(
                                 width: 10,
                               ),
-                              Text(food.recipe.steps[index])
+                              Text(resep.step[index])
                             ],
                           );
                         }),

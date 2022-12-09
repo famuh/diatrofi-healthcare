@@ -1,6 +1,7 @@
 import 'package:diatfori/common/constant.dart';
-import 'package:diatfori/data/model/food/food.dart';
+import 'package:diatfori/data/model/food.dart';
 import 'package:diatfori/data/api/api_service.dart';
+import 'package:diatfori/data/model/resep_detail.dart';
 import 'package:diatfori/firebase_options.dart';
 import 'package:diatfori/presentation/login/profile.dart';
 import 'package:diatfori/presentation/provider/nutrients_provider.dart';
@@ -79,13 +80,14 @@ class MyApp extends StatelessWidget {
               return MaterialPageRoute(
                   builder: (_) => ArticleWebView(url: url), settings: settings);
             case DetailScreen.ROUTE_NAME:
-              final food = settings.arguments as Food;
+              final food = settings.arguments as String;
               return MaterialPageRoute(
-                  builder: (_) => DetailScreen(food: food), settings: settings);
+                  builder: (_) => DetailScreen(keyResep: food), settings: settings);
             case ProfilePage.routeName:
               return MaterialPageRoute(builder: (_) => const ProfilePage());
             case ItemBagScreen.ROUTE_NAME:
               return MaterialPageRoute(builder: (_) => const ItemBagScreen(),);
+
             default:
               return MaterialPageRoute(builder: (_) {
                 return const Scaffold(

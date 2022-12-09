@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:diatfori/data/model/food/food.dart';
+import 'package:diatfori/data/model/food.dart';
 import 'package:diatfori/presentation/screen/item_detail_screen.dart';
 import 'package:diatfori/widget/kcal_widget.dart';
 import 'package:flutter/material.dart';
