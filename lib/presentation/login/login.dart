@@ -104,7 +104,7 @@ class _LoginPageState extends State<LoginPage> {
                       final result = await AuthServices.signIn(
                           emailController.text, passwordController.text);
                       if (result != null &&
-                          emailController.text != 'gobooks.admin@email.com') {
+                          emailController.text != 'diatrofi.admin@email.com') {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
@@ -119,7 +119,7 @@ class _LoginPageState extends State<LoginPage> {
                           duration: Duration(milliseconds: 600),
                         ));
                       } else if (emailController.text ==
-                          'gobooks.admin@email.com') {
+                          'diatrofi.admin@email.com') {
                         ScaffoldMessenger.of(context)
                             .showSnackBar(const SnackBar(
                           content:
