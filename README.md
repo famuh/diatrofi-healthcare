@@ -13,7 +13,6 @@
 
 ## Sekilas Diatrofi :hourglass:
 <p align="center">
-<img width="220px" src="https://github.com/famuh/diatrofi-healthcare/blob/master/SS/logo.png"> 
 <img width="220px" src="https://github.com/famuh/diatrofi-healthcare/blob/master/SS/masuk.png">
 <img width="220px" src="https://github.com/famuh/diatrofi-healthcare/blob/master/SS/home.png"> 
 <img width="220px" src="https://github.com/famuh/diatrofi-healthcare/blob/master/SS/hitung.png"> 
