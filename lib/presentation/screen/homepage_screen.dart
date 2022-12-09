@@ -1,12 +1,10 @@
 import 'package:diatfori/common/constant.dart';
 
-import 'package:diatfori/data/model/food/food.dart';
 import 'package:diatfori/presentation/login/profile.dart';
 import 'package:diatfori/presentation/provider/article_provider.dart';
 import 'package:diatfori/presentation/provider/resep_list_provider.dart';
 import 'package:diatfori/presentation/screen/search_screen.dart';
 import 'package:diatfori/widget/article_item_widget.dart';
-import 'package:diatfori/widget/food_item_widget.dart';
 import 'package:diatfori/widget/reseplist_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -68,6 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       borderRadius: BorderRadius.circular(10),
                       color: kSoftGrey),
                   child: TextField(
+                    readOnly: true,
                     onTap: () {
                       Navigator.pushNamed(
                         context,
@@ -286,29 +285,4 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-}
-
-_buildList(ctx) {
-  return FutureBuilder(
-    future: DefaultAssetBundle.of(ctx).loadString('assets/food_data.json'),
-    builder: (context, AsyncSnapshot snapshot) {
-      if (snapshot.hasError) {
-        return const Text("error");
-      }
-      if (snapshot.connectionState == ConnectionState.waiting) {
-        return const Center(child: CircularProgressIndicator());
-      }
-
-      final List<Food> foods = foodListFromJson(snapshot.requireData).foods;
-
-      return ListView.builder(
-        scrollDirection: Axis.vertical,
-        physics: NeverScrollableScrollPhysics(),
-        itemCount: foods.length,
-        itemBuilder: (BuildContext context, int index) {
-          return FoodItemWidget(food: foods[index]);
-        },
-      );
-    },
-  );
 }
