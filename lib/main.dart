@@ -1,10 +1,12 @@
 import 'package:diatfori/common/constant.dart';
+import 'package:diatfori/data/db/database_helper.dart';
 
 import 'package:diatfori/data/model/food.dart';
 import 'package:diatfori/data/api/api_service.dart';
 import 'package:diatfori/data/model/resep_detail.dart';
 import 'package:diatfori/firebase_options.dart';
 import 'package:diatfori/presentation/login/profile.dart';
+import 'package:diatfori/presentation/provider/database_provider.dart';
 import 'package:diatfori/presentation/provider/nutrients_provider.dart';
 import 'package:diatfori/presentation/screen/food_recipe_screen.dart';
 
@@ -39,6 +41,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider<DatabaseProvider>(
+            create: (_) => DatabaseProvider(databaseHelper: DatabaseHelper())),
         ChangeNotifierProvider<ResepListProvider>(
             create: (_) => ResepListProvider(apiService: ApiService()),
             child: const HomeScreen()),
@@ -54,6 +58,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<SearchResepProvider>(
             create: (_) => SearchResepProvider(apiService: ApiService()),
             child: const ResepSearchPage()),
+
+
 
 
       ],
