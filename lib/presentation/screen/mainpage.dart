@@ -1,13 +1,8 @@
 import 'package:diatfori/common/constant.dart';
 import 'package:diatfori/data/api/api_service.dart';
-import 'package:diatfori/presentation/login/welcome.dart';
 import 'package:diatfori/presentation/provider/article_provider.dart';
-import 'package:diatfori/presentation/provider/nutrients_provider.dart';
 import 'package:diatfori/presentation/provider/resep_list_provider.dart';
-import 'package:diatfori/presentation/screen/calculate_screen.dart';
-import 'package:diatfori/presentation/screen/favorite_screen.dart';
 import 'package:diatfori/presentation/screen/homepage_screen.dart';
-import 'package:diatfori/presentation/screen/recipe_screen.dart';
 import 'package:diatfori/presentation/screen/resep_favorite.dart';
 import 'package:diatfori/presentation/screen/resep_screen.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +23,7 @@ class _MainPageState extends State<MainPage> {
   final List screen = [
     ChangeNotifierProvider<ArticleProvider>(
         create: (_) => ArticleProvider(apiService: ApiService()),
-        child: HomeScreen()),
+        child: const HomeScreen()),
     ChangeNotifierProvider<ArticleProvider>(
         create: (_) => ArticleProvider(apiService: ApiService()),
         child: const ArticleScreen()),

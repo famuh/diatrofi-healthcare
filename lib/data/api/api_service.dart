@@ -53,7 +53,7 @@ class ApiService {
     if (response.statusCode == 200) {
       return ArticlesResult.fromJson(json.decode(response.body));
     } else {
-      throw Exception('Failed to load top headlines');
+      throw Exception('Gagal mendapatkan data');
     }
   }
 
@@ -64,7 +64,7 @@ class ApiService {
     if (response.statusCode == 200) {
       return Nutrients.fromJson(json.decode(response.body));
     } else {
-      throw Exception('Failed to load nutrients');
+      throw Exception('Gagal mendapatkan data');
     }
   }
 

@@ -27,7 +27,6 @@ class ArticleItemWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                // height: 100,
                 width: 200,
                 height: 200 / 1.5,
                 margin: const EdgeInsets.only(bottom: 5),

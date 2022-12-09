@@ -129,7 +129,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       }
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: kLineGreen,
+                      backgroundColor: kLineGreen,
                       padding: const EdgeInsets.symmetric(
                         horizontal: 40,
                       ),
@@ -218,4 +218,3 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 }
-

@@ -5,7 +5,6 @@ import 'package:diatfori/widget/card_search.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-
 class ResepSearchPage extends StatefulWidget {
   static const ROUTE_NAME = '/search';
   const ResepSearchPage({Key? key}) : super(key: key);
@@ -49,7 +48,7 @@ class _ResepSearchPageState extends State<ResepSearchPage> {
                     decoration: InputDecoration(
                       hintText: 'cari resep apa ya . . .',
                       hintStyle:
-                      TextStyle(color: Colors.black.withOpacity(0.23)),
+                          TextStyle(color: Colors.black.withOpacity(0.23)),
                       enabledBorder: InputBorder.none,
                       focusedBorder: InputBorder.none,
                       suffixIcon: Icon(
@@ -67,35 +66,35 @@ class _ResepSearchPageState extends State<ResepSearchPage> {
                     },
                   ),
                 ),
+
+                // CEK HASIL
                 (hasil.isEmpty)
                     ? Container()
                     : Consumer<SearchResepProvider>(
-                  builder: (context, state, _) {
-                    if (state.state == ResultState.loading) {
-                      return const Center(
-                          child: CircularProgressIndicator());
-                    } else if (state.state == ResultState.hasData) {
-                      return ListView.builder(
-                        physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: state.result!.results.length,
-                        itemBuilder: (context, index) {
-                          var resep =
-                          state.result!.results[index];
-                          return CardSearch(resep: resep);
+                        builder: (context, state, _) {
+                          if (state.state == ResultState.loading) {
+                            return const Center(
+                                child: CircularProgressIndicator());
+                          } else if (state.state == ResultState.hasData) {
+                            return ListView.builder(
+                              physics: const NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              itemCount: state.result!.results.length,
+                              itemBuilder: (context, index) {
+                                var resep = state.result!.results[index];
+                                return CardSearch(resep: resep);
+                              },
+                            );
+                          } else if (state.state == ResultState.noData) {
+                            return Center(child: Text(state.message));
+                          } else if (state.state == ResultState.error) {
+                            return Center(child: Text(state.message));
+                          } else {
+                            return const Center(
+                                child: Text('resepnya ga ketemu nih :/'));
+                          }
                         },
-                      );
-                    } else if (state.state == ResultState.noData) {
-                      return Center(child: Text(state.message));
-                    } else if (state.state == ResultState.error) {
-                      return Center(child: Text(state.message));
-                    } else {
-                      return const Center(
-                          child:
-                          Text('resepnya ga ketemu nih :/'));
-                    }
-                  },
-                ),
+                      ),
               ],
             ),
           ),

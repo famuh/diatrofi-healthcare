@@ -18,7 +18,6 @@ class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-
   @override
   void dispose() {
     emailController.dispose();
@@ -65,7 +64,6 @@ class _LoginPageState extends State<LoginPage> {
                     hintText: "Email",
                     border: InputBorder.none,
                   ),
-                  
                 ),
               ),
               Container(
@@ -99,8 +97,6 @@ class _LoginPageState extends State<LoginPage> {
                   borderRadius: BorderRadius.circular(7),
                   child: ElevatedButton(
                     onPressed: () async {
-                      print('Ini email : ${emailController.text}');
-                      print('Ini password : ${passwordController.text}');
                       final result = await AuthServices.signIn(
                           emailController.text, passwordController.text);
                       if (result != null &&
@@ -115,7 +111,8 @@ class _LoginPageState extends State<LoginPage> {
                           passwordController.text == "") {
                         ScaffoldMessenger.of(context)
                             .showSnackBar(const SnackBar(
-                          content: Text('Email / Password tidak boleh kosong.'),
+                          content:
+                              Text('Email / Kata Sandi tidak boleh kosong.'),
                           duration: Duration(milliseconds: 600),
                         ));
                       } else if (emailController.text ==
@@ -228,6 +225,4 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
-
 }
-

@@ -78,6 +78,6 @@ const kColorScheme = ColorScheme(
 enum ResultState { loading, error, noData, hasData }
 
 class Constants {
-  static const String textEmptyData = " Empty Data";
-  static const String textConnectionError = " Connection Errors";
+  static const String textEmptyData = " Data Kosong";
+  static const String textConnectionError = " Koneksi Bermasalah";
 }

@@ -6,8 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../common/constant.dart';
-import '../data/model/article.dart';
-import '../presentation/screen/article_web_view.dart';
 
 class ResepCard extends StatelessWidget {
   final ResultResep resep;

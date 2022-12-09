@@ -16,13 +16,6 @@ class WelcomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             SizedBox(height: size.height * 0.09),
-            // Text(
-            //   'Hallo !!',
-            //   style: Theme.of(context)
-            //       .textTheme
-            //       .headline5
-            //       ?.copyWith(color: kMatteBlack, fontWeight: FontWeight.w700),
-            // ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -77,6 +70,8 @@ class WelcomePage extends StatelessWidget {
                 ),
               ),
             ),
+
+            // REGISTER
             Container(
               margin: const EdgeInsets.symmetric(vertical: 10),
               width: size.width * 0.8,
@@ -113,6 +108,4 @@ class WelcomePage extends StatelessWidget {
       ),
     );
   }
-
 }
-

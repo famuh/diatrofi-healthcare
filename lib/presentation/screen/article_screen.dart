@@ -16,8 +16,7 @@ class ArticleScreen extends StatefulWidget {
 class _ArticleScreenState extends State<ArticleScreen> {
   @override
   Widget build(BuildContext context) {
-    return 
-    Padding(
+    return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
       child: ListView(
         children: [
@@ -25,55 +24,58 @@ class _ArticleScreenState extends State<ArticleScreen> {
           Container(
               margin: const EdgeInsets.symmetric(vertical: 5),
               child: ListTile(
-                leading: const Icon(Icons.newspaper_rounded, size: 50, color: kStrongGreen,),
-                title: Text('Berita', style: kTitleScreen.copyWith(fontWeight: FontWeight.normal)),
+                leading: const Icon(
+                  Icons.newspaper_rounded,
+                  size: 50,
+                  color: kStrongGreen,
+                ),
+                title: Text('Berita',
+                    style:
+                        kTitleScreen.copyWith(fontWeight: FontWeight.normal)),
                 subtitle: const Text('Top Berita Hari Ini !'),
-                )),
+              )),
 
-            SizedBox(
-            height: MediaQuery.of(context).size.height,
-            child: _buildList()
-          ),
-          
-
-          
+          SizedBox(
+              height: MediaQuery.of(context).size.height, child: _buildList()),
         ],
       ),
     );
   }
-  _buildList(){
-    return Consumer<ArticleProvider>(
-      builder: (context, state, _) {
-        if (state.state == ResultState.loading) {
-          return const Center(child: CircularProgressIndicator());
-        } else if (state.state == ResultState.hasData) {
-          return ListView.builder(
-            scrollDirection: Axis.vertical,
-            shrinkWrap: true,
-            itemCount: state.result.articles.length,
-            itemBuilder: (context, index) {
-              var article = state.result.articles[index];
-              return CardArticle(article: article);
-            },
-          );
-        } else if (state.state == ResultState.noData) {
-          return Center(
-            child: Material(
-              child: Text(state.message),
-            ),
-          );
-        } else if (state.state == ResultState.error) {
-          return Center(
-            child: Material(
-              child: Text(state.message),
-            ),
-          );
-        } else {
-          return const Center(
-            child: Material(
-              child: Text(''),
-            ),
-          );
-        }
-  });
-  }}
+
+  // LIST BERITA
+  _buildList() {
+    return Consumer<ArticleProvider>(builder: (context, state, _) {
+      if (state.state == ResultState.loading) {
+        return const Center(child: CircularProgressIndicator());
+      } else if (state.state == ResultState.hasData) {
+        return ListView.builder(
+          scrollDirection: Axis.vertical,
+          shrinkWrap: true,
+          itemCount: state.result.articles.length,
+          itemBuilder: (context, index) {
+            var article = state.result.articles[index];
+            return CardArticle(article: article);
+          },
+        );
+      } else if (state.state == ResultState.noData) {
+        return Center(
+          child: Material(
+            child: Text(state.message),
+          ),
+        );
+      } else if (state.state == ResultState.error) {
+        return Center(
+          child: Material(
+            child: Text(state.message),
+          ),
+        );
+      } else {
+        return const Center(
+          child: Material(
+            child: Text(''),
+          ),
+        );
+      }
+    });
+  }
+}

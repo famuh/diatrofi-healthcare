@@ -1,13 +1,10 @@
 import 'package:diatfori/common/constant.dart';
 import 'package:diatfori/data/db/database_helper.dart';
 
-import 'package:diatfori/data/model/food.dart';
 import 'package:diatfori/data/api/api_service.dart';
-import 'package:diatfori/data/model/resep_detail.dart';
 import 'package:diatfori/firebase_options.dart';
 import 'package:diatfori/presentation/login/profile.dart';
 import 'package:diatfori/presentation/provider/database_provider.dart';
-import 'package:diatfori/presentation/provider/detail_provider.dart';
 import 'package:diatfori/presentation/provider/nutrients_provider.dart';
 import 'package:diatfori/presentation/screen/food_recipe_screen.dart';
 
@@ -44,26 +41,18 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<DatabaseProvider>(
             create: (_) => DatabaseProvider(databaseHelper: DatabaseHelper())),
-
         ChangeNotifierProvider<ResepListProvider>(
             create: (_) => ResepListProvider(apiService: ApiService()),
             child: const HomeScreen()),
-
         ChangeNotifierProvider<NutrientProvider>(
             create: (_) => NutrientProvider(apiService: ApiService()),
             child: const CalculateScreen()),
-        
         ChangeNotifierProvider<NutrientProvider>(
             create: (_) => NutrientProvider(apiService: ApiService()),
             child: const ItemBagScreen()),
-
         ChangeNotifierProvider<SearchResepProvider>(
             create: (_) => SearchResepProvider(apiService: ApiService()),
             child: const ResepSearchPage()),
-
-
-
-
       ],
       child: MaterialApp(
         title: 'Diatrofi',
@@ -93,22 +82,26 @@ class MyApp extends StatelessWidget {
             case DetailScreen.ROUTE_NAME:
               final food = settings.arguments as String;
               return MaterialPageRoute(
-                  builder: (_) => DetailScreen(keyResep: food), settings: settings);
+                  builder: (_) => DetailScreen(keyResep: food),
+                  settings: settings);
             case FoodRecipeScreen.ROUTE_NAME:
               final food = settings.arguments as String;
               return MaterialPageRoute(
-                  builder: (_) => FoodRecipeScreen(keyResep: food), settings: settings);
+                  builder: (_) => FoodRecipeScreen(keyResep: food),
+                  settings: settings);
 
             case ProfilePage.routeName:
               return MaterialPageRoute(builder: (_) => const ProfilePage());
             case ItemBagScreen.ROUTE_NAME:
-              return MaterialPageRoute(builder: (_) => const ItemBagScreen(),);
+              return MaterialPageRoute(
+                builder: (_) => const ItemBagScreen(),
+              );
 
             default:
               return MaterialPageRoute(builder: (_) {
                 return const Scaffold(
                   body: Center(
-                    child: Text('Page not found :('),
+                    child: Text('Halaman Tidak Ditemukan :('),
                   ),
                 );
               });
@@ -118,4 +111,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

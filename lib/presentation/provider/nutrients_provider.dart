@@ -64,10 +64,6 @@ class NutrientProvider extends ChangeNotifier {
       totalKarbo += item.karbohidrat;
       totalLemak += item.lemak;
     }
-    print("total kalori : $totalKalori");
-    print("total protein : $totalProtein");
-    print("total karbo : $totalKarbo");
-    print("total lemak : $totalLemak");
     notifyListeners();
   }
 

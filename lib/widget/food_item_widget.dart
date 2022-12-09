@@ -3,7 +3,6 @@ import 'package:diatfori/data/model/food.dart';
 import 'package:diatfori/presentation/screen/item_detail_screen.dart';
 import 'package:diatfori/widget/kcal_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../common/constant.dart';
 

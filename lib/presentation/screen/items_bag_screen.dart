@@ -19,92 +19,92 @@ class ItemBagScreen extends StatelessWidget {
       body: ListView(
         scrollDirection: Axis.vertical,
         children: [
+          // TOTAL
           Container(
             padding: const EdgeInsets.all(8),
-            
             height: MediaQuery.of(context).size.height / 6,
             decoration: const BoxDecoration(
-            color: kStrongGreen,
-            borderRadius: BorderRadius.only(
-              // bottomLeft: Radius.circular(20),
-              bottomRight: Radius.circular(20),
-            )
-
-            ),
+                color: kStrongGreen,
+                borderRadius: BorderRadius.only(
+                  // bottomLeft: Radius.circular(20),
+                  bottomRight: Radius.circular(20),
+                )),
             child: Consumer<NutrientProvider>(
               builder: (context, value, child) {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'jumlah item ${value.totalItems.length} item',
-                    style: kItemTittleCard.copyWith(
-                        fontWeight: FontWeight.w500, color: kSoftGrey),
-                  ),
-                  const SizedBox(height: 5,),
-                   Container(
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(20)),
-                          height: 55,
-                          child: Consumer<NutrientProvider>(
-                            builder: (context, value, child) {
-                              return Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      const FaIcon(
-                                        FontAwesomeIcons.fire,
-                                        size: 22,
-                                        color: Colors.redAccent,
-                                      ),
-                                      const SizedBox(
-                                        height: 5,
-                                      ),
-                                      Text(value.totalKalori.toString())
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 50,
-                                    child: NutritionWidget(
-                                      title: 'protein',
-                                      total: value.totalProtein,
-                                      color: kBrightGreen,
-                                      size: 18,
+                  children: [
+                    Text(
+                      'jumlah item ${value.totalItems.length} item',
+                      style: kItemTittleCard.copyWith(
+                          fontWeight: FontWeight.w500, color: kSoftGrey),
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Container(
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20)),
+                        height: 55,
+                        child: Consumer<NutrientProvider>(
+                          builder: (context, value, child) {
+                            return Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const FaIcon(
+                                      FontAwesomeIcons.fire,
+                                      size: 22,
+                                      color: Colors.redAccent,
                                     ),
-                                  ),  
-                                  SizedBox(
-                                    height: 50,
-                                    child: NutritionWidget(
-                                      title: 'karbo',
-                                      total: value.totalKarbo,
-                                      color: Colors.orange[800],
-                                      size: 18,
+                                    const SizedBox(
+                                      height: 5,
                                     ),
+                                    Text(value.totalKalori.toString())
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 50,
+                                  child: NutritionWidget(
+                                    title: 'protein',
+                                    total: value.totalProtein,
+                                    color: kBrightGreen,
+                                    size: 18,
                                   ),
-                                  SizedBox(
-                                    height: 50,
-                                    child: NutritionWidget(
-                                      title: 'lemak',
-                                      total: value.totalLemak,
-                                      color: const Color.fromARGB(
-                                          255, 212, 132, 3),
-                                      size: 18,
-                                    ),
+                                ),
+                                SizedBox(
+                                  height: 50,
+                                  child: NutritionWidget(
+                                    title: 'karbo',
+                                    total: value.totalKarbo,
+                                    color: Colors.orange[800],
+                                    size: 18,
                                   ),
-                                ],
-                              );
-                            },
-                          )),
-
-                ],
-              );
+                                ),
+                                SizedBox(
+                                  height: 50,
+                                  child: NutritionWidget(
+                                    title: 'lemak',
+                                    total: value.totalLemak,
+                                    color:
+                                        const Color.fromARGB(255, 212, 132, 3),
+                                    size: 18,
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
+                        )),
+                  ],
+                );
               },
             ),
           ),
+
+          // ITEM YANG DITAMBAHKAN
           SizedBox(
             height: MediaQuery.of(context).size.height / 1.1,
             child: Padding(
@@ -113,18 +113,19 @@ class ItemBagScreen extends StatelessWidget {
                 builder: (context, value, _) {
                   if (value.totalItems.isNotEmpty) {
                     return ListView.builder(
-                          itemCount: value.totalItems.length,
-                          scrollDirection: Axis.vertical,
-                          itemBuilder: (context, index) {
-                            var item = value.totalItems[index];
-                            return _itemCal(item, index);
-                          },
-                        );
+                      itemCount: value.totalItems.length,
+                      scrollDirection: Axis.vertical,
+                      itemBuilder: (context, index) {
+                        var item = value.totalItems[index];
+                        return _itemCal(item, index);
+                      },
+                    );
                   }
                   return const Center(
-                    child: Text('kamu belum menambahkan apapun :(', style: TextStyle(
-                      fontSize: 20
-                    ),),
+                    child: Text(
+                      'kamu belum menambahkan apapun :(',
+                      style: TextStyle(fontSize: 20),
+                    ),
                   );
                 },
               ),
@@ -186,17 +187,17 @@ class ItemBagScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         NutritionWidget(
-                          title: 'prots',
+                          title: 'protein',
                           total: item.protein,
                           color: kBrightGreen,
                         ),
                         NutritionWidget(
-                          title: 'carbs',
+                          title: 'karbo',
                           total: item.karbohidrat,
                           color: kCarbs,
                         ),
                         NutritionWidget(
-                          title: 'fats',
+                          title: 'lemak',
                           total: item.lemak,
                           color: kFats,
                         ),
@@ -222,6 +223,7 @@ class ItemBagScreen extends StatelessWidget {
                           ),
                         ),
                         onTap: () {
+                          // menambahkan item & menghitung ulang total
                           val.addItem(
                               item.id,
                               item.name,
@@ -232,7 +234,6 @@ class ItemBagScreen extends StatelessWidget {
                               item.protein,
                               item.karbohidrat);
                           val.calculateKalori();
-                          print("total ${val.totalItems}");
                         },
                       ),
                       const SizedBox(width: 8),
@@ -246,9 +247,9 @@ class ItemBagScreen extends StatelessWidget {
                           ),
                         ),
                         onTap: () {
+                          // menghapus item & menghitung ulang total
                           val.delItem(index);
                           val.calculateKalori();
-                          print("total ${val.totalItems}");
                         },
                       ),
                     ],

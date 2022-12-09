@@ -1,7 +1,6 @@
 import 'package:diatfori/data/api/api_service.dart';
 import 'package:diatfori/presentation/provider/detail_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 import '../../common/constant.dart';
@@ -53,6 +52,7 @@ class FoodRecipeScreen extends StatelessWidget {
                       const SizedBox(
                         height: 20,
                       ),
+
                       // Penulis
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -82,6 +82,7 @@ class FoodRecipeScreen extends StatelessWidget {
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
+                      
                       // tingkat kesulitan
                       Container(
                         margin: const EdgeInsets.only(top: 10),

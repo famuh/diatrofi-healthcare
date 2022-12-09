@@ -20,9 +20,7 @@ class CalculateScreen extends StatefulWidget {
 class _CalculateScreenState extends State<CalculateScreen> {
   @override
   Widget build(BuildContext context) {
-    // final prov = Provider.of<NutrientProvider>(context, listen: true);
     final mediaQuery = MediaQuery.of(context).size;
-
     return Scaffold(
         appBar: AppBar(
           title: const Text('Hitung Nutrisi'),
@@ -37,11 +35,10 @@ class _CalculateScreenState extends State<CalculateScreen> {
           height: mediaQuery.height,
           child: Stack(
             children: [
-              // 1
+              // UKURAN BASE
               SizedBox(
                 width: mediaQuery.width,
                 height: mediaQuery.height / 1.3,
-                // color: Colors.blueGrey,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
                     vertical: 15,
@@ -49,6 +46,7 @@ class _CalculateScreenState extends State<CalculateScreen> {
                   ),
                   child: ListView(
                     children: [
+                      // MAKANAN
                       SubHeading(
                         title: 'makanan',
                       ),
@@ -69,7 +67,6 @@ class _CalculateScreenState extends State<CalculateScreen> {
                                     var items = state.result.nutrients.where(
                                         (item) => item.kategori == "makanan");
                                     var itemFix = List.from(items)[index];
-
                                     return CalculateFoodItemWidget(
                                       item: itemFix,
                                     );
@@ -96,6 +93,8 @@ class _CalculateScreenState extends State<CalculateScreen> {
                               }
                             },
                           )),
+
+                      // MINUMAN
                       SubHeading(
                         title: 'minuman',
                       ),
@@ -116,7 +115,6 @@ class _CalculateScreenState extends State<CalculateScreen> {
                                     var items = state.result.nutrients.where(
                                         (item) => item.kategori == "minuman");
                                     var itemFix = List.from(items)[index];
-
                                     return CalculateFoodItemWidget(
                                       item: itemFix,
                                     );
@@ -143,6 +141,8 @@ class _CalculateScreenState extends State<CalculateScreen> {
                               }
                             },
                           )),
+
+                      // BUAH & SAYUR
                       SubHeading(
                         title: 'buah & sayur',
                       ),
@@ -163,7 +163,6 @@ class _CalculateScreenState extends State<CalculateScreen> {
                                     var items = state.result.nutrients.where(
                                         (item) => item.kategori == "tumbuhan");
                                     var itemFix = List.from(items)[index];
-
                                     return CalculateFoodItemWidget(
                                       item: itemFix,
                                     );
@@ -195,8 +194,7 @@ class _CalculateScreenState extends State<CalculateScreen> {
                 ),
               ),
 
-              // total
-
+              // TOTAL
               Positioned(
                 bottom: 0,
                 child: Container(
@@ -216,8 +214,6 @@ class _CalculateScreenState extends State<CalculateScreen> {
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
                         margin: const EdgeInsets.only(bottom: 8),
-
-                        // width: mediaQuery.width/5,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
@@ -320,6 +316,8 @@ class _CalculateScreenState extends State<CalculateScreen> {
                               );
                             },
                           )),
+
+                      // BERSIHKAN ITEM
                       Consumer<NutrientProvider>(
                         builder: (context, value, child) {
                           return TextButton(
@@ -331,11 +329,6 @@ class _CalculateScreenState extends State<CalculateScreen> {
                             ),
                             onPressed: () {
                               value.clearItem();
-                              print("items ${value.totalItems}");
-                              print("total kalori : ${value.totalKalori}");
-                              print("total protein : ${value.totalProtein}");
-                              print("total karbo : ${value.totalKarbo}");
-                              print("total lemak : ${value.totalLemak}");
                             },
                           );
                         },

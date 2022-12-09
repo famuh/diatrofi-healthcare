@@ -7,7 +7,8 @@ class NutritionWidget extends StatelessWidget {
   num? total;
   Color? color;
   double? size;
-  NutritionWidget({super.key, required this.title, this.total, this.color, this.size});
+  NutritionWidget(
+      {super.key, required this.title, this.total, this.color, this.size});
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +21,12 @@ class NutritionWidget extends StatelessWidget {
             style: kBodyText.copyWith(
                 fontWeight: FontWeight.bold, color: color, fontSize: size),
           ),
-          Text(title, style: TextStyle(fontSize: size),),
+          Text(
+            title,
+            style: TextStyle(fontSize: size),
+          ),
         ],
       ),
     );
   }
-
 }
-

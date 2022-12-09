@@ -78,8 +78,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         contentPadding: const EdgeInsets.only(
                             left: 15, right: 5, bottom: 10),
                         hintText: "cari resep apa ya . . . ",
-                        
-                        
                         hintStyle: const TextStyle(color: Colors.black54),
                         prefixIcon: const Icon(Icons.search_rounded),
                         suffixIcon: isSearch == true
@@ -193,12 +191,12 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
 
-          // articles
+          // BERITA
           SubHeading(
             title: 'Top 7 berita hari ini',
           ),
 
-          // article items
+          // ITEMS BERITA
           Container(
               height: 230,
               // color: Colors.grey,
@@ -240,7 +238,7 @@ class _HomeScreenState extends State<HomeScreen> {
             height: 15,
           ),
 
-          // check this out
+          // REKOMENDASI
           SubHeading(
             title: 'Mungkin kamu suka',
           ),
@@ -254,8 +252,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   return ListView.builder(
                     scrollDirection: Axis.horizontal,
                     shrinkWrap: true,
-                    itemCount: state.result.results
-                        .length,
+                    itemCount: state.result.results.length,
                     itemBuilder: (context, index) {
                       var resep = state.result.results[index];
                       return ResepItem(resep: resep);
