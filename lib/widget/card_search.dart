@@ -3,7 +3,7 @@ import 'package:diatfori/data/model/resep_search.dart';
 import 'package:flutter/material.dart';
 
 class CardSearch extends StatelessWidget {
-  final Result restaurant;
+  final ResultResepSearch restaurant;
 
   const CardSearch({Key? key, required this.restaurant}) : super(key: key);
 

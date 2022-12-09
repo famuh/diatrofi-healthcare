@@ -10,6 +10,7 @@
 <br>
 
 <!-- Fitur -->
+<!--
 ## Fitur yang disediakan :bulb:
 Terdapat beberapa fitur yang disediakan, antara lain :
 * Menghitung kandungan gizi makanan & minuman
@@ -17,4 +18,5 @@ Pengguna dapat menambahkan makanan & minuman sesuai keinginan mereka. Fitur ini 
 * Resep makanan, minuman dan cemilan sehat
 Terdapat pilihan resep makanan, minuman dan cemilan yang enak juga menyehatkan. Fitur ini akan mendorong pengguna untuk mengurangi kebiasaan buruk dalam mengkonsumsi makanan, minuman dan cemilan. Juga diharapkan menjadi inspirasi bagi pengguna untuk membuat sendiri makananan dan minuman yang akan dikonsumsi.
 * 
+-->
 <br>

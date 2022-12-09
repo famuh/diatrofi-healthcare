@@ -1,10 +1,9 @@
 import 'package:diatfori/common/constant.dart';
 import 'package:diatfori/data/authentic/service.dart';
+
 import 'package:diatfori/presentation/login/welcome.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
-import '../screen/mainpage.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({
@@ -18,12 +17,19 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  late User user;
+
 
   @override
   void initState() {
     super.initState();
+    initUser();
   }
 
+  initUser() async {
+    user = _auth.currentUser!;
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +43,7 @@ class _ProfilePageState extends State<ProfilePage> {
         title: Text(
           'Profile',
           style: Theme.of(context).textTheme.headline6?.copyWith(
-              color: kSoftGrey, fontWeight: FontWeight.bold, fontSize: 25),
+              color: kMatteBlack, fontWeight: FontWeight.bold, fontSize: 25),
         ),
       ),
       body: Column(
@@ -61,8 +67,12 @@ class _ProfilePageState extends State<ProfilePage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-
-                      const Text('Status : USER',
+                      Text('${user.email}',
+                          style: Theme.of(context)
+                              .textTheme
+                              .headline6
+                              ?.copyWith(color: Colors.white)),
+                      const Text('Status : Mahasiswa',
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             color: Colors.white,
@@ -94,7 +104,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   children: [
                     const Icon(
                       Icons.logout_rounded,
-                      color: Colors.white,
+                      color: Colors.black,
                       size: 25,
                     ),
                     const SizedBox(width: 5),
