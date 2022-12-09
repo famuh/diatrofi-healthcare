@@ -20,7 +20,7 @@ class ApiService {
     }
   }
 
-  Future<ResepDetail> getDetailId(String key) async {
+  Future<ResepDetail> getResepDetail(String key) async {
     final response = await http.get(Uri.parse("${_baseUrl}api/recipe/:$key"));
     if (response.statusCode == 200) {
       return ResepDetail.fromJson(json.decode(response.body));

@@ -87,6 +87,7 @@ class MyApp extends StatelessWidget {
               return MaterialPageRoute(builder: (_) => const ProfilePage());
             case ItemBagScreen.ROUTE_NAME:
               return MaterialPageRoute(builder: (_) => const ItemBagScreen(),);
+
             default:
               return MaterialPageRoute(builder: (_) {
                 return const Scaffold(

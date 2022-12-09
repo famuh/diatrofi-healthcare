@@ -1,6 +1,6 @@
 import 'package:diatfori/common/constant.dart';
 import 'package:diatfori/data/api/api_service.dart';
-import 'package:diatfori/presentation/provider/resep_detail_provider.dart';
+import 'package:diatfori/presentation/provider/detail_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
@@ -11,7 +11,7 @@ import '../../widget/kcal_widget.dart';
 import 'food_recipe_screen.dart';
 
 class DetailScreen extends StatelessWidget {
-  static const ROUTE_NAME = '/detail';
+  static const ROUTE_NAME = '/resep-detail';
   String keyResep;
   DetailScreen({super.key, required this.keyResep});
 
@@ -20,9 +20,9 @@ class DetailScreen extends StatelessWidget {
     var mediaQuery = MediaQuery.of(context).size;
     return ChangeNotifierProvider(
       create: (_) =>
-          ResepDetailProvider(apiService: ApiService(), keyResep: keyResep),
+          DetailProvider(apiService: ApiService(), keyResep: keyResep),
       child: Scaffold(
-        body: Consumer<ResepDetailProvider>(
+        body: Consumer<DetailProvider>(
           builder: (context, state, _) {
             if (state.state == ResultState.loading) {
               return const Center(child: CircularProgressIndicator());
@@ -47,7 +47,7 @@ class DetailScreen extends StatelessWidget {
                                   arguments: ModalRoute.of(context)?.settings
                                       as ResultDetailResep);
                             },
-                            icon: FaIcon(
+                            icon: const FaIcon(
                               FontAwesomeIcons.fire,
                             )),
                       ],
@@ -66,6 +66,28 @@ class DetailScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      // Penulis
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.symmetric(vertical: 10),
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 5, horizontal: 10),
+                            decoration:
+                                BoxDecoration(color: kPink.withOpacity(.7)),
+                            child: Text('Oleh : ${resep.author.user}'),
+                          ),
+                          Text(
+                            resep.author.datePublished,
+                            style: TextStyle(color: Colors.black54),
+                          )
+                        ],
+                      ),
+
                       // Nama item
                       Text(
                         resep.title,
@@ -77,12 +99,26 @@ class DetailScreen extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                       ),
 
-                      // deskripsi
-                      Text(
-                        resep.desc,
-                        maxLines: 4,
-                        overflow: TextOverflow.ellipsis,
+                      // tingkat kesulitan
+                      Container(
+                        margin: const EdgeInsets.symmetric(vertical: 10),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 5, horizontal: 10),
+                        decoration: const BoxDecoration(color: kSoftGreen),
+                        child: Text(resep.difficulty),
                       ),
+
+                      // deskripsi
+                      // Container(
+                      //   margin: const EdgeInsets.symmetric(vertical: 10),
+                      //   width: mediaQuery.width,
+                      //   child: Text(
+                      //     resep.desc,
+                      //     maxLines: 4,
+                      //     overflow: TextOverflow.ellipsis,
+                      //   ),
+                      // ),
+                      ExpandableText(resep.desc)
                     ],
                   ),
                 ),
@@ -188,5 +224,40 @@ class DetailScreen extends StatelessWidget {
         child: icon,
       ),
     );
+  }
+}
+
+class ExpandableText extends StatefulWidget {
+  ExpandableText(this.text);
+
+  final String text;
+  bool isExpanded = false;
+
+  @override
+  _ExpandableTextState createState() => new _ExpandableTextState();
+}
+
+class _ExpandableTextState extends State<ExpandableText>
+    with TickerProviderStateMixin<ExpandableText> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+      AnimatedSize(
+          duration: const Duration(milliseconds: 500),
+          child: ConstrainedBox(
+              constraints: widget.isExpanded
+                  ? BoxConstraints()
+                  : BoxConstraints(maxHeight: 50.0),
+              child: Text(
+                widget.text,
+                softWrap: true,
+                overflow: TextOverflow.fade,
+              ))),
+      widget.isExpanded
+          ? ConstrainedBox(constraints: BoxConstraints())
+          : TextButton(onPressed: () => setState(() => widget.isExpanded = true), child: Text('selengkapnya'))
+    ]);
   }
 }

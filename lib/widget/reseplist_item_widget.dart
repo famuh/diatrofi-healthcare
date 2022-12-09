@@ -15,12 +15,6 @@ class ResepItem extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       color: kSoftGrey,
       child: InkWell(
-        onTap: () {
-          Navigator.pushNamed(context, 
-          DetailScreen.ROUTE_NAME,
-          arguments: resep.key
-          );
-        },
         child: Container(
           width: 210,
           padding: const EdgeInsets.all(8.0),
@@ -65,6 +59,10 @@ class ResepItem extends StatelessWidget {
             ],
           ),
         ),
+         onTap: () {
+          Navigator.pushNamed(context, DetailScreen.ROUTE_NAME,
+          arguments: resep.key);
+        },
       ),
     );
   }
