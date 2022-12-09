@@ -58,4 +58,6 @@ Row iconWithText(BuildContext context, {IconData? icon, required String text}) {
       ),
     ],
   );
+
 }
+

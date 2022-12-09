@@ -128,4 +128,6 @@ class CalculateFoodItemWidget extends StatelessWidget {
       ),
     );
   }
+
 }
+

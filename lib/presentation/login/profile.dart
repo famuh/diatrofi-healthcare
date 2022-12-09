@@ -1,9 +1,10 @@
 import 'package:diatfori/common/constant.dart';
 import 'package:diatfori/data/authentic/service.dart';
-
 import 'package:diatfori/presentation/login/welcome.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import '../screen/mainpage.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({
@@ -17,12 +18,14 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+
   late User user;
 
 
   @override
   void initState() {
     super.initState();
+
     initUser();
   }
 
@@ -30,6 +33,7 @@ class _ProfilePageState extends State<ProfilePage> {
     user = _auth.currentUser!;
     setState(() {});
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +48,7 @@ class _ProfilePageState extends State<ProfilePage> {
           'Profile',
           style: Theme.of(context).textTheme.headline6?.copyWith(
               color: kMatteBlack, fontWeight: FontWeight.bold, fontSize: 25),
+
         ),
       ),
       body: Column(
@@ -73,6 +78,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               .headline6
                               ?.copyWith(color: Colors.white)),
                       const Text('Status : Mahasiswa',
+
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             color: Colors.white,

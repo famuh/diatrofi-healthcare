@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+
 import '../../common/constant.dart';
 import '../../data/api/api_service.dart';
 import '../../data/model/article.dart';

@@ -43,15 +43,17 @@ class DetailScreen extends StatelessWidget {
                           onPressed: () {
                             print('Added to favorite');
                           },
-                          icon: const Icon(Icons.favorite_border_rounded, size: 28,),
-                          
+                          icon: const Icon(
+                            Icons.favorite_border_rounded,
+                            size: 28,
+                          ),
                         ),
                         IconButton(
                             onPressed: () {
-                              Navigator.pushNamed(
+                              Navigator.popAndPushNamed(
                                   context, FoodRecipeScreen.ROUTE_NAME,
-                                  arguments: ModalRoute.of(context)?.settings
-                                      as ResultDetailResep);
+                                  arguments: keyResep);
+
                             },
                             icon: const FaIcon(
                               FontAwesomeIcons.fire,
