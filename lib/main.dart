@@ -1,5 +1,5 @@
 import 'package:diatfori/common/constant.dart';
-import 'package:diatfori/data/model/food/food.dart';
+import 'package:diatfori/data/model/food.dart';
 import 'package:diatfori/data/api/api_service.dart';
 import 'package:diatfori/data/model/resep_detail.dart';
 import 'package:diatfori/firebase_options.dart';

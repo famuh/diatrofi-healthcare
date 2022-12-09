@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../common/constant.dart';
-import '../../data/model/food/food.dart';
+import '../../data/model/food.dart';
 
 
 class FoodRecipeScreen extends StatefulWidget {
