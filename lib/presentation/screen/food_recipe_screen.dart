@@ -1,164 +1,185 @@
-import 'package:diatfori/data/model/resep_detail.dart';
+import 'package:diatfori/data/api/api_service.dart';
+import 'package:diatfori/presentation/provider/detail_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
 import '../../common/constant.dart';
-import '../../data/model/food.dart';
 
-
-class FoodRecipeScreen extends StatefulWidget {
+class FoodRecipeScreen extends StatelessWidget {
   static const ROUTE_NAME = '/food-recipe';
-  final ResultDetailResep resep;
-  const FoodRecipeScreen({super.key, required this.resep});
+  String keyResep;
+  FoodRecipeScreen({super.key, required this.keyResep});
 
-  @override
-  State<FoodRecipeScreen> createState() => _FoodRecipeScreenState();
-}
-
-class _FoodRecipeScreenState extends State<FoodRecipeScreen> {
   @override
   Widget build(BuildContext context) {
-    var resep = widget.resep;
-    // var mediaQuery = MediaQuery.of(context).size;
-    return Scaffold(
-      // appBar: AppBar(
-      //     title: const Text('Calculate Your Intake'),
-      //     leading: IconButton(
-      //         onPressed: () {
-      //           Navigator.pop(context);
-      //         },
-      //         icon: const Icon(Icons.arrow_back_ios_rounded)),
-      //   ),
-      body: NestedScrollView(
-        headerSliverBuilder: (context, isScrolled) {
-          return [
-            SliverAppBar(
-              leading: IconButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(
-                    Icons.arrow_back_ios_new_rounded,
-                  )),
-              actions: [
-                // IconButton(
-                //     onPressed: () {},
-                //     icon: FaIcon(
-                //       FontAwesomeIcons.fire,
-                //     )),
-                IconButton(
-                    onPressed: () {},
-                    icon: FaIcon(
-                      FontAwesomeIcons.plus,
-                    )),
-              ],
-              elevation: 0,
-              shadowColor: Colors.transparent,
-              expandedHeight: 300,
-              flexibleSpace: FlexibleSpaceBar(
-                background: Image.network(resep.thumb, fit: BoxFit.cover),
-              ),
-            ),
-          ];
-        },
-        body: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(
-                height: 20,
-              ),
-              // Nama item
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    resep.title,
-                    style: const TextStyle(
-                      fontSize: 26,
-                      fontWeight: FontWeight.w600,
+    var mediaQuery = MediaQuery.of(context).size;
+    return ChangeNotifierProvider(
+      create: (_) =>
+          DetailProvider(apiService: ApiService(), keyResep: keyResep),
+      child: Scaffold(
+        body: Consumer<DetailProvider>(
+          builder: (context, state, _) {
+            if (state.state == ResultState.loading) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (state.state == ResultState.hasData) {
+              var resep = state.result.results;
+              return NestedScrollView(
+                headerSliverBuilder: (context, isScrolled) {
+                  return [
+                    SliverAppBar(
+                      leading: IconButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          icon: const Icon(
+                            Icons.arrow_back_ios_new_rounded,
+                          )),
+                      elevation: 0,
+                      shadowColor: Colors.transparent,
+                      expandedHeight: 300,
+                      flexibleSpace: FlexibleSpaceBar(
+                        background:
+                            Image.network(resep.thumb, fit: BoxFit.cover),
+                      ),
                     ),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
+                  ];
+                },
+                body: SingleChildScrollView(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      // Penulis
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.symmetric(vertical: 10),
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 5, horizontal: 10),
+                            decoration:
+                                BoxDecoration(color: kPink.withOpacity(.7)),
+                            child: Text('Oleh : ${resep.author.user}'),
+                          ),
+                          Text(
+                            resep.author.datePublished,
+                            style: const TextStyle(color: Colors.black54),
+                          )
+                        ],
+                      ),
+                      
+
+                      // Nama item
+                      Text(
+                        resep.title,
+                        style: const TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.w600,
+                        ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      // tingkat kesulitan
+                      Container(
+                        margin: const EdgeInsets.only(top: 10),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 5, horizontal: 10),
+                        decoration: const BoxDecoration(color: kSoftGreen),
+                        child: Text(resep.difficulty),
+                      ),
+
+                      // waktu memasak
+                      Container(
+                        margin: const EdgeInsets.symmetric(vertical: 10),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 5, horizontal: 10),
+                        decoration: const BoxDecoration(color: kSoftGrey),
+                        child: Text('Waktu memasak : ${resep.times}'),
+                      ),
+
+                      // ingredients
+                      _sectionRecipe('ingredients'),
+                      Container(
+                          margin: const EdgeInsets.only(left: 20),
+                          constraints: const BoxConstraints(maxHeight: 50),
+                          child: MediaQuery.removePadding(
+                            context: context,
+                            removeTop: true,
+                            child: ListView.builder(
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemCount: resep.ingredient.length,
+                                itemBuilder: (context, index) {
+                                  return Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        width: 10,
+                                        height: 10,
+                                        decoration: const BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            color: kStrongGreen),
+                                      ),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(resep.ingredient[index])
+                                    ],
+                                  );
+                                }),
+                          )),
+
+                      // steps
+                      _sectionRecipe('steps'),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Container(
+                          margin: const EdgeInsets.only(left: 20),
+                          height: mediaQuery.height,
+                          child: MediaQuery.removePadding(
+                            context: context,
+                            removeTop: true,
+                            child: ListView.builder(
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemCount: resep.step.length,
+                                itemBuilder: (context, index) {
+                                  return Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        margin: EdgeInsets.only(top: 10),
+                                        width: 10,
+                                        height: 10,
+                                        decoration: const BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            color: kStrongGreen),
+                                      ),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      Expanded(child: Text(resep.step[index],))
+                                    ],
+                                  );
+                                }),
+                          )),
+                    ],
                   ),
-                  IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.favorite_border_rounded,
-                        color: kPink,
-                        size: 30,
-                      ))
-                ],
-              ),
-
-              // ingredients
-              _sectionRecipe('ingredients'),
-              Container(
-                  margin: const EdgeInsets.only(left: 20),
-                  constraints: const BoxConstraints(
-                    maxHeight: 50
-                  ),
-                  child: MediaQuery.removePadding(
-                    context: context,
-                    removeTop: true,
-                    child: ListView.builder(
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemCount: resep.ingredient.length,
-                        itemBuilder: (context, index) {
-                          return Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Container(
-                                width: 10,
-                                height: 10,
-                                decoration: const BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: kStrongGreen),
-                              ),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              Text(resep.ingredient[index])
-                            ],
-                          );
-                        }),
-                  )),
-
-              // steps
-              _sectionRecipe('steps'),
-              const SizedBox(height: 5,),
-              Container(
-                  margin: const EdgeInsets.only(left: 20),
-                  height: 100,
-                  child: MediaQuery.removePadding(
-                    context: context,
-                    removeTop: true,
-                    child: ListView.builder(
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemCount: resep.step.length,
-                        itemBuilder: (context, index) {
-                          return Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Container(
-                                width: 10,
-                                height: 10,
-                                decoration: const BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: kStrongGreen),
-                              ),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              Text(resep.step[index])
-                            ],
-                          );
-                        }),
-                  )),
-
-            ],
-          ),
+                ),
+              );
+            } else if (state.state == ResultState.error) {
+              return Center(
+                child: Text(state.message),
+              );
+            } else {
+              return const Text('');
+            }
+          },
         ),
       ),
     );
