@@ -4,6 +4,7 @@ import 'package:diatfori/data/db/database_helper.dart';
 import 'package:diatfori/data/api/api_service.dart';
 import 'package:diatfori/firebase_options.dart';
 import 'package:diatfori/presentation/login/profile.dart';
+import 'package:diatfori/presentation/login/welcome.dart';
 import 'package:diatfori/presentation/provider/database_provider.dart';
 import 'package:diatfori/presentation/provider/nutrients_provider.dart';
 import 'package:diatfori/presentation/screen/food_recipe_screen.dart';
@@ -61,7 +62,7 @@ class MyApp extends StatelessWidget {
           primaryColor: kMatteBlack,
           scaffoldBackgroundColor: Colors.white,
         ),
-        home: const MainPage(),
+        home: const WelcomePage(),
         navigatorObservers: [routeObserver],
         onGenerateRoute: (RouteSettings settings) {
           switch (settings.name) {
@@ -89,7 +90,6 @@ class MyApp extends StatelessWidget {
               return MaterialPageRoute(
                   builder: (_) => FoodRecipeScreen(keyResep: food),
                   settings: settings);
-
             case ProfilePage.routeName:
               return MaterialPageRoute(builder: (_) => const ProfilePage());
             case ItemBagScreen.ROUTE_NAME:

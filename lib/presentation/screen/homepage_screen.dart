@@ -197,10 +197,8 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
 
           // ITEMS BERITA
-          Container(
+          SizedBox(
               height: 230,
-              // color: Colors.grey,
-              padding: const EdgeInsets.only(right: 10),
               child: Consumer<ArticleProvider>(builder: (context, state, _) {
                 if (state.state == ResultState.loading) {
                   return const Center(child: CircularProgressIndicator());
@@ -242,9 +240,8 @@ class _HomeScreenState extends State<HomeScreen> {
           SubHeading(
             title: 'Mungkin kamu suka',
           ),
-          Container(
+          SizedBox(
               height: 230,
-              padding: const EdgeInsets.only(right: 10),
               child: Consumer<ResepListProvider>(builder: (context, state, _) {
                 if (state.state == ResultState.loading) {
                   return const Center(child: CircularProgressIndicator());
