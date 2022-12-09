@@ -13,12 +13,12 @@ class ArticleResepCategory {
 
   final String method;
   final bool status;
-  final List<Result> results;
+  final List<ResultCategory> results;
 
   factory ArticleResepCategory.fromJson(Map<String, dynamic> json) => ArticleResepCategory(
     method: json["method"],
     status: json["status"],
-    results: List<Result>.from(json["results"].map((x) => Result.fromJson(x))),
+    results: List<ResultCategory>.from(json["results"].map((x) => ResultCategory.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
@@ -28,8 +28,8 @@ class ArticleResepCategory {
   };
 }
 
-class Result {
-  Result({
+class ResultCategory {
+  ResultCategory({
     required this.title,
     required this.key,
   });
@@ -37,7 +37,7 @@ class Result {
   final String title;
   final String key;
 
-  factory Result.fromJson(Map<String, dynamic> json) => Result(
+  factory ResultCategory.fromJson(Map<String, dynamic> json) => ResultCategory(
     title: json["title"],
     key: json["key"],
   );

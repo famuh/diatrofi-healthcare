@@ -1,6 +1,12 @@
+// To parse this JSON data, do
+//
+//     final resepsearch = resepsearchFromJson(jsonString);
+
+import 'package:meta/meta.dart';
 import 'dart:convert';
 
-Resepsearch resepsearchFromJson(String str) => Resepsearch.fromJson(json.decode(str));
+Resepsearch resepsearchFromJson(String str) =>
+    Resepsearch.fromJson(json.decode(str));
 
 String resepsearchToJson(Resepsearch data) => json.encode(data.toJson());
 
@@ -18,7 +24,8 @@ class Resepsearch {
   factory Resepsearch.fromJson(Map<String, dynamic> json) => Resepsearch(
     method: json["method"],
     status: json["status"],
-    results: List<Result>.from(json["results"].map((x) => Result.fromJson(x))),
+    results:
+    List<Result>.from(json["results"].map((x) => Result.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
@@ -35,7 +42,6 @@ class Result {
     required this.key,
     required this.times,
     required this.serving,
-
   });
 
   final String title;
@@ -58,7 +64,7 @@ class Result {
     "key": key,
     "times": times,
     "serving": serving,
-
   };
 }
+
 enum Difficulty { CUKUP_RUMIT, MUDAH, LEVEL_CHEF_PANJI }

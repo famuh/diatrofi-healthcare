@@ -1,0 +1,310 @@
+{
+ "nutrients" : [{
+    "id": "F01",
+    "name": "Nasi",
+    "kategori": "makanan",
+    "pictureId" : "https://images.unsplash.com/photo-1596560548464-f010549b84d7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+    "Kalori": 130,
+    "Lemak": 0.3,
+    "Protein": 2.7,
+    "Karbohidrat": 28
+  },
+  {
+    "id": "F02",
+    "name": "Ayam",
+    "kategori": "makanan",
+    "pictureId" : "https://images.unsplash.com/photo-1647102398925-e23f6486ca04?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    "Kalori": 239,
+    "Lemak": 14,
+    "Protein": 27,
+    "Karbohidrat": 0
+  },
+  {
+    "id": "F03",
+    "name": "Rendang Food",
+    "kategori": "makanan",
+    "pictureId" : "https://images.unsplash.com/photo-1620700668269-d3ad2a88f27e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+    "Kalori": 468,
+    "Lemak": 10.78,
+    "Protein": 47.23,
+    "Karbohidrat": 10.78
+  },
+  {
+    "id": "F04",
+    "name": "Telur",
+    "kategori": "makanan",
+    "pictureId": "https://images.unsplash.com/photo-1610328466269-1f36faad83c1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
+    "Kalori": 155.1,
+    "Lemak": 11,
+    "Protein": 13,
+    "Karbohidrat": 1.1
+  },
+  {
+    "id": "F05",
+    "name": "Udang",
+    "kategori": "makanan",
+    "pictureId": "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+    "Kalori": 7,
+    "Lemak": 0.12,
+    "Protein": 1.38,
+    "Karbohidrat": 0.06
+  },
+  {
+    "id": "F06",
+    "name": "Lobster",
+    "kategori": "makanan",
+    "pictureId": "https://images.unsplash.com/photo-1584998121047-ead920cafba0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80",
+    "Kalori": 114,
+    "Lemak": 0.68,
+    "Protein": 23.99,
+    "Karbohidrat": 1.5
+  },
+  {
+    "id": "F07",
+    "name": "Ikan Lele",
+    "kategori": "makanan",
+    "pictureId": "https://images.unsplash.com/photo-1502839604051-1d3956c4d9c2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+    "Kalori": 204,
+    "Lemak": 12.35,
+    "Protein": 14.93,
+    "Karbohidrat": 7.26
+  },
+  {
+    "id": "F08",
+    "name": "Ikan Sarden",
+    "kategori": "makanan",
+    "pictureId": "https://images.unsplash.com/photo-1567087978459-8a8eeac7bc75?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=906&q=80",
+    "Kalori": 25,
+    "Lemak": 1.37,
+    "Protein": 2.95,
+    "Karbohidrat": 0
+  },
+  {
+    "id": "F09",
+    "name": "Makaroni",
+    "kategori": "makanan",
+    "pictureId": "https://images.unsplash.com/photo-1590060846796-0418842f3908?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80",
+    "Kalori": 220,
+    "Lemak": 1.29,
+    "Protein": 8.06,
+    "Karbohidrat": 42.95
+  },
+  {
+    "id": "F10",
+    "name": "Mie",
+    "kategori": "makanan",
+    "pictureId": "https://images.unsplash.com/photo-1597394412452-60ed971d3917?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+    "Kalori": 219,
+    "Lemak": 3.3,
+    "Protein": 7.22,
+    "Karbohidrat": 40.02
+  },
+ 
+  {
+    "id": "D01",
+    "name": "Susu",
+    "kategori": "minuman",
+    "pictureId": "https://images.unsplash.com/photo-1563636619-e9143da7973b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80",
+    "Kalori": 42.3,
+    "Lemak": 1,
+    "Protein": 2.7,
+    "Karbohidrat": 5
+  },
+  {
+    "id": "D02",
+    "name": "Sirop",
+    "kategori": "minuman",
+    "pictureId" : "https://images.unsplash.com/photo-1552314971-d2feb3513949?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c3lydXB8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+    "Kalori": 260,
+    "Lemak": 0.1,
+    "Protein": 0,
+    "Karbohidrat": 0
+  },
+  {
+    "id": "D03",
+    "name": "Air Mineral",
+    "kategori": "minuman",
+    "pictureId" : "https://images.unsplash.com/photo-1638688569176-5b6db19f9d2a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+    "Kalori": 0,
+    "Lemak": 0,
+    "Protein": 0,
+    "Karbohidrat": 0
+  },
+  {
+    "id": "D04",
+    "name": "Es Kopi Susu",
+    "kategori": "minuman",
+    "pictureId": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=869&q=80",
+    "Kalori": 6,
+    "Lemak": 0.15,
+    "Protein": 0.33,
+    "Karbohidrat": 0.84
+  },
+  {
+    "id": "D05",
+    "name": "Es Teh",
+    "kategori": "minuman",
+    "pictureId": "https://images.unsplash.com/photo-1499961024600-ad094db305cc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+    "Kalori": 90,
+    "Lemak": 0,
+    "Protein": 0.02,
+    "Karbohidrat": 23.44
+  },
+  {
+    "id": "D06",
+    "name": "Jus Apel",
+    "kategori": "minuman",
+    "pictureId": "https://images.unsplash.com/photo-1509459331813-67a0c10e527c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+    "Kalori": 117,
+    "Lemak": 0.27,
+    "Protein": 0.15,
+    "Karbohidrat": 28.93
+  },
+  {
+    "id": "D07",
+    "name": "Es Kopi",
+    "kategori": "minuman",
+    "pictureId": "https://images.unsplash.com/photo-1531835207745-506a1bc035d8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+    "Kalori": 112,
+    "Lemak": 0.5,
+    "Protein": 1.74,
+    "Karbohidrat": 25.79
+  },
+  {
+    "id": "D08",
+    "name": "Jus Tomat",
+    "kategori": "minuman",
+    "pictureId": "https://images.unsplash.com/photo-1623676997740-74de52cdfa91?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80",
+    "Kalori": 41,
+    "Lemak": 0.12,
+    "Protein": 1.85,
+    "Karbohidrat": 10.3
+  },
+  {
+    "id": "D09",
+    "name": "Soda",
+    "kategori": "minuman",
+    "pictureId": "https://images.unsplash.com/photo-1621330716555-5cad596c4562?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=374&q=80",
+    "Kalori": 140,
+    "Lemak": 0.04,
+    "Protein": 0.26,
+    "Karbohidrat": 36.05
+  },
+  {
+    "id": "D10",
+    "name": "Susu Coklat",
+    "kategori": "minuman",
+    "pictureId": "https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+    "Kalori": 158,
+    "Lemak": 2.5,
+    "Protein": 8.1,
+    "Karbohidrat": 26.1
+  },
+  
+
+
+
+
+  {
+    "id": "V01",
+    "name": "Sayur Bayam",
+    "kategori": "tumbuhan",
+    "pictureId": "https://images.unsplash.com/photo-1576045057995-568f588f82fb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80",
+    "Kalori": 23.2,
+    "Lemak": 0.4,
+    "Protein": 2.9,
+    "Karbohidrat": 3.6
+  },
+  {
+    "id": "V02",
+    "name": "Apel",
+    "kategori": "tumbuhan",
+    "pictureId": "https://images.unsplash.com/photo-1589217157232-464b505b197f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+    "Kalori": 52,
+    "Lemak": 0.2,
+    "Protein": 0.3,
+    "Karbohidrat": 14
+  },
+  {
+    "id": "V03",
+    "name": "Brokoli",
+    "kategori": "tumbuhan",
+    "pictureId": "https://images.unsplash.com/photo-1583663848850-46af132dc08e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80",
+    "Kalori": 34,
+    "Lemak": 0.37,
+    "Protein": 2.82,
+    "Karbohidrat": 6.64
+  },
+  {
+    "id": "V04",
+    "name": "Jagung",
+    "kategori": "tumbuhan",
+    "pictureId": "https://images.unsplash.com/photo-1613728913293-c99bb00ef39c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+    "Kalori": 132,
+    "Lemak": 1.82,
+    "Protein": 4.96,
+    "Karbohidrat": 29.29
+  },
+  {
+    "id": "V05",
+    "name": "Jamur",
+    "kategori": "tumbuhan",
+    "pictureId": "https://images.unsplash.com/photo-1550824730-05ededc35e7a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1033&q=80",
+    "Kalori": 22,
+    "Lemak": 0.34,
+    "Protein": 3.09,
+    "Karbohidrat": 3.28
+  },
+  {
+    "id": "V06",
+    "name": "Kentang",
+    "kategori": "tumbuhan",
+    "pictureId": "https://images.unsplash.com/photo-1518977676601-b53f82aba655?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+    "Kalori": 210,
+    "Lemak": 7.43,
+    "Protein": 3.78,
+    "Karbohidrat": 33.01
+  },
+  {
+    "id": "V07",
+    "name": "Labu",
+    "kategori": "tumbuhan",
+    "pictureId": "https://images.unsplash.com/photo-1570586437263-ab629fccc818?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80",
+    "Kalori": 26,
+    "Lemak": 0.1,
+    "Protein": 1,
+    "Karbohidrat": 6.5
+  },
+  {
+    "id": "V08",
+    "name": "Lobak",
+    "kategori": "tumbuhan",
+    "pictureId": "https://images.unsplash.com/photo-1560252117-15c5d204a4a8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+    "Kalori": 36,
+    "Lemak": 0.13,
+    "Protein": 1.17,
+    "Karbohidrat": 8.36
+  },
+  {
+    "id": "V09",
+    "name": "Selada",
+    "kategori": "tumbuhan",
+    "pictureId": "https://images.unsplash.com/photo-1591193144634-a2bf060fdb36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=327&q=80",
+    "Kalori": 14,
+    "Lemak": 0.17,
+    "Protein": 0.69,
+    "Karbohidrat": 2.97
+  },
+  {
+    "id": "V10",
+    "name": "Wortel",
+    "kategori": "tumbuhan",
+    "pictureId": "https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+    "Kalori": 41,
+    "Lemak": 0.24,
+    "Protein": 0.93,
+    "Karbohidrat": 9.58
+  }
+  
+]
+}

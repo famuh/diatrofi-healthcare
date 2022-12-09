@@ -13,12 +13,12 @@ class Reseplist {
 
   final String method;
   final bool status;
-  final List<Result> results;
+  final List<ResultResep> results;
 
   factory Reseplist.fromJson(Map<String, dynamic> json) => Reseplist(
     method: json["method"],
     status: json["status"],
-    results: List<Result>.from(json["results"].map((x) => Result.fromJson(x))),
+    results: List<ResultResep>.from(json["results"].map((x) => ResultResep.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
@@ -28,8 +28,8 @@ class Reseplist {
   };
 }
 
-class Result {
-  Result({
+class ResultResep {
+  ResultResep({
     required this.title,
     required this.thumb,
     required this.key,
@@ -42,7 +42,7 @@ class Result {
   final String times;
 
 
-  factory Result.fromJson(Map<String, dynamic> json) => Result(
+  factory ResultResep.fromJson(Map<String, dynamic> json) => ResultResep(
     title: json["title"],
     thumb: json["thumb"],
     key: json["key"],

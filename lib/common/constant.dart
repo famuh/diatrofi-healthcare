@@ -8,9 +8,13 @@ const Color kStrongRed = Color(0xFFEF1D1D);
 const Color kMatteBlack = Color(0xFF252525);
 const Color kSoftGrey = Color(0xFFEFEFEF);
 
-const Color kSoftGreen = Color(0xFFB6E2A1);
+const Color kSoftGreen = Color.fromARGB(255, 192, 236, 171);
 const Color kBrightGreen = Color(0xFF449C1B);
 const Color kStrongGreen = Color(0xFF348756);
+const Color kLineGreen = Color(0xFF00FF74);
+
+const Color kFats = Color.fromARGB(255, 212, 132, 3);
+const Color kCarbs = Color.fromARGB(255, 239, 108, 0);
 
 // text style
 final TextStyle kAuthScreen = GoogleFonts.poppins(
@@ -34,13 +38,22 @@ GoogleFonts.poppins(
 final TextStyle kBodyText = 
 GoogleFonts.poppins(
   fontSize: 12,
+  color: Colors.black54
   // fontWeight: FontWeight.w400 // regular
 );
 
 final TextStyle kItemTittleCard = 
 GoogleFonts.poppins(
-  fontSize: 14,
-  fontWeight: FontWeight.w500 //semibold
+  fontSize: 16,
+  fontWeight: FontWeight.w600 //semibold
+);
+
+// logo
+final TextStyle kDiatrofi = 
+GoogleFonts.notoSerif(
+  color: Colors.black,
+  fontSize: 20,
+  fontWeight: FontWeight.bold
 );
 
 // color scheme
@@ -52,10 +65,11 @@ const kColorScheme = ColorScheme(
   surface: kMatteBlack,
   background: kMatteBlack,
   error: Colors.red,
-  onPrimary: kMatteBlack,
+  onPrimary: Colors.white,
   onSecondary: Colors.white,
   onSurface: Colors.white,
   onBackground: Colors.white,
   onError: Colors.white,
   brightness: Brightness.light,
 );
+enum ResultState { loading, error, noData, hasData }
