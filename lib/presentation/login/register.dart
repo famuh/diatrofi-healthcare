@@ -84,7 +84,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       Icons.lock,
                       color: kMatteBlack,
                     ),
-                    hintText: "Password",
+                    hintText: "Kata Sandi",
                     border: InputBorder.none,
                   ),
                 ),
@@ -116,7 +116,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           passwordController.text == "") {
                         ScaffoldMessenger.of(context)
                             .showSnackBar(const SnackBar(
-                          content: Text('Email/Password tidak boleh kosong.'),
+                          content: Text('Email/Kata Sandi tidak boleh kosong.'),
                           duration: Duration(milliseconds: 4000),
                         ));
                       } else {
@@ -169,7 +169,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           width: 20,
                         ),
                         const SizedBox(width: 5),
-                        Text('Sign Up dengan Akun Google',
+                        Text('Masuk dengan Akun Google',
                             style: Theme.of(context)
                                 .textTheme
                                 .button

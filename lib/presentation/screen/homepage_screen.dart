@@ -77,8 +77,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         border: InputBorder.none,
                         contentPadding: const EdgeInsets.only(
                             left: 15, right: 5, bottom: 10),
-                        hintText: "Search Receipe ...",
-                        hintStyle: const TextStyle(color: kMatteBlack),
+                        hintText: "cari resep apa ya . . . ",
+                        
+                        
+                        hintStyle: const TextStyle(color: Colors.black54),
                         prefixIcon: const Icon(Icons.search_rounded),
                         suffixIcon: isSearch == true
                             ? IconButton(
@@ -116,7 +118,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
                 icon: const Icon(
                   Icons.person_rounded,
-                  color: Colors.black,
+                  color: kStrongGreen,
                   size: 25,
                 ),
               )
@@ -149,7 +151,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             SizedBox(
                               width: 160,
                               child: Text(
-                                'Selamat datang di Diatrofi',
+                                'Hitung Kandungan Nutrisi Dulu Yuk !',
                                 textAlign: TextAlign.start,
                                 maxLines: 3,
                                 overflow: TextOverflow.ellipsis,
@@ -166,7 +168,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             SizedBox(
                               width: 160,
                               child: Text(
-                                'Mari wujudkan pola makan sehat mulai dari sekarang.',
+                                'jaga nutrisi yang masuk ke tubuhmu ^^',
                                 textAlign: TextAlign.start,
                                 maxLines: 3,
                                 overflow: TextOverflow.ellipsis,
@@ -193,8 +195,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
           // articles
           SubHeading(
-            title: 'Top 7 Articles Today',
-            // onTap: (() => Navigator.push(context, MaterialPageRoute(builder: (_)=> article)))
+            title: 'Top 7 berita hari ini',
           ),
 
           // article items
@@ -241,11 +242,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
           // check this out
           SubHeading(
-            title: 'check this out',
+            title: 'Mungkin kamu suka',
           ),
           Container(
               height: 230,
-              // color: Colors.grey,
               padding: const EdgeInsets.only(right: 10),
               child: Consumer<ResepListProvider>(builder: (context, state, _) {
                 if (state.state == ResultState.loading) {

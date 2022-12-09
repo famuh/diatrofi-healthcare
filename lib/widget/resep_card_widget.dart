@@ -23,7 +23,7 @@ class ResepCard extends StatelessWidget {
           builder: (context, snapshot) {
             var isBookmarked = snapshot.data ?? false;
             return Card(
-              color: kSoftGrey,
+              color: kYellowSoft,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10)),
               child: SizedBox(
@@ -55,11 +55,11 @@ class ResepCard extends StatelessWidget {
                       subtitle: Text(resep.times),
                       trailing: isBookmarked
                           ? IconButton(
-                        icon: const Icon(Icons.favorite),
+                        icon: const Icon(Icons.favorite, color: Colors.red,),
                         onPressed: () => provider.removeFavorite(resep.key),
                       )
                           : IconButton(
-                        icon: const Icon(Icons.favorite_border),
+                        icon: const Icon(Icons.favorite_border, color: Colors.red,),
                         onPressed: () => provider.addFavorite(resep),
                       ),
                       onTap: () {

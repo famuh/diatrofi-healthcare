@@ -14,7 +14,7 @@ class ArticleItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      color: kSoftGrey,
+      color: kBlueSoft,
       child: InkWell(
         onTap: () {
           Navigator.pushNamed(context, ArticleWebView.routeName,

@@ -29,10 +29,10 @@ class _ResepScreenState extends State<ResepScreen> {
                   size: 50,
                   color: kStrongGreen,
                 ),
-                title: Text('Healthy Receipe !',
+                title: Text('Resep Sehat !',
                     style:
                         kTitleScreen.copyWith(fontWeight: FontWeight.normal)),
-                subtitle: const Text('Top Health Receipe of the Day !'),
+                subtitle: const Text('Top Resep Sehat Hari Ini !'),
               )),
 
           SizedBox(

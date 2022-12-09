@@ -19,7 +19,7 @@ class KcalWidget extends StatelessWidget {
         ),
         const SizedBox(width: 5),
         Text(
-          '$kcal kcal',
+          '$kcal kalori',
           style: kBodyText.copyWith(
               fontWeight: FontWeight.w600, color: kMatteBlack),
         )

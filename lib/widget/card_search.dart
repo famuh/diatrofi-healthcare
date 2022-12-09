@@ -10,10 +10,8 @@ class CardSearch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {},
-      child: Card(
-        color: kSoftGrey,
+    return Card(
+        color: kYellowSoft,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         child: SizedBox(
           height: 80,
@@ -40,8 +38,8 @@ class CardSearch extends StatelessWidget {
             ),
           ),
         ),
-      ),
-    );
+      );
+    
   }
 }
 

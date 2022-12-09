@@ -1,5 +1,6 @@
 import 'package:diatfori/common/constant.dart';
 import 'package:diatfori/data/api/api_service.dart';
+import 'package:diatfori/presentation/provider/database_provider.dart';
 import 'package:diatfori/presentation/provider/detail_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -39,6 +40,7 @@ class DetailScreen extends StatelessWidget {
                             Icons.arrow_back_ios_new_rounded,
                           )),
                       actions: [
+                    
                         IconButton(
                             onPressed: () {
                               Navigator.popAndPushNamed(

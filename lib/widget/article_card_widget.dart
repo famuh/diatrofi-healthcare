@@ -13,7 +13,7 @@ class CardArticle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: kSoftGrey,
+      color: kBlueSoft,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       child: SizedBox(
         height: 80,

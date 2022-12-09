@@ -37,7 +37,7 @@ class ItemBagScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'total for ${value.totalItems.length} items',
+                    'jumlah item ${value.totalItems.length} item',
                     style: kItemTittleCard.copyWith(
                         fontWeight: FontWeight.w500, color: kSoftGrey),
                   ),
@@ -70,7 +70,7 @@ class ItemBagScreen extends StatelessWidget {
                                   SizedBox(
                                     height: 50,
                                     child: NutritionWidget(
-                                      title: 'prots',
+                                      title: 'protein',
                                       total: value.totalProtein,
                                       color: kBrightGreen,
                                       size: 18,
@@ -79,7 +79,7 @@ class ItemBagScreen extends StatelessWidget {
                                   SizedBox(
                                     height: 50,
                                     child: NutritionWidget(
-                                      title: 'carbs',
+                                      title: 'karbo',
                                       total: value.totalKarbo,
                                       color: Colors.orange[800],
                                       size: 18,
@@ -88,7 +88,7 @@ class ItemBagScreen extends StatelessWidget {
                                   SizedBox(
                                     height: 50,
                                     child: NutritionWidget(
-                                      title: 'fats',
+                                      title: 'lemak',
                                       total: value.totalLemak,
                                       color: const Color.fromARGB(
                                           255, 212, 132, 3),
@@ -122,7 +122,7 @@ class ItemBagScreen extends StatelessWidget {
                         );
                   }
                   return const Center(
-                    child: Text('no item added yet :(', style: TextStyle(
+                    child: Text('kamu belum menambahkan apapun :(', style: TextStyle(
                       fontSize: 20
                     ),),
                   );

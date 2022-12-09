@@ -102,17 +102,17 @@ class CalculateFoodItemWidget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           NutritionWidget(
-                            title: 'prots',
+                            title: 'protein',
                             total: item.protein,
                             color: kBrightGreen,
                           ),
                           NutritionWidget(
-                            title: 'carbs',
+                            title: 'karbo',
                             total: item.karbohidrat,
                             color: kCarbs,
                           ),
                           NutritionWidget(
-                            title: 'fats',
+                            title: 'lemak',
                             total: item.lemak,
                             color: kFats,
                           ),

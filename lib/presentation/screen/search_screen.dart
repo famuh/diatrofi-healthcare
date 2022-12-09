@@ -24,7 +24,7 @@ class _ResepSearchPageState extends State<ResepSearchPage> {
       child: Consumer<SearchResepProvider>(builder: (context, state, _) {
         return Scaffold(
           appBar: AppBar(
-            title: Text('Search Receipe'),
+            title: const Text('Cari Resep'),
           ),
           backgroundColor: Colors.grey.shade100,
           body: SingleChildScrollView(
@@ -47,7 +47,7 @@ class _ResepSearchPageState extends State<ResepSearchPage> {
                     controller: controller,
                     style: TextStyle(color: Colors.black.withOpacity(0.6)),
                     decoration: InputDecoration(
-                      hintText: 'Search',
+                      hintText: 'cari resep apa ya . . .',
                       hintStyle:
                       TextStyle(color: Colors.black.withOpacity(0.23)),
                       enabledBorder: InputBorder.none,
@@ -68,9 +68,7 @@ class _ResepSearchPageState extends State<ResepSearchPage> {
                   ),
                 ),
                 (hasil.isEmpty)
-                    ? const Center(
-                  child: Text('Search Receipe'),
-                )
+                    ? Container()
                     : Consumer<SearchResepProvider>(
                   builder: (context, state, _) {
                     if (state.state == ResultState.loading) {
@@ -94,7 +92,7 @@ class _ResepSearchPageState extends State<ResepSearchPage> {
                     } else {
                       return const Center(
                           child:
-                          Text('Empty'));
+                          Text('resepnya ga ketemu nih :/'));
                     }
                   },
                 ),

@@ -86,7 +86,7 @@ class _LoginPageState extends State<LoginPage> {
                       Icons.lock,
                       color: kMatteBlack,
                     ),
-                    hintText: "Password",
+                    hintText: "Kata Sandi",
                     border: InputBorder.none,
                   ),
                 ),
@@ -104,7 +104,7 @@ class _LoginPageState extends State<LoginPage> {
                       final result = await AuthServices.signIn(
                           emailController.text, passwordController.text);
                       if (result != null &&
-                          emailController.text != 'gobooks.admin@email.com') {
+                          emailController.text != 'diatrofi.admin@email.com') {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
@@ -119,7 +119,7 @@ class _LoginPageState extends State<LoginPage> {
                           duration: Duration(milliseconds: 600),
                         ));
                       } else if (emailController.text ==
-                          'gobooks.admin@email.com') {
+                          'diatrofi.admin@email.com') {
                         ScaffoldMessenger.of(context)
                             .showSnackBar(const SnackBar(
                           content:
@@ -130,7 +130,7 @@ class _LoginPageState extends State<LoginPage> {
                         ScaffoldMessenger.of(context)
                             .showSnackBar(const SnackBar(
                           content: Text(
-                              'Email / Password salah. Silakan coba lagi.'),
+                              'Email / Kata Sandi salah. Silakan coba lagi.'),
                           duration: Duration(milliseconds: 600),
                         ));
                       }

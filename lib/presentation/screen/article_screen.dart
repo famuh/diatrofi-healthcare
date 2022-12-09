@@ -26,8 +26,8 @@ class _ArticleScreenState extends State<ArticleScreen> {
               margin: const EdgeInsets.symmetric(vertical: 5),
               child: ListTile(
                 leading: const Icon(Icons.newspaper_rounded, size: 50, color: kStrongGreen,),
-                title: Text('Articles', style: kTitleScreen.copyWith(fontWeight: FontWeight.normal)),
-                subtitle: const Text('Top Health Articles of the Day !'),
+                title: Text('Berita', style: kTitleScreen.copyWith(fontWeight: FontWeight.normal)),
+                subtitle: const Text('Top Berita Hari Ini !'),
                 )),
 
             SizedBox(

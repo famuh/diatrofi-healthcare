@@ -1,4 +1,3 @@
-
 import 'package:diatfori/data/api/api_service.dart';
 import 'package:diatfori/presentation/provider/detail_provider.dart';
 import 'package:flutter/material.dart';
@@ -72,7 +71,6 @@ class FoodRecipeScreen extends StatelessWidget {
                           )
                         ],
                       ),
-                      
 
                       // Nama item
                       Text(
@@ -103,7 +101,7 @@ class FoodRecipeScreen extends StatelessWidget {
                       ),
 
                       // ingredients
-                      _sectionRecipe('ingredients'),
+                      _sectionRecipe('bahan-bahan'),
                       Container(
                           margin: const EdgeInsets.only(left: 20),
                           constraints: const BoxConstraints(maxHeight: 50),
@@ -135,7 +133,7 @@ class FoodRecipeScreen extends StatelessWidget {
                           )),
 
                       // steps
-                      _sectionRecipe('steps'),
+                      _sectionRecipe('langkah-langkah'),
                       const SizedBox(
                         height: 5,
                       ),
@@ -154,7 +152,7 @@ class FoodRecipeScreen extends StatelessWidget {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Container(
-                                        margin: EdgeInsets.only(top: 10),
+                                        margin: const EdgeInsets.only(top: 10),
                                         width: 10,
                                         height: 10,
                                         decoration: const BoxDecoration(
@@ -164,7 +162,10 @@ class FoodRecipeScreen extends StatelessWidget {
                                       const SizedBox(
                                         width: 10,
                                       ),
-                                      Expanded(child: Text(resep.step[index],))
+                                      Expanded(
+                                          child: Text(
+                                        resep.step[index],
+                                      ))
                                     ],
                                   );
                                 }),

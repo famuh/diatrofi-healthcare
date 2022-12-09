@@ -62,7 +62,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
 
-                      const Text('Status : USER',
+                      const Text('Status : Mahasiswa',
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             color: Colors.white,
@@ -99,7 +99,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                     const SizedBox(width: 5),
                     Text(
-                      'Log Out',
+                      'Keluar',
                       style: Theme.of(context).textTheme.button?.copyWith(
                         fontSize: 15,
                         fontWeight: FontWeight.bold,

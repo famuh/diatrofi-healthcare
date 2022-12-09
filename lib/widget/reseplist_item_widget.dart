@@ -22,7 +22,7 @@ class ResepItem extends StatelessWidget {
             return Card(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20)),
-              color: kSoftGrey,
+              color: kYellowSoft,
               child: InkWell(
                 child: Container(
                   width: 210,
@@ -31,7 +31,6 @@ class ResepItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        // height: 100,
                         width: 200,
                         height: 200 / 2.2,
                         margin: const EdgeInsets.only(bottom: 5),
@@ -56,24 +55,23 @@ class ResepItem extends StatelessWidget {
                             fontWeight: FontWeight.w500, fontSize: 16),
                         overflow: TextOverflow.ellipsis,
                       ),
-                      const SizedBox(
-                        height: 5,
-                      ),
+                      const SizedBox(height: 5),
                       Text(
-                        "Durasi Penyajian : " + resep.times,
+                        "Durasi Penyajian :  ${resep.times}",
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: kBodyText,
                       ),
-                      isBookmarked?
-                      IconButton(
-                        icon: const Icon(Icons.favorite),
-                        onPressed: () => provider.removeFavorite(resep.key),
-                      )
+                      isBookmarked
+                          ? IconButton(
+                              icon: const Icon(Icons.favorite, color: Colors.red,),
+                              onPressed: () =>
+                                  provider.removeFavorite(resep.key),
+                            )
                           : IconButton(
-                        icon: const Icon(Icons.favorite_border),
-                        onPressed: () => provider.addFavorite(resep),
-                      ),
+                              icon: const Icon(Icons.favorite_border, color: Colors.red,),
+                              onPressed: () => provider.addFavorite(resep),
+                            ),
                     ],
                   ),
                 ),
@@ -81,7 +79,6 @@ class ResepItem extends StatelessWidget {
                   Navigator.pushNamed(context, DetailScreen.ROUTE_NAME,
                       arguments: resep.key);
                 },
-
               ),
             );
           },

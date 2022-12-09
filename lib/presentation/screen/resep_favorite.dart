@@ -30,10 +30,10 @@ class _ResepFavoriteScreen extends State<ResepFavoriteScreen> {
                   size: 50,
                   color: kStrongGreen,
                 ),
-                title: Text('Favorite Receipe !',
+                title: Text('Resep Kesukaanmu !',
                     style:
                     kTitleScreen.copyWith(fontWeight: FontWeight.normal)),
-                subtitle: const Text('Enjoy Your Receipce !'),
+                subtitle: const Text('Cobain resep yang kamu suka !'),
               )),
 
           SizedBox(
@@ -60,7 +60,7 @@ class _ResepFavoriteScreen extends State<ResepFavoriteScreen> {
             },
           );
         } else if (state.state == ResultState.noData) {
-          return Center(child: Text(state.message));
+          return const Center(child: Text('belum menambahkan resep nih :('));
         } else if (state.state == ResultState.error) {
           return Center(child: Text(state.message));
         } else {

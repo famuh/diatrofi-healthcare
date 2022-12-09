@@ -7,6 +7,7 @@ import 'package:diatfori/data/model/resep_detail.dart';
 import 'package:diatfori/firebase_options.dart';
 import 'package:diatfori/presentation/login/profile.dart';
 import 'package:diatfori/presentation/provider/database_provider.dart';
+import 'package:diatfori/presentation/provider/detail_provider.dart';
 import 'package:diatfori/presentation/provider/nutrients_provider.dart';
 import 'package:diatfori/presentation/screen/food_recipe_screen.dart';
 
@@ -43,10 +44,11 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<DatabaseProvider>(
             create: (_) => DatabaseProvider(databaseHelper: DatabaseHelper())),
+
         ChangeNotifierProvider<ResepListProvider>(
             create: (_) => ResepListProvider(apiService: ApiService()),
             child: const HomeScreen()),
-            
+
         ChangeNotifierProvider<NutrientProvider>(
             create: (_) => NutrientProvider(apiService: ApiService()),
             child: const CalculateScreen()),

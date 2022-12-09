@@ -25,7 +25,7 @@ class _CalculateScreenState extends State<CalculateScreen> {
 
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Calculate Your Intake'),
+          title: const Text('Hitung Nutrisi'),
           leading: IconButton(
               onPressed: () {
                 Navigator.pop(context);
@@ -50,7 +50,7 @@ class _CalculateScreenState extends State<CalculateScreen> {
                   child: ListView(
                     children: [
                       SubHeading(
-                        title: 'food',
+                        title: 'makanan',
                       ),
                       Container(
                           height: 120,
@@ -97,7 +97,7 @@ class _CalculateScreenState extends State<CalculateScreen> {
                             },
                           )),
                       SubHeading(
-                        title: 'drink',
+                        title: 'minuman',
                       ),
                       Container(
                           height: 120,
@@ -144,7 +144,7 @@ class _CalculateScreenState extends State<CalculateScreen> {
                             },
                           )),
                       SubHeading(
-                        title: 'fruit & vegie',
+                        title: 'buah & sayur',
                       ),
                       Container(
                           height: 120,
@@ -222,7 +222,7 @@ class _CalculateScreenState extends State<CalculateScreen> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Text(
-                              'total for',
+                              'jumlah item',
                               style: kItemTittleCard.copyWith(
                                   fontWeight: FontWeight.w500,
                                   color: kSoftGrey),
@@ -250,7 +250,7 @@ class _CalculateScreenState extends State<CalculateScreen> {
                                       const SizedBox(
                                         width: 10,
                                       ),
-                                      Text('items',
+                                      Text('item',
                                           style: kItemTittleCard.copyWith(
                                               fontWeight: FontWeight.w500,
                                               color: kSoftGrey)),
@@ -291,7 +291,7 @@ class _CalculateScreenState extends State<CalculateScreen> {
                                   SizedBox(
                                     height: 50,
                                     child: NutritionWidget(
-                                      title: 'prots',
+                                      title: 'protein',
                                       total: value.totalProtein,
                                       color: kBrightGreen,
                                       size: 18,
@@ -300,7 +300,7 @@ class _CalculateScreenState extends State<CalculateScreen> {
                                   SizedBox(
                                     height: 50,
                                     child: NutritionWidget(
-                                      title: 'carbs',
+                                      title: 'karbo',
                                       total: value.totalKarbo,
                                       color: Colors.orange[800],
                                       size: 18,
@@ -309,7 +309,7 @@ class _CalculateScreenState extends State<CalculateScreen> {
                                   SizedBox(
                                     height: 50,
                                     child: NutritionWidget(
-                                      title: 'fats',
+                                      title: 'lemak',
                                       total: value.totalLemak,
                                       color: const Color.fromARGB(
                                           255, 212, 132, 3),
@@ -324,7 +324,7 @@ class _CalculateScreenState extends State<CalculateScreen> {
                         builder: (context, value, child) {
                           return TextButton(
                             child: const Text(
-                              'clear',
+                              'bersihkan',
                               style: TextStyle(
                                 color: Colors.white,
                               ),
