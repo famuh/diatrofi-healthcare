@@ -26,4 +26,6 @@ class KcalWidget extends StatelessWidget {
       ],
     );
   }
+
 }
+

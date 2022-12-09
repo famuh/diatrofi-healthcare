@@ -19,9 +19,19 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
+  late User user;
+
+
   @override
   void initState() {
     super.initState();
+
+    initUser();
+  }
+
+  initUser() async {
+    user = _auth.currentUser!;
+    setState(() {});
   }
 
 
@@ -37,7 +47,8 @@ class _ProfilePageState extends State<ProfilePage> {
         title: Text(
           'Profile',
           style: Theme.of(context).textTheme.headline6?.copyWith(
-              color: kSoftGrey, fontWeight: FontWeight.bold, fontSize: 25),
+              color: kMatteBlack, fontWeight: FontWeight.bold, fontSize: 25),
+
         ),
       ),
       body: Column(
@@ -61,8 +72,13 @@ class _ProfilePageState extends State<ProfilePage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      Text('${user.email}',
+                          style: Theme.of(context)
+                              .textTheme
+                              .headline6
+                              ?.copyWith(color: Colors.white)),
+                      const Text('Status : Mahasiswa',
 
-                      const Text('Status : USER',
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             color: Colors.white,
@@ -94,7 +110,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   children: [
                     const Icon(
                       Icons.logout_rounded,
-                      color: Colors.white,
+                      color: Colors.black,
                       size: 25,
                     ),
                     const SizedBox(width: 5),

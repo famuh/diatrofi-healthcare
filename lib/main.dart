@@ -1,4 +1,5 @@
 import 'package:diatfori/common/constant.dart';
+
 import 'package:diatfori/data/model/food.dart';
 import 'package:diatfori/data/api/api_service.dart';
 import 'package:diatfori/data/model/resep_detail.dart';
@@ -6,6 +7,12 @@ import 'package:diatfori/firebase_options.dart';
 import 'package:diatfori/presentation/login/profile.dart';
 import 'package:diatfori/presentation/provider/nutrients_provider.dart';
 import 'package:diatfori/presentation/screen/food_recipe_screen.dart';
+
+import 'package:diatfori/data/api/api_service.dart';
+import 'package:diatfori/firebase_options.dart';
+import 'package:diatfori/presentation/login/profile.dart';
+import 'package:diatfori/presentation/provider/nutrients_provider.dart';
+
 import 'package:diatfori/presentation/screen/item_detail_screen.dart';
 import 'package:diatfori/presentation/screen/items_bag_screen.dart';
 import 'package:diatfori/presentation/provider/resep_list_provider.dart';
@@ -53,6 +60,7 @@ class MyApp extends StatelessWidget {
             create: (_) => SearchResepProvider(apiService: ApiService()),
             child: const ResepSearchPage()),
 
+
       ],
       child: MaterialApp(
         title: 'Diatrofi',
@@ -74,6 +82,7 @@ class MyApp extends StatelessWidget {
                   builder: (_) => const ResepFavoriteScreen());
             case CalculateScreen.ROUTE_NAME:
               return MaterialPageRoute(builder: (_) => const CalculateScreen());
+
             case ArticleWebView.routeName:
               final url = settings.arguments as String;
               return MaterialPageRoute(
@@ -86,6 +95,7 @@ class MyApp extends StatelessWidget {
               final food = settings.arguments as String;
               return MaterialPageRoute(
                   builder: (_) => FoodRecipeScreen(keyResep: food), settings: settings);
+
             case ProfilePage.routeName:
               return MaterialPageRoute(builder: (_) => const ProfilePage());
             case ItemBagScreen.ROUTE_NAME:
@@ -105,3 +115,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+

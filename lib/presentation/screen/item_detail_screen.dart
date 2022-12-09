@@ -53,6 +53,7 @@ class DetailScreen extends StatelessWidget {
                               Navigator.popAndPushNamed(
                                   context, FoodRecipeScreen.ROUTE_NAME,
                                   arguments: keyResep);
+
                             },
                             icon: const FaIcon(
                               FontAwesomeIcons.fire,

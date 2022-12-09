@@ -53,4 +53,6 @@ class SearchResepProvider extends ChangeNotifier {
       return _message = 'Error --> $e';
     }
   }
+
 }
+

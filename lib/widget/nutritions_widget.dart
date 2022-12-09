@@ -25,4 +25,6 @@ class NutritionWidget extends StatelessWidget {
       ),
     );
   }
+
 }
+
