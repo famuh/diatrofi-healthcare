@@ -1,12 +1,10 @@
 import 'package:diatfori/data/api/api_service.dart';
-import 'package:diatfori/data/model/resep_detail.dart';
 import 'package:diatfori/presentation/provider/detail_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 import '../../common/constant.dart';
-import '../../data/model/food.dart';
 
 class FoodRecipeScreen extends StatelessWidget {
   static const ROUTE_NAME = '/food-recipe';
@@ -37,13 +35,6 @@ class FoodRecipeScreen extends StatelessWidget {
                           icon: const Icon(
                             Icons.arrow_back_ios_new_rounded,
                           )),
-                      actions: [
-                        IconButton(
-                            onPressed: () {},
-                            icon: FaIcon(
-                              FontAwesomeIcons.plus,
-                            )),
-                      ],
                       elevation: 0,
                       shadowColor: Colors.transparent,
                       expandedHeight: 300,
