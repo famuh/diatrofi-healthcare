@@ -1,7 +1,7 @@
 # Diatrofi
 <!-- BACKGROUND PROJECT -->
 <p align="center">
-<img width="220px" src="https://github.com/famuh/diatrofi-healthcare/blob/master/SS/logo.png"> 
+<img width="300px" src="https://github.com/famuh/diatrofi-healthcare/blob/master/SS/logo.png"> 
 
   <br>
   <p align="center">
@@ -13,12 +13,11 @@
 
 ## Sekilas Diatrofi :hourglass:
 <p align="center">
-![image](https://user-images.githubusercontent.com/98727707/206786532-029dcb7a-f4df-46aa-ad1d-4be8154fdbee.png)
-![image](https://user-images.githubusercontent.com/98727707/206786659-1c10dbfd-39bd-41c4-b710-a6a29d3820fb.png)
-![image](https://user-images.githubusercontent.com/98727707/206786866-38232979-47a2-47c7-9719-282f0c385554.png)
-![image](https://user-images.githubusercontent.com/98727707/206786938-90794da5-6a8e-402c-8dc5-20d04ef77f67.png)
-![image](https://user-images.githubusercontent.com/98727707/206787336-61d6c684-1245-4981-b661-2d161f670656.png)
-![image](https://user-images.githubusercontent.com/98727707/206787459-ccc426bd-78ec-475b-b1bb-91d61b5f180b.png)
+<img width="220px" src="https://github.com/famuh/diatrofi-healthcare/blob/master/SS/logo.png"> 
+<img width="220px" src="https://github.com/famuh/diatrofi-healthcare/blob/master/SS/masuk.png">
+<img width="220px" src="https://github.com/famuh/diatrofi-healthcare/blob/master/SS/home.png"> 
+<img width="220px" src="https://github.com/famuh/diatrofi-healthcare/blob/master/SS/hitung.png"> 
+<img width="220px" src="https://github.com/famuh/diatrofi-healthcare/blob/master/SS/resep.png"> 
 </p>
 <br>
 
