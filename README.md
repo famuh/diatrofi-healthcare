@@ -24,16 +24,13 @@
 ## Fitur yang disediakan :bulb:
 Terdapat beberapa fitur yang disediakan, antara lain :
 
-* Menghitung Nutrisi
-<br>
+* Menghitung Nutrisi, 
 Pengguna dapat menambahkan item sesuai keinginan mereka. Fitur ini akan menghitung total kandungan dari seluruh item yang ditambahkan. Diharapkan fitur ini dapat membantu pengguna dalam mempertimbangkan kembali asupan yang dikonsumsi demi menjaga kesehatan mereka.
 
-* Resep Sehat
-<br>
+* Resep Sehat, 
 Fitur ini akan mendorong pengguna untuk mengurangi kebiasaan buruk dalam mengkonsumsi makanan. Juga diharapkan menjadi inspirasi bagi pengguna untuk membuat sendiri asupan yang akan dikonsumsi. Dilengkapi dengan halaman resep juga fitur pencarian dan favorite yang memudahkan pengguna dalam menikmati fitur ini.
 
-* Artikel Kesehatan
-<br>
+* Berita & Artikel Kesehatan,
 Diatrofi menyediakan berita dan artikel terkait untuk meningkatkan wawasan dan literasi pengguna dalam hal kesehatan, terkhususnya dalam hal asupan konsumsi.
 <br>
 
