@@ -5,7 +5,7 @@
 
   <br>
   <p align="center">
-    Diatrofi merupakan aplikasi mobile yang bergerak di bidang kesehatan. Diatrofi menyediakan fitur-fitur yang membantu masyarakat dalam menjaga asupan makanan yang dikonsumsi. Diatrofi juga menyediakan resep-resep makanan enak dan sehat. Selain itu, Diatrofi juga menyediakan berita/artikel terkait.
+    Diatrofi merupakan aplikasi mobile yang bergerak di bidang kesehatan. Diatrofi menyediakan fitur-fitur yang membantu masyarakat dalam menjaga asupan makanan yang dikonsumsi. Diatrofi juga menyediakan resep-resep makanan enak dan sehat. Selain itu, Diatrofi juga dilengkapi dengan berita/artikel terkait kesehatan yang dapat Pengguna baca.
     <br />
   </p>
 </p>
@@ -25,12 +25,15 @@
 Terdapat beberapa fitur yang disediakan, antara lain :
 
 * Menghitung Nutrisi
+<br>
 Pengguna dapat menambahkan item sesuai keinginan mereka. Fitur ini akan menghitung total kandungan dari seluruh item yang ditambahkan. Diharapkan fitur ini dapat membantu pengguna dalam mempertimbangkan kembali asupan yang dikonsumsi demi menjaga kesehatan mereka.
 
 * Resep Sehat
+<br>
 Fitur ini akan mendorong pengguna untuk mengurangi kebiasaan buruk dalam mengkonsumsi makanan. Juga diharapkan menjadi inspirasi bagi pengguna untuk membuat sendiri asupan yang akan dikonsumsi. Dilengkapi dengan halaman resep juga fitur pencarian dan favorite yang memudahkan pengguna dalam menikmati fitur ini.
 
 * Artikel Kesehatan
+<br>
 Diatrofi menyediakan berita dan artikel terkait untuk meningkatkan wawasan dan literasi pengguna dalam hal kesehatan, terkhususnya dalam hal asupan konsumsi.
 <br>
 
@@ -46,5 +49,7 @@ Diatrofi dikerjakan oleh 3 orang mahasiswa dari berbagai kota di Indonesia.
 <p align="center">
 Terima Kasih
 <br>
+<p align="right">
 - Tim Diatrofi
+</p>
 </p>
