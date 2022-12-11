@@ -1,7 +1,7 @@
 # Diatrofi
 <!-- BACKGROUND PROJECT -->
 <p align="center">
-<img width="300px" src="https://github.com/famuh/diatrofi-healthcare/blob/master/SS/logo.png"> 
+<img width="300px" src="https://github.com/famuh/diatrofi-healthcare/blob/master/assets/icon/logo.png"> 
 
   <br>
   <p align="center">
